@@ -7,10 +7,9 @@ export function AllRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route Component={Footer}>
-          <Route Component={Header}>
-            <Route Component={Home} path="/" />
-          </Route>
+        {/* <Route Component={Footer}> */}
+        <Route Component={Header}>
+          <Route Component={Home} path="/" />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -26,6 +26,29 @@ export const LogoContainer = styled.div`
   }
 `;
 
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+
+  img {
+    position: absolute;
+    width: 25px;
+    right: 10px;
+  }
+`;
+
+export const SearchBar = styled.input`
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+`;
+
 export const RightContainer = styled.div`
   display: flex;
   align-items: center;

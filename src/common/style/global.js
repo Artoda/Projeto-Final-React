@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         -webkit-text-size-adjust: 100%;
+        height: 100%;
     }
 
     #root {
@@ -38,8 +39,8 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0 auto;
         display: flex;
         min-width: 320px;
-        min-height: 100vh;
         width: 100%;
+        height: 100%;
     }
 
     h1 {
