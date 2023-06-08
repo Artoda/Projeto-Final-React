@@ -37,6 +37,10 @@ export const SearchContainer = styled.div`
     width: 25px;
     right: 10px;
   }
+
+  img:hover {
+    cursor: pointer;
+  }
 `;
 
 export const SearchBar = styled.input`
@@ -47,6 +51,7 @@ export const SearchBar = styled.input`
   padding: 5px;
   border-radius: 10px;
   background-color: white;
+  color: black;
   border: none;
 `;
 

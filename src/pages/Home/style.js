@@ -53,6 +53,7 @@ export const ProductsContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  gap: 50px;
 `;
 
 export const Product = styled.div`
