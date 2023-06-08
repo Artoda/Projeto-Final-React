@@ -47,6 +47,7 @@ export const SearchBar = styled.input`
   padding: 5px;
   border-radius: 10px;
   background-color: white;
+  border: none;
 `;
 
 export const RightContainer = styled.div`
