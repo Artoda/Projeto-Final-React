@@ -39,7 +39,7 @@ export function Login() {
                 <span>* senha</span>
                 <PasswordInput>
                   <input type="password" placeholder=" ********" />
-                  <AiOutlineEyeInvisible />
+                  <AiOutlineEyeInvisible className="icon" />
                 </PasswordInput>
               </PasswordContainer>
               <LoginBt isActive={location.pathname === "/"}>login</LoginBt>

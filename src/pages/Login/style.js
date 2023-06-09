@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* border: 2px solid red; */
   margin: 0;
   padding: 10px;
   box-sizing: border-box;
@@ -41,7 +40,6 @@ export const FormContainer = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
-
 `;
 
 export const EmailContainer = styled.div`
@@ -58,7 +56,19 @@ export const EmailContainer = styled.div`
 export const PasswordContainer = styled.div`
     text-align: left;
     width: 100%;
-        input {
+`;
+export const PasswordInput = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+    .icon {
+      position: absolute;
+      right: 0;
+      padding: 0 10px;
+    }
+    input {
         width: 98%;
         background: white;
         border-radius: 5px;
@@ -66,16 +76,12 @@ export const PasswordContainer = styled.div`
         height: 30px;
         }
 `;
-export const PasswordInput = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export const LoginBt = styled.button`
     list-style: none;
     background: rgba(203, 18, 28, 0.7);
     color:white;
+    border: none;
     border-radius: 5px;
     margin:10px;
     width: 100%;
@@ -91,105 +97,7 @@ export const FooterContainer = styled.div`
     font-size: 12px;
     span {
       span {
-        color:red;
+        color:rgba(203, 18, 28, 0.7);
       }
     }
-`;
-
-
-
-
-
-
-
-// export const SearchContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 10px;
-//   position: relative;
-
-//   img {
-//     position: absolute;
-//     width: 25px;
-//     right: 10px;
-//   }
-// `;
-
-/*
-
-  img {
-    padding: 10px;
-  }
-  background-color: #ffffff;
-  width: 100%;
-`;
-/*
-export const ContentContainer = styled.ul`
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-
-  width: 100%;
-  padding: 0 0 0 70px;
-  a {
-    height: 100%;
-  }
-`;
-
-export const EmailContainer = styled.li`
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  height: 100%;
-  padding-bottom: 12px;
-  border-bottom: ${(props) => (props.isActive ? "3px solid red" : "none")};
-  gap: 50px;
-  color: black;
-`;
-
-export const PasswordContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
-
-export const LoginButtom = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #e9e9e9;
-  padding: 20px;
-  height: 400px;
-  border-radius: 5%;
-`;
-
-export const ImageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  justify-content: center;
-
-  img {
-    width: 200px;
-  }
-`;
-
-export const ProductTitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-`;
-
-export const ShopContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-
-  width: 100%;
-`;
-*/
+`
