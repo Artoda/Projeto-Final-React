@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 10px;
+  font-size: 16px;
   height: 100vh;
 `;
 
@@ -34,25 +34,20 @@ export const FormContainer = styled.div`
   width: 100%;
 `;
 
-export const NameContainer = styled.div`
-text-align: left;
-    width: 100%;
-`
-
 export const EmailContainer = styled.div`
     text-align: left;
     width: 100%;
 `;
 export const PasswordContainer = styled.div`
-    text-align: left;
-    width: 100%;
+  text-align: left;
+  width: 100%;
 `;
 export const PasswordInput = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   position: relative;
-      .icon {
+    .icon {
       z-index: 1;
       position: absolute;
       right: 0;
@@ -60,5 +55,16 @@ export const PasswordInput = styled.div`
     }
 `;
 
+export const LoginBt = styled.button`
+`;
+
+export const FooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 export const LabelError = styled.label`
-`
+  font-size: 14px;
+  color: red;
+`;

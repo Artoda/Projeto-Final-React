@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
+
   display: flex;
   align-items: center;
   justify-content: start;
@@ -23,28 +27,36 @@ export const TitleContainer = styled.header`
   width: 100%;
 `;
 
+export const NavBarContainer = styled.div`
+  margin: 0;
+  width: 100%;
+  height: 80px;
+`;
 export const NavBar = styled.ul`
   list-style-type: none;
   display: flex;
   align-items: center;
-  justify-content: start;
-
+  gap: 40px;
+  margin: 0;
   width: 100%;
+  height: 100%;
   padding: 0 0 0 70px;
+
   a {
     height: 100%;
   }
 `;
 
 export const NavItem = styled.li`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   font-size: 20px;
   height: 100%;
-  padding-bottom: 12px;
-  border-bottom: ${(props) => (props.isActive ? "3px solid red" : "none")};
-  gap: 50px;
-  color: black;
+  padding: 0 2px;
+  border-bottom: ${(props) =>
+    props.isActive ? "4px solid rgba(203, 18, 28, 0.8)" : "none"};
+  color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
 `;
 
 export const ProductsContainer = styled.div`
@@ -64,6 +76,7 @@ export const Product = styled.div`
   background-color: #e9e9e9;
   padding: 20px;
   height: 400px;
+  width: 270px;
   border-radius: 5%;
 `;
 

@@ -1,4 +1,5 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 import {
   Container,
@@ -9,9 +10,19 @@ import {
   RightContainer,
   SearchContainer,
   SearchBar,
+  LoginContainer,
+  TextContainer,
+  ButtonContainer,
 } from "./style";
 
 export function Header() {
+  const [isHidden, setIsHidden] = useState(false);
+  const location = useLocation();
+
+  const handleClick = () => {
+    setIsHidden((current) => !current);
+  };
+
   return (
     <>
       <Container>
@@ -24,7 +35,20 @@ export function Header() {
           </LogoContainer>
         </LeftContainer>
 
-        <SearchContainer>
+        <SearchContainer
+          style={{
+            display:
+              location.pathname === "/" ||
+              location.pathname === "/artes" ||
+              location.pathname === "/antiguidades" ||
+              location.pathname === "/joias" ||
+              location.pathname === "/armas" ||
+              location.pathname === "/jogos" ||
+              location.pathname === "/livros"
+                ? "flex"
+                : "none",
+          }}
+        >
           <SearchBar placeholder="O que ta procurando?"></SearchBar>
           <img
             src="https://media.discordapp.net/attachments/1081311873481322597/1116415331209072681/lupa-icon.png"
@@ -40,8 +64,25 @@ export function Header() {
             <img
               src="https://avatars.githubusercontent.com/u/127253895?v=4"
               alt="Romulo Andriolo"
+              onClick={handleClick}
             />
+
+            <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
+              <TextContainer>
+                <span>
+                  Para ver seus pedidos e ter uma experiencia personalizada,
+                  acesse sua conta 😊
+                </span>
+              </TextContainer>
+              <Link to={"/login"}>
+                <ButtonContainer>Entrar</ButtonContainer>
+              </Link>
+              <Link to={"/register"}>
+                <ButtonContainer>Cadastrar</ButtonContainer>
+              </Link>
+            </LoginContainer>
           </ProfileContainer>
+
           <ShopContainer>
             <img
               src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"

@@ -1,8 +1,9 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Footer } from "../../common/components/Footer";
 import {
   Container,
   TitleContainer,
+  NavBarContainer,
   NavBar,
   NavItem,
   ProductsContainer,
@@ -11,25 +12,56 @@ import {
   ProductTitleContainer,
   ShopContainer,
 } from "./style";
+import { useEffect, useState } from "react";
 
 export function Home() {
   const location = useLocation();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      let data = await fetch(
+        "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
+      );
+      let product = await data.json();
+      setProducts(product);
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Container>
-        <NavBar>
-          <NavItem>
-            <NavItem isActive={location.pathname === "/"}>Home</NavItem>
-            <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
-            <NavItem isActive={location.pathname === "/antiguidades"}>
-              Antiguidades
-            </NavItem>
-            <NavItem isActive={location.pathname === "joias"}>Jóias</NavItem>
-            <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
-            <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
-            <NavItem isActive={location.pathname === "/livros"}>Livros</NavItem>
-          </NavItem>
-        </NavBar>
+        <NavBarContainer>
+          <NavBar>
+            <Link to={"/"}>
+              <NavItem isActive={location.pathname === "/"}>Home</NavItem>
+            </Link>
+            <Link to={"/artes"}>
+              <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
+            </Link>
+            <Link to={"/antiguidades"}>
+              <NavItem isActive={location.pathname === "/antiguidades"}>
+                Antiguidades
+              </NavItem>
+            </Link>
+            <Link to={"/joias"}>
+              <NavItem isActive={location.pathname === "/joias"}>Jóias</NavItem>
+            </Link>
+            <Link to={"/armas"}>
+              <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
+            </Link>
+            <Link to={"/jogos"}>
+              <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
+            </Link>
+            <Link to={"/livros"}>
+              <NavItem isActive={location.pathname === "/livros"}>
+                Livros
+              </NavItem>
+            </Link>
+          </NavBar>
+        </NavBarContainer>
         <TitleContainer>
           <img
             src="https://media.discordapp.net/attachments/1081311873481322597/1116375624991383572/title.png?width=1440&height=89"
@@ -37,20 +69,21 @@ export function Home() {
           />
         </TitleContainer>
         <ProductsContainer>
-          <Product>
-            <ImageContainer>
-              <img
-                src="https://media.discordapp.net/attachments/1081311873481322597/1116428142421221386/image_9.png"
-                alt="Arma"
-              />
-            </ImageContainer>
-            <ProductTitleContainer>
-              <h2>-Carabina muito loca-</h2>
-            </ProductTitleContainer>
-            <ShopContainer>
-              <span>R$20.000</span>
-            </ShopContainer>
-          </Product>
+          {products.map((productM) => {
+            return (
+              <Product key={productM.nome}>
+                <ImageContainer>
+                  <img src={productM.descricao} alt="Arma" />
+                </ImageContainer>
+                <ProductTitleContainer>
+                  <h2>{productM.nome}</h2>
+                </ProductTitleContainer>
+                <ShopContainer>
+                  <span>R$ {productM.valor_unitario}</span>
+                </ShopContainer>
+              </Product>
+            );
+          })}
         </ProductsContainer>
       </Container>
     </>

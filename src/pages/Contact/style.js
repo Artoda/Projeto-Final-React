@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 10px;
   height: 100vh;
 `;
 
@@ -16,6 +15,9 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+    .icon {
+      font-size: 21px;
+    }
 `;
 
 export const ContentContainer = styled.div`
@@ -42,23 +44,22 @@ text-align: left;
 export const EmailContainer = styled.div`
     text-align: left;
     width: 100%;
+
 `;
-export const PasswordContainer = styled.div`
+export const MessageContainer = styled.div`
     text-align: left;
     width: 100%;
-`;
-export const PasswordInput = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  position: relative;
-      .icon {
-      z-index: 1;
-      position: absolute;
-      right: 0;
-      margin-right: 5px;
-    }
+        input {
+        height: 300px;
+        position: relative;
+          ::placeholder {
+            position: absolute;
+            top: 0;
+            padding: 10px 0 0;
+          }
+        }
 `;
 
-export const LabelError = styled.label`
-`
+export const SendMsgBt = styled.button`
+    
+`;

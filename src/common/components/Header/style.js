@@ -59,6 +59,7 @@ export const RightContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 50px;
+  position: relative;
 `;
 
 export const ProfileContainer = styled.div`
@@ -70,6 +71,7 @@ export const ProfileContainer = styled.div`
     width: 50px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
   }
 
   span {
@@ -80,6 +82,48 @@ export const ProfileContainer = styled.div`
       text-decoration: underline;
       color: #a80808;
     }
+  }
+`;
+
+export const LoginContainer = styled.div`
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 50px;
+  left: -9px;
+  top: 72px;
+  background-color: #ffffff;
+  gap: 15px;
+  padding: 10px;
+`;
+
+export const TextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  span {
+    color: black;
+  }
+`;
+
+export const ButtonContainer = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 5%;
+  height: 50px;
+  width: 100px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+
+  :hover {
+    background-color: red;
+    color: white;
   }
 `;
 
