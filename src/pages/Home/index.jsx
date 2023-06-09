@@ -24,7 +24,7 @@ export function Home() {
         "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
       );
       let product = await data.json();
-      setProducts(product.categoriaProdDto);
+      setProducts(product);
     }
 
     fetchData();
@@ -40,7 +40,9 @@ export function Home() {
             <NavItem isActive={location.pathname === "/antiguidades"}>
               Antiguidades
             </NavItem>
-            <NavItem isActive={location.pathname === "joias"}>Jóias</NavItem>
+            <NavItem onClick={{}} isActive={location.pathname === "joias"}>
+              Jóias
+            </NavItem>
             <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
             <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
             <NavItem isActive={location.pathname === "/livros"}>Livros</NavItem>
