@@ -3,6 +3,7 @@ import { Header } from "../common/components/Header";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
+import { Contact } from "../pages/Contact";
 import { AboutUs } from "../pages/AboutUs";
 import { Footer } from "../common/components/Footer";
 
@@ -15,6 +16,7 @@ export function AllRoutes() {
           <Route Component={Home} path="/" />
           <Route Component={Login} path="/login" />
           <Route Component={Register} path="/cadastro" />
+          <Route Component={Contact} path="/contato" />
           <Route Component={AboutUs} path="/aboutus" />
         </Route>
       </Routes>

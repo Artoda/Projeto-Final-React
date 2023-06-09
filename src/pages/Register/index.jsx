@@ -10,7 +10,7 @@ import {
   EmailContainer,
   PasswordContainer,
   PasswordInput,
-  LoginBt,
+  RegisterBt,
   FormContainer,
 } from "./style";
 
@@ -49,7 +49,7 @@ export function Register() {
                   <AiOutlineEyeInvisible className="icon" />
                 </PasswordInput>
               </PasswordContainer>
-              <LoginBt isActive={location.pathname === "/"}>finalizar cadastro</LoginBt>
+              <RegisterBt isActive={location.pathname === "/"}>finalizar cadastro</RegisterBt>
             </FormContainer>
           </ContentContainer>
         </BoxContainer>

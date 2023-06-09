@@ -68,32 +68,25 @@ export const EmailContainer = styled.div`
         height: 30px;
         }
 `;
-export const PasswordContainer = styled.div`
+export const MessageContainer = styled.div`
     text-align: left;
     width: 100%;
-`;
-export const PasswordInput = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-    .icon {
-      font-size: 21px;
-      position: absolute;
-      right: 0;
-      padding: 0 10px;
-    }
-    input {
+        input {
         width: 98%;
         background: white;
         border-radius: 5px;
         border: 1px solid #737070;
-        height: 30px;
+        height: 300px;
+        position: relative;
+          ::placeholder {
+            position: absolute;
+            top: 0;
+            padding: 10px 0 0;
+          }
         }
 `;
 
-export const RegisterBt = styled.button`
+export const SendMsgBt = styled.button`
     font-size: 16px;
     list-style: none;
     background: rgba(203, 18, 28, 0.7);
