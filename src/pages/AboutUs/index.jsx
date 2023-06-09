@@ -24,7 +24,7 @@ export function AboutUs() {
             for await (var name of names){
                 let data = await fetch(`https://api.github.com/users/${name}`)
                 let profile = await data.json()
-                userArray.push({name: profile.name, url: profile.avatar_url, link: profile.html_url})                
+                userArray.push({name: profile.name, url: profile.avatar_url})                
             }
             setUs(userArray)
             
@@ -40,7 +40,7 @@ export function AboutUs() {
             <PeopleContainer>
                 <TitleContainer>
                    <button onClick={() => {setIsHidden(!isHidden); audio.play()}}><h1>
-                        Who we are?</h1></button>
+                        Who are we?</h1></button>
                 </TitleContainer>                
                 <PersonContainer>
                 {isHidden === true ? (null) : (
@@ -52,10 +52,8 @@ export function AboutUs() {
                                    <ImageContainer>
                                      <img src={user.url} alt="User picture" />
                                      <IconsContainer>
-                                     <a href={user.social}>  {/* VERIFICANDO } */}
-                                     <AiOutlineLinkedin className="icon"/>
-                                     </a>
-                                     <a href={user.link}>
+                                        <AiOutlineLinkedin className="icon"/>
+                                    <a href={user.link}>
                                         <AiOutlineGithub className="icon" />
                                      </a>
                                     </IconsContainer>
