@@ -3,6 +3,7 @@ import { Footer } from "../../common/components/Footer";
 import {
   Container,
   TitleContainer,
+  NavBarContainer,
   NavBar,
   NavItem,
   ProductsContainer,
@@ -17,19 +18,19 @@ export function Home() {
   return (
     <>
       <Container>
-        <NavBar>
-          <NavItem>
-            <NavItem isActive={location.pathname === "/"}>Home</NavItem>
-            <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
-            <NavItem isActive={location.pathname === "/antiguidades"}>
-              Antiguidades
-            </NavItem>
-            <NavItem isActive={location.pathname === "joias"}>Jóias</NavItem>
-            <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
-            <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
-            <NavItem isActive={location.pathname === "/livros"}>Livros</NavItem>
-          </NavItem>
-        </NavBar>
+        <NavBarContainer>
+          <NavBar>
+              <NavItem isActive={location.pathname === "/"}>Home</NavItem>
+              <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
+              <NavItem isActive={location.pathname === "/antiguidades"}>
+                Antiguidades
+              </NavItem>
+              <NavItem isActive={location.pathname === "joias"}>Jóias</NavItem>
+              <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
+              <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
+              <NavItem isActive={location.pathname === "/livros"}>Livros</NavItem>
+          </NavBar>
+        </NavBarContainer>
         <TitleContainer>
           <img
             src="https://media.discordapp.net/attachments/1081311873481322597/1116375624991383572/title.png?width=1440&height=89"
