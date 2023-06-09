@@ -44,8 +44,8 @@ export function Login() {
       setError(res);
       return;
     }
-
-    navigate("/home");
+    alert("seja bem vindo!");
+    navigate("/");
   };
 
   //RETORNO HTML
