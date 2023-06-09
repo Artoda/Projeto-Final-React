@@ -19,7 +19,6 @@ export const PeopleContainer = styled.div`
   width: 50%;
 `;
 
-
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
@@ -27,10 +26,6 @@ export const TitleContainer = styled.div`
   gap: 10px;
   background-color: #ffffff;
   width: 100%;
-    
-    img {
-      padding: 10px;
-    }
     
     h1{
       padding-top: 15px;
@@ -46,7 +41,6 @@ export const TitleContainer = styled.div`
   export const PersonContainer = styled.div`
     display: flex;
     align-items: center;
-    /* height: 50%; */
     width: 100%;
     justify-content: center;
     background-color:  #ffffff;
@@ -58,19 +52,48 @@ export const TitleContainer = styled.div`
     }
   `;
 
+export const UsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  h1{   
+    font-size: 30px;
+    color: #737070;
+    padding: 10px;
+  }
+`;
+
 export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  
+  h1{   
+    font-size: 30px;
+    color: #737070;
+    padding: 10px;
+  }
+  
+  img {
+   width: 200px;
+   border-radius: 50%;
+  }
+`;
+
+export const IconsContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 
-  img {
-   width: 200px;
-   border-radius: 50%;
-  }
-
-  h1{   
-    font-size: 30px;
-    color: #737070;
+  .icon{
+    color: black;
+    font-size: 45px;
+    padding: 10px;
   }
 `;

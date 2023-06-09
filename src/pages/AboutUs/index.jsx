@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
-
+import { AiOutlineLinkedin } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
+import whoAreYouAudio from "../../assets/audio/who-are-you-song.mp3";
 import {
     Container,
     TitleContainer,
     PeopleContainer,
-    ImageContainer,
+    UsContainer,
     PersonContainer,
+    ImageContainer,
+    IconsContainer,
   } from "./style";
 
 export function AboutUs() {
     const [us, setUs] = useState([]);
-    const [isHidden, setIsHidden] = useState(false); // alterar para true depois
-
+    const [isHidden, setIsHidden] = useState(true); // alterar para true depois
+    const audio = new Audio(whoAreYouAudio)
+   
     const names = [
         "filipe-oliv95", 
         "Artoda", 
@@ -39,46 +44,52 @@ export function AboutUs() {
         <Container>
             <PeopleContainer>
                 <TitleContainer>
-                   <button onClick={() => setIsHidden(!isHidden)}><h1>
+                   <button onClick={() => {setIsHidden(!isHidden); audio.play()}}><h1>
                         Who are us?</h1></button>
                 </TitleContainer>                
                 <PersonContainer>
-                {
-                   isHidden === true ? (
-                         null
-                    ) : (
+                {isHidden === true ? (null) : (
                         us.map((user, index) => {
                             if (index < 3) {
                                 return (
-                                <ImageContainer key={user.name}>
-                                    <h1>{user.name}</h1>
-                                    <img src={user.url} alt="User picture" />
-                                </ImageContainer>
-                                );
-                            }
-                            return null;
-                        })
+                                <UsContainer key={user.name}>                              
+                                   <h1>{user.name}</h1>
+                                   <ImageContainer>
+                                     <img src={user.url} alt="User picture" />
+                                     <IconsContainer>
+                                     <AiOutlineLinkedin className="icon"/>
+                                     <AiOutlineGithub className="icon"/>
+                                    </IconsContainer>
+                                  </ImageContainer>                                 
+                                </UsContainer>
+                              );
+                         }
+                        return null;
+                      })
                 )}
                  </PersonContainer>
                 <PersonContainer>
-                   {
-                     isHidden === true ? (
-                          null
-                     ) : (
-                        us.map((user, index) => {
-                            if (index >= 3 && index < 5) {
-                                return (
-                                <ImageContainer key={user.name}>
-                                    <h1>{user.name}</h1>                            
-                                    <img src={user.url} alt="User picture" />
-                                </ImageContainer>
-                                );
-                            }
+                   {isHidden === true ? (null) : (
+                       us.map((user, index) => {
+                          if (index >= 3 && index < 5) {
+                            return (
+                                <UsContainer key={user.name}>                              
+                                   <h1>{user.name}</h1>
+                                   <ImageContainer>
+                                     <img src={user.url} alt="User picture" />
+                                     <IconsContainer>
+                                     <AiOutlineLinkedin className="icon"/>
+                                     <AiOutlineGithub className="icon"/>
+                                    </IconsContainer>
+                                  </ImageContainer>                                 
+                                </UsContainer>
+                              );
+                          }
                             return null;
-                        })
-                    )}
+                     })
+                  )}
                 </PersonContainer>                
-            </PeopleContainer>
+         </PeopleContainer>
         </Container>
         </>
     );
