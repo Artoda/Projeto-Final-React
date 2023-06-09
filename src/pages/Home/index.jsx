@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Footer } from "../../common/components/Footer";
 import {
   Container,
@@ -35,17 +35,31 @@ export function Home() {
       <Container>
         <NavBarContainer>
           <NavBar>
-            <NavItem isActive={location.pathname === "/"}>Home</NavItem>
-            <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
-            <NavItem isActive={location.pathname === "/antiguidades"}>
-              Antiguidades
-            </NavItem>
-            <NavItem onClick={{}} isActive={location.pathname === "joias"}>
-              Jóias
-            </NavItem>
-            <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
-            <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
-            <NavItem isActive={location.pathname === "/livros"}>Livros</NavItem>
+            <Link to={"/"}>
+              <NavItem isActive={location.pathname === "/"}>Home</NavItem>
+            </Link>
+            <Link to={"/artes"}>
+              <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
+            </Link>
+            <Link to={"/antiguidades"}>
+              <NavItem isActive={location.pathname === "/antiguidades"}>
+                Antiguidades
+              </NavItem>
+            </Link>
+            <Link to={"/joias"}>
+              <NavItem isActive={location.pathname === "/joias"}>Jóias</NavItem>
+            </Link>
+            <Link to={"/armas"}>
+              <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
+            </Link>
+            <Link to={"/jogos"}>
+              <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
+            </Link>
+            <Link to={"/livros"}>
+              <NavItem isActive={location.pathname === "/livros"}>
+                Livros
+              </NavItem>
+            </Link>
           </NavBar>
         </NavBarContainer>
         <TitleContainer>

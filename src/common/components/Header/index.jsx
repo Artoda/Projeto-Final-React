@@ -36,7 +36,18 @@ export function Header() {
         </LeftContainer>
 
         <SearchContainer
-          style={{ display: location.pathname === "/" ? "flex" : "none" }}
+          style={{
+            display:
+              location.pathname === "/" ||
+              location.pathname === "/artes" ||
+              location.pathname === "/antiguidades" ||
+              location.pathname === "/joias" ||
+              location.pathname === "/armas" ||
+              location.pathname === "/jogos" ||
+              location.pathname === "/livros"
+                ? "flex"
+                : "none",
+          }}
         >
           <SearchBar placeholder="O que ta procurando?"></SearchBar>
           <img
