@@ -11,7 +11,7 @@ export function AllRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route Component={Footer}> */}
+        {/* <Route Component={Footer} > */}
         <Route Component={Header}>
           <Route Component={Home} path="/" />
           <Route Component={Login} path="/login" />

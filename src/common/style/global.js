@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         color: var( --secondary-color);
         background-color: var(--bg-color);
+        height: 100%;
     }
 
     .red-bt {
@@ -40,6 +41,7 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         margin: 0 auto;
         text-align: center;
+        height: 100%;
     }
 
     .icon {
@@ -86,6 +88,11 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
     
+
+    body:html {
+
+
+    }
     body {
         width: 100%;
         height: 100%;
