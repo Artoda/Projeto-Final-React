@@ -39,23 +39,17 @@ export const FormContainer = styled.div`
 export const NameContainer = styled.div`
 text-align: left;
     width: 100%;
-        input {
-        width: 98%;
-        }
 `
 
 export const EmailContainer = styled.div`
     text-align: left;
     width: 100%;
-        input {
-        width: 98%;
-        }
+
 `;
 export const MessageContainer = styled.div`
     text-align: left;
     width: 100%;
         input {
-        width: 98%;
         height: 300px;
         position: relative;
           ::placeholder {

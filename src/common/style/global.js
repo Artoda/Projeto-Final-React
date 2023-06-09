@@ -51,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
         background: var(--bg-box);
         border-radius: 5px;
         height: 30px;
+        width: 100%;
     }
 
     h1 {
