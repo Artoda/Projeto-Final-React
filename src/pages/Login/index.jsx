@@ -44,8 +44,8 @@ export function Login() {
       setError(res);
       return;
     }
-
-    navigate("/home");
+    alert("seja bem vindo!");
+    navigate("/");
   };
 
   //RETORNO HTML
@@ -60,7 +60,7 @@ export function Login() {
             </TitleContainer>
             <FormContainer>
               <EmailContainer>
-                <span>* e-mail</span>
+                <h3>* e-mail</h3>
 
                 <InputComponent
                   type="email"
@@ -71,7 +71,7 @@ export function Login() {
 
               </EmailContainer>
               <PasswordContainer>
-                <span>* senha</span>
+                <h3>* senha</h3>
                 <PasswordInput>
                   <AiOutlineEyeInvisible className="icon" />
                   <InputComponent
@@ -83,7 +83,7 @@ export function Login() {
                 </PasswordInput>
                 <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <ButtonComponent Text="Login" onClick={handleLogin} />
+              <ButtonComponent Text="login" onClick={handleLogin} />
             </FormContainer>
             <FooterContainer>
               <span>

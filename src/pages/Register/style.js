@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 10px;
   height: 100vh;
 `;
 
@@ -30,7 +29,6 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   width: 100%;
 `;
 
@@ -60,5 +58,15 @@ export const PasswordInput = styled.div`
     }
 `;
 
+export const FooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 export const LabelError = styled.label`
-`
+  padding: 10px 0;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--alert-color);
+`;

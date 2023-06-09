@@ -10,6 +10,6 @@ export const Button = styled.button`
   margin:10px;
   width: 100%;
   height: 35px;
-  margin: 10px 0 20px;
+  margin: 10px 0;
   cursor: pointer;
 `;

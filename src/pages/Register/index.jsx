@@ -7,7 +7,7 @@ import ButtonComponent from "../../common/components/Button";
 import useAuth from "../../hooks/useAuth";
 
 import { FiUser } from "react-icons/fi";
-// import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 import {
   Container,
@@ -19,7 +19,8 @@ import {
   PasswordContainer,
   PasswordInput,
   FormContainer,
-  LabelError
+  LabelError,
+  FooterContainer
 } from "./style";
 
 export function Register() {
@@ -52,7 +53,7 @@ export function Register() {
     }
 
     alert("usuário cadatrado com sucesso!");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -66,7 +67,7 @@ export function Register() {
             </TitleContainer>
             <FormContainer>
               <NameContainer>
-                <span>* nome</span>
+                <h3>* nome</h3>
                 <InputComponent
                   type="nome"
                   placeholder="digite seu nome completo"
@@ -75,7 +76,7 @@ export function Register() {
                 />
               </NameContainer>
               <EmailContainer>
-                <span>* e-mail</span>
+                <h3>* e-mail</h3>
                 <InputComponent
                   type="email"
                   placeholder="digite seu e-mail"
@@ -84,8 +85,9 @@ export function Register() {
                 />
               </EmailContainer>
               <PasswordContainer>
-                <span>* senha</span>
+                <h3>* senha</h3>
                 <PasswordInput>
+                  <AiOutlineEyeInvisible className="icon" /> 
                   <InputComponent
                     type="senha"
                     placeholder="digite sua senha"
@@ -95,19 +97,29 @@ export function Register() {
                 </PasswordInput>
               </PasswordContainer>
               <PasswordContainer>
-                <span>* confirmar senha</span>
+                <h3>* confirmar senha</h3>
                 <PasswordInput>
-                <InputComponent
-                    type="senha"
-                    placeholder="digite sua senha"
-                    value={senhaConf}
-                    onChange={(e) => [setSenhaConf(e.target.value), setError("")]}
-                  />
+                  <AiOutlineEyeInvisible className="icon" />
+                  <InputComponent
+                      type="senha"
+                      placeholder="digite sua senha"
+                      value={senhaConf}
+                      onChange={(e) => [setSenhaConf(e.target.value), setError("")]}
+                    />
                 </PasswordInput>
-              </PasswordContainer>
               <LabelError>{error}</LabelError>
+              </PasswordContainer>
               <ButtonComponent Text="finalizar cadastro" onClick={handleSignup} />
             </FormContainer>
+            <FooterContainer>
+              <span>
+                Já possui conta?
+                <Link to={"/login"}>
+                  <span className="alert">&nbsp;faça o login</span>
+                </Link>
+              </span>
+              
+            </FooterContainer>
           </ContentContainer>
         </BoxContainer>
       </Container>
