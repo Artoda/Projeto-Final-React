@@ -62,4 +62,9 @@ export const FooterContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`
+`;
+
+export const LabelError = styled.label`
+  font-size: 14px;
+  color: red;
+`;

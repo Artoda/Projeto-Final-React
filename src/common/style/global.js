@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .red-bt {
-        background: var(--bg-button);
+        /* background: var(--bg-button);
         font-size: 16px;
         list-style: none;
         color:white;
@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
         margin:10px;
         width: 100%;
         height: 35px;
-        margin: 10px 0 20px;
+        margin: 10px 0 20px; */
     }
 
     #root {
@@ -49,11 +49,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     input {
-        border: 1px solid var(--primary-color);
+        /* border: 1px solid var(--primary-color);
         background: var(--bg-box);
         border-radius: 5px;
         height: 30px;
-        width: 100%;
+        width: 100%; */
     }
 
     h1 {
