@@ -24,9 +24,6 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  .icon {
-    font-size: 21px;
-  }
 `;
 
 export const ContentContainer = styled.div`
@@ -67,7 +64,6 @@ export const PasswordInput = styled.div`
   justify-content: center;
   position: relative;
     .icon {
-      font-size: 21px;
       position: absolute;
       right: 0;
       padding: 0 10px;
@@ -82,7 +78,6 @@ export const PasswordInput = styled.div`
 `;
 
 export const LoginBt = styled.button`
-    font-size: 16px;
     list-style: none;
     background: rgba(203, 18, 28, 0.7);
     color:white;

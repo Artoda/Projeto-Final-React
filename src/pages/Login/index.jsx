@@ -25,9 +25,7 @@ export function Login() {
         <BoxContainer>
           <ContentContainer>
             <TitleContainer>
-              <span>
-                <FiUser />
-              </span>
+                <FiUser className="icon" />
               <h2>login do cliente</h2>
             </TitleContainer>
             <FormContainer>
