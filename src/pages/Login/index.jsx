@@ -40,13 +40,13 @@ export function Login() {
                   <AiOutlineEyeInvisible className="icon" />
                 </PasswordInput>
               </PasswordContainer>
-              <LoginBt isActive={location.pathname === "/"}>login</LoginBt>
+              <LoginBt className="red-bt" isActive={location.pathname === "/"}>login</LoginBt>
             </FormContainer>
             <FooterContainer>
               <span>
                 Não tem cadastro?
                 <Link to={"/register"}>
-                  <span> cadastre-se</span>
+                  <span className="alert"> cadastre-se</span>
                 </Link>
               </span>
               <span>

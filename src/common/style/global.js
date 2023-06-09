@@ -2,20 +2,38 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
-        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        --primary-color: #737070;
+        --secondary-color: rgba(0, 0, 0, 0.7);
+        --terciary-color: rgba(255, 255, 255, 1);
+
+        --alert-color: rgba(203, 18, 28, 0.8);
+        --text-button-color: rgba(255, 255, 255, 1);
+
+        --bg-color: rgba(248, 248, 248, 1);
+        --bg-button: rgba(203, 18, 28, 0.7);
+        --bg-header: rgba(233, 213, 213, 1);
+        --bg-box: rgba(255, 255, 255, 1);
+        --bg-card-hover: rgba(0, 0, 0, 0.9);
+
+
+        font-family: Inter, sans-serif;
         line-height: 1.5;
         font-weight: 400;
+        color: var( --secondary-color);
+        background-color: var(--bg-color);
+    }
 
-        color-scheme: light dark;
-        color: rgba(255, 255, 255, 0.87);
-        background-color: #242424;
-
-        font-synthesis: none;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-text-size-adjust: 100%;
-        height: 100%;
+    .red-bt {
+        background: var(--bg-button);
+        font-size: 16px;
+        list-style: none;
+        color:white;
+        border: none;
+        border-radius: 5px;
+        margin:10px;
+        width: 100%;
+        height: 35px;
+        margin: 10px 0 20px;
     }
 
     #root {
@@ -24,21 +42,50 @@ export const GlobalStyle = createGlobalStyle`
         text-align: center;
     }
 
+    .icon {
+        font-size: 22px;
+    }
+
+    input {
+        border: 1px solid var(--primary-color);
+        background: var(--bg-box);
+        border-radius: 5px;
+        height: 30px;
+    }
+
+    h1 {
+
+    }
+
+    h2 {
+        padding: 20px 0;
+        color: var(--primary-color);
+    }
+
+    span {
+        color: var(--primary-color);
+        font-size: 12px;
+    }
+    a {
+        text-decoration: none;
+    }
+    span .alert {
+        color: var(--alert-color);
+    }
+
     /* Chrome, Edge, and Safari */
+
     *::-webkit-scrollbar {
     display: none;
     }
 
-    a {
-        color: inherit;
-        text-decoration: none;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
-
+    
     body {
-        width: 100vw;
-        margin: 0 auto;
-        display: flex;
-        min-width: 320px;
         width: 100%;
         height: 100%;
     }
@@ -46,19 +93,4 @@ export const GlobalStyle = createGlobalStyle`
     h1 {
     font-size: 3.2em;
     line-height: 1.1;
-    }
-
-   
-
-    @media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
-
-    a:hover {
-        color: #747bff;
-    }
-
-  
     }`;

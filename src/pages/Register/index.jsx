@@ -49,7 +49,7 @@ export function Register() {
                   <AiOutlineEyeInvisible className="icon" />
                 </PasswordInput>
               </PasswordContainer>
-              <RegisterBt isActive={location.pathname === "/"}>finalizar cadastro</RegisterBt>
+              <RegisterBt className="red-bt" isActive={location.pathname === "/"}>finalizar cadastro</RegisterBt>
             </FormContainer>
           </ContentContainer>
         </BoxContainer>

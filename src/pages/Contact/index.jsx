@@ -39,7 +39,7 @@ export function Contact() {
               </MessageContainer>
              
              
-              <SendMsgBt isActive={location.pathname === "/"}>enviar mensagem</SendMsgBt>
+              <SendMsgBt className="red-bt" isActive={location.pathname === "/"}>enviar mensagem</SendMsgBt>
             </FormContainer>
           </ContentContainer>
         </BoxContainer>
