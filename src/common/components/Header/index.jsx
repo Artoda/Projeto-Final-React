@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 import {
@@ -17,6 +17,7 @@ import {
 
 export function Header() {
   const [isHidden, setIsHidden] = useState(false);
+  const location = useLocation();
 
   const handleClick = () => {
     setIsHidden((current) => !current);
@@ -34,7 +35,9 @@ export function Header() {
           </LogoContainer>
         </LeftContainer>
 
-        <SearchContainer>
+        <SearchContainer
+          style={{ display: location.pathname === "/" ? "flex" : "none" }}
+        >
           <SearchBar placeholder="O que ta procurando?"></SearchBar>
           <img
             src="https://media.discordapp.net/attachments/1081311873481322597/1116415331209072681/lupa-icon.png"
