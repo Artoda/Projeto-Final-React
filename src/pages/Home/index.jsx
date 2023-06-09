@@ -24,7 +24,7 @@ export function Home() {
         "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
       );
       let product = await data.json();
-      setProducts(product);
+      setProducts(product.categoriaProdDto);
     }
 
     fetchData();
@@ -52,10 +52,10 @@ export function Home() {
             alt="Logo"
           />
         </TitleContainer>
-        {products.map((productM) => {
-          return (
-            <ProductsContainer>
-              <Product>
+        <ProductsContainer>
+          {products.map((productM) => {
+            return (
+              <Product key={productM.nome}>
                 <ImageContainer>
                   <img src={productM.descricao} alt="Arma" />
                 </ImageContainer>
@@ -66,9 +66,9 @@ export function Home() {
                   <span>R$ {productM.valor_unitario}</span>
                 </ShopContainer>
               </Product>
-            </ProductsContainer>
-          );
-        })}
+            );
+          })}
+        </ProductsContainer>
       </Container>
     </>
   );
