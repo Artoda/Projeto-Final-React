@@ -37,17 +37,11 @@ export const FormContainer = styled.div`
 export const NameContainer = styled.div`
 text-align: left;
     width: 100%;
-        input {
-        width: 98%;
-        }
 `
 
 export const EmailContainer = styled.div`
     text-align: left;
     width: 100%;
-        input {
-        width: 98%;
-        }
 `;
 export const PasswordContainer = styled.div`
     text-align: left;
@@ -57,16 +51,13 @@ export const PasswordInput = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: center;
   position: relative;
-    .icon {
+      .icon {
+      z-index: 1;
       position: absolute;
       right: 0;
-      padding: 0 10px;
+      margin-right: 5px;
     }
-    input {
-        width: 98%;
-        }
 `;
 
 export const RegisterBt = styled.button`

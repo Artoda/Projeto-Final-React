@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
   background-color: #f8f8f8;
@@ -15,25 +15,20 @@ export const PeopleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 50%;
+  width: 55%;
+  margin-top: 150px;
 `;
-
 
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   background-color: #ffffff;
   width: 100%;
-    
-    img {
-      padding: 10px;
-    }
+  padding: 40px;
     
     h1{
-      padding-top: 15px;
+      font-size: 50px;
       color: #CB1212;
     }
 
@@ -44,33 +39,53 @@ export const TitleContainer = styled.div`
   `;
 
   export const PersonContainer = styled.div`
-    display: flex;
+    display: flex;    
     align-items: center;
-    /* height: 50%; */
     width: 100%;
     justify-content: center;
     background-color:  #ffffff;
-    gap: 30px;  
-  
-    h1{   
-      font-size: 25px;
-      color: #737070;
+    
+    @media (max-width: 768px) {
+      flex-wrap: wrap;  
     }
   `;
 
+export const UsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  h1{   
+    font-size: 30px;
+    color: #737070;
+    padding: 10px;
+  }
+`;
+
 export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  
+  img {
+   width: 180px;
+   border-radius: 50%;
+  }
+`;
+
+export const IconsContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 
-  img {
-   width: 200px;
-   border-radius: 50%;
-  }
-
-  h1{   
-    font-size: 30px;
-    color: #737070;
+  .icon{
+    color: black;
+    font-size: 60px;
+    padding: 10px;
   }
 `;
