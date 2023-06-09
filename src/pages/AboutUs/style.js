@@ -28,7 +28,7 @@ export const TitleContainer = styled.div`
   padding: 40px;
     
     h1{
-      font-size: 60px;
+      font-size: 50px;
       color: #CB1212;
     }
 
@@ -39,12 +39,15 @@ export const TitleContainer = styled.div`
   `;
 
   export const PersonContainer = styled.div`
-    display: flex;
+    display: flex;    
     align-items: center;
     width: 100%;
     justify-content: center;
     background-color:  #ffffff;
-    gap: 30px; 
+    
+    @media (max-width: 768px) {
+      flex-wrap: wrap;  
+    }
   `;
 
 export const UsContainer = styled.div`
@@ -68,14 +71,8 @@ export const ImageContainer = styled.div`
   justify-content: center;
   width: 100%;
   
-  h1{   
-    font-size: 30px;
-    color: #737070;
-    padding: 10px;
-  }
-  
   img {
-   width: 200px;
+   width: 180px;
    border-radius: 50%;
   }
 `;
