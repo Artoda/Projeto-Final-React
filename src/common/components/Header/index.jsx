@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useState } from "react";
 
 import {
@@ -60,8 +60,12 @@ export function Header() {
                   acesse sua conta 😊
                 </span>
               </TextContainer>
-              <ButtonContainer>Entrar</ButtonContainer>
-              <ButtonContainer>Cadastrar</ButtonContainer>
+              <Link to={"/login"}>
+                <ButtonContainer>Entrar</ButtonContainer>
+              </Link>
+              <Link to={"/register"}>
+                <ButtonContainer>Cadastrar</ButtonContainer>
+              </Link>
             </LoginContainer>
           </ProfileContainer>
 
