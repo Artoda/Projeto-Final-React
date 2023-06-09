@@ -31,7 +31,7 @@ export function AboutUs() {
             for await (var name of names){
                 let data = await fetch(`https://api.github.com/users/${name}`)
                 let profile = await data.json()
-                userArray.push({name: profile.name, url: profile.avatar_url})
+                userArray.push({name: profile.name, url: profile.avatar_url, link: profile.html_url})
             }
             setUs(userArray)
         }
@@ -58,7 +58,9 @@ export function AboutUs() {
                                      <img src={user.url} alt="User picture" />
                                      <IconsContainer>
                                      <AiOutlineLinkedin className="icon"/>
-                                     <AiOutlineGithub className="icon"/>
+                                     <a href={user.link}>
+                                        <AiOutlineGithub className="icon" />
+                                     </a>
                                     </IconsContainer>
                                   </ImageContainer>                                 
                                 </UsContainer>
@@ -79,7 +81,9 @@ export function AboutUs() {
                                      <img src={user.url} alt="User picture" />
                                      <IconsContainer>
                                      <AiOutlineLinkedin className="icon"/>
-                                     <AiOutlineGithub className="icon"/>
+                                     <a href={user.link}>
+                                        <AiOutlineGithub className="icon"/>
+                                     </a>
                                     </IconsContainer>
                                   </ImageContainer>                                 
                                 </UsContainer>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
   background-color: #f8f8f8;
@@ -15,20 +15,20 @@ export const PeopleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 50%;
+  width: 55%;
+  margin-top: 150px;
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   background-color: #ffffff;
   width: 100%;
+  padding: 40px;
     
     h1{
-      padding-top: 15px;
+      font-size: 60px;
       color: #CB1212;
     }
 
@@ -44,12 +44,7 @@ export const TitleContainer = styled.div`
     width: 100%;
     justify-content: center;
     background-color:  #ffffff;
-    gap: 30px;  
-  
-    h1{   
-      font-size: 25px;
-      color: #737070;
-    }
+    gap: 30px; 
   `;
 
 export const UsContainer = styled.div`
@@ -93,7 +88,7 @@ export const IconsContainer = styled.div`
 
   .icon{
     color: black;
-    font-size: 45px;
+    font-size: 60px;
     padding: 10px;
   }
 `;
