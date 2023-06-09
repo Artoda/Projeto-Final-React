@@ -1,6 +1,13 @@
-import { useLocation, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+
+import useAuth from "../../hooks/useAuth";
+import InputComponent from "../../common/components/Input";
+import ButtonComponent from "../../common/components/Button";
+
 import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
+
 import {
   Container,
   BoxContainer,
@@ -9,16 +16,39 @@ import {
   EmailContainer,
   PasswordContainer,
   PasswordInput,
-  LoginBt,
   FooterContainer,
   FormContainer,
+  LabelError
 } from "./style";
 
 export function Login() {
   const location = useLocation();
 
-  console.log("olá");
+  // LOGIN
+  const { signin } = useAuth();
+  const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = () => {
+    if (!email | !senha) {
+      setError("Preencha todos os campos");
+      return;
+    }
+
+    const res = signin(email, senha);
+
+    if (res) {
+      setError(res);
+      return;
+    }
+
+    navigate("/home");
+  };
+
+  //RETORNO HTML
   return (
     <>
       <Container>
@@ -31,22 +61,35 @@ export function Login() {
             <FormContainer>
               <EmailContainer>
                 <span>* e-mail</span>
-                <input type="text" placeholder="  joao@gmail.com" />
+
+                <InputComponent
+                  type="email"
+                  placeholder="digite seu e-mail"
+                  value={email}
+                  onChange={(e) => [setEmail(e.target.value), setError("")]}
+                />
+
               </EmailContainer>
               <PasswordContainer>
                 <span>* senha</span>
                 <PasswordInput>
                   <AiOutlineEyeInvisible className="icon" />
-                  <input type="password" placeholder=" ********" />
+                  <InputComponent
+                    type="password"
+                    placeholder="digite sua senha"
+                    value={senha}
+                    onChange={(e) => [setSenha(e.target.value), setError("")]}
+                  />
                 </PasswordInput>
+                <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <LoginBt className="red-bt" isActive={location.pathname === "/"}>login</LoginBt>
+              <ButtonComponent Text="Login" onClick={handleLogin} />
             </FormContainer>
             <FooterContainer>
               <span>
                 Não tem cadastro?
                 <Link to={"/register"}>
-                  <span className="alert"> cadastre-se</span>
+                  <span className="alert">&nbsp;cadastre-se</span>
                 </Link>
               </span>
               <span>

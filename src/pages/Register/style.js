@@ -60,6 +60,5 @@ export const PasswordInput = styled.div`
     }
 `;
 
-export const RegisterBt = styled.button`
-    
-`;
+export const LabelError = styled.label`
+`
