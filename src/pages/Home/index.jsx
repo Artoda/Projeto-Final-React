@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Footer } from "../../common/components/Footer";
+import { api } from "../../services/api";
 import {
   Container,
   TitleContainer,
@@ -20,13 +21,10 @@ export function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      let data = await fetch(
-        "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
-      );
-      let product = await data.json();
+      let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
+      const categories = product.forEach((prod) => prod.categoriaProdDto);
     }
-
     fetchData();
   }, []);
 

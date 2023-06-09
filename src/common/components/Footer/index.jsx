@@ -10,6 +10,7 @@ import {
 export function Footer() {
   return (
     <>
+      <Outlet />
       <Container>
         <AboutUsContainer>
           <span>Sobre Nós</span>
@@ -24,7 +25,6 @@ export function Footer() {
           <span>Fala Conosco</span>
         </HelpContainer>
       </Container>
-      <Outlet />
     </>
   );
 }
