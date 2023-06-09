@@ -24,6 +24,9 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+    .icon {
+      font-size: 21px;
+    }
 `;
 
 export const ContentContainer = styled.div`
@@ -41,6 +44,18 @@ export const FormContainer = styled.div`
   gap: 20px;
   width: 100%;
 `;
+
+export const NameContainer = styled.div`
+text-align: left;
+    width: 100%;
+        input {
+        width: 98%;
+        background: white;
+        border-radius: 5px;
+        border: 1px solid #737070;
+        height: 30px;
+        }
+`
 
 export const EmailContainer = styled.div`
     text-align: left;
@@ -64,6 +79,7 @@ export const PasswordInput = styled.div`
   justify-content: center;
   position: relative;
     .icon {
+      font-size: 21px;
       position: absolute;
       right: 0;
       padding: 0 10px;
@@ -78,6 +94,7 @@ export const PasswordInput = styled.div`
 `;
 
 export const LoginBt = styled.button`
+    font-size: 16px;
     list-style: none;
     background: rgba(203, 18, 28, 0.7);
     color:white;
@@ -90,14 +107,3 @@ export const LoginBt = styled.button`
     padding: 0px;
     margin: 20px;
 `;
-export const FooterContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 12px;
-    span {
-      span {
-        color:rgba(203, 18, 28, 0.7);
-      }
-    }
-`

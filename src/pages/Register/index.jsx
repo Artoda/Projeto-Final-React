@@ -6,11 +6,11 @@ import {
   BoxContainer,
   TitleContainer,
   ContentContainer,
+  NameContainer,
   EmailContainer,
   PasswordContainer,
   PasswordInput,
   LoginBt,
-  FooterContainer,
   FormContainer,
 } from "./style";
 
@@ -23,12 +23,14 @@ export function Register() {
         <BoxContainer>
           <ContentContainer>
             <TitleContainer>
-              <span>
-                <FiUser />
-              </span>
+                <FiUser className="icon" />
               <h2>cadastro do cliente</h2>
             </TitleContainer>
             <FormContainer>
+              <NameContainer>
+                <span>* nome</span>
+                <input type="text" placeholder="  João" />
+              </NameContainer>
               <EmailContainer>
                 <span>* e-mail</span>
                 <input type="text" placeholder="  joao@gmail.com" />
@@ -40,20 +42,15 @@ export function Register() {
                   <AiOutlineEyeInvisible className="icon" />
                 </PasswordInput>
               </PasswordContainer>
-              <LoginBt isActive={location.pathname === "/"}>login</LoginBt>
+              <PasswordContainer>
+                <span>* confirmar senha</span>
+                <PasswordInput>
+                  <input type="password" placeholder=" ********" />
+                  <AiOutlineEyeInvisible className="icon" />
+                </PasswordInput>
+              </PasswordContainer>
+              <LoginBt isActive={location.pathname === "/"}>finalizar cadastro</LoginBt>
             </FormContainer>
-            <FooterContainer>
-              <span>
-                Não tem cadastro?
-                <Link to={"/register"}>
-                  <span> cadastre-se</span>
-                </Link>
-              </span>
-              <span>
-                Ao continuar com o acesso, você concorda com a nossa política de
-                privacidade
-              </span>
-            </FooterContainer>
           </ContentContainer>
         </BoxContainer>
       </Container>
