@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 15px 70px 15px 70px;
   background-color: #e9d5d5;
-  height: 50px;
+  height: 70px;
 `;
 
 export const LeftContainer = styled.div`

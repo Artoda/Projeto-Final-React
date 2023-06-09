@@ -28,10 +28,12 @@ export function Header() {
       <Container>
         <LeftContainer>
           <LogoContainer>
-            <img
-              src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-              alt="Logo"
-            />
+            <Link to={"/"}>
+              <img
+                src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
+                alt="Logo"
+              />
+            </Link>
           </LogoContainer>
         </LeftContainer>
 
