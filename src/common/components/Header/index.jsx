@@ -45,6 +45,9 @@ export function Header() {
     return;
   }
 
+  };
+
+
   const fetchData = (value) => {
     fetch(
       "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
@@ -116,7 +119,7 @@ export function Header() {
                 <Link to={prod.categoriaProdDto.nome}>
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
-                    <img src={prod.descricao} />
+                    <img src={prod.url_imagem} />
                   </SearchResults>
                 </Link>
               );
@@ -161,6 +164,7 @@ export function Header() {
                 handleSignout();
                 checkIsLoggedIn();
               }}>deslogar</ButtonContainer>
+
             </LoginContainer>
           </ProfileContainer>
 

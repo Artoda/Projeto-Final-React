@@ -76,8 +76,17 @@ export const ProductsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  position: relative;
   height: 100%;
   gap: 50px;
+`;
+
+export const ProductBio = styled.div`
+  display: flex;
+  height: 500px;
+  background-color: aqua;
+  z-index: 9;
+  position: absolute;
 `;
 
 export const Product = styled.div`
