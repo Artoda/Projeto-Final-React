@@ -45,8 +45,6 @@ export function Header() {
     return;
   }
 
-  };
-
 
   const fetchData = (value) => {
     fetch(
@@ -178,5 +176,5 @@ export function Header() {
       </Container>
       <Outlet />
     </>
-  );
-}
+  )
+};
