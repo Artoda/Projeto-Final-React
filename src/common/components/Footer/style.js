@@ -22,7 +22,7 @@ export const LogoContainer = styled.footer`
   align-items: center;
 
   img {
-    width: 350px;
+    width: 100%;
   }
 `;
 

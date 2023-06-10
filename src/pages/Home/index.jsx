@@ -8,11 +8,12 @@ import {
   NavItem,
   HomeContainer,
   ProductsContainer,
-  ProductBio,
   Product,
   ImageContainer,
   ProductTitleContainer,
   ShopContainer,
+  ProductBio,
+  ProductBioText,
 } from "./style";
 import { useEffect, useState } from "react";
 
@@ -88,6 +89,11 @@ export function Home() {
                       <ProductTitleContainer>
                         <h2>{productM.nome}</h2>
                       </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         <img
@@ -104,23 +110,26 @@ export function Home() {
                 .filter((prod) => prod.categoriaProdDto.nome == "artes")
                 .map((productM) => {
                   return (
-                    <ProductBio>
-                      <Product key={productM.nome}>
-                        <ImageContainer>
-                          <img src={productM.url_imagem} alt="imagem" />
-                        </ImageContainer>
-                        <ProductTitleContainer>
-                          <h2>{productM.nome}</h2>
-                        </ProductTitleContainer>
-                        <ShopContainer>
-                          <span>R$ {productM.valor_unitario}</span>
-                          <img
-                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                            alt="Carrinho"
-                          />
-                        </ShopContainer>
-                      </Product>
-                    </ProductBio>
+                    <Product key={productM.nome}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        <span>R$ {productM.valor_unitario}</span>
+                        <img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        />
+                      </ShopContainer>
+                    </Product>
                   );
                 })
             : null}

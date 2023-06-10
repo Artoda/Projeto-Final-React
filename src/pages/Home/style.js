@@ -21,6 +21,7 @@ export const TitleContainer = styled.header`
   gap: 10px;
 
   img {
+    width: 55%;
     padding: 10px;
   }
   background-color: #ffffff;
@@ -67,7 +68,7 @@ export const HomeContainer = styled.div`
     font-size: xx-large;
   }
   img {
-    width: 500px;
+    width: 100%;
   }
 `;
 
@@ -83,10 +84,30 @@ export const ProductsContainer = styled.div`
 
 export const ProductBio = styled.div`
   display: flex;
-  height: 500px;
-  background-color: aqua;
-  z-index: 9;
+  background-color: black;
+  height: 450px;
+  width: 270px;
   position: absolute;
+  opacity: 0%;
+  transition: 0.5s;
+
+  :hover {
+    opacity: 80%;
+    transition: 0.5s;
+  }
+`;
+
+export const ProductBioText = styled.div`
+  display: flex;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  span {
+    background-color: black;
+    color: white;
+    font-size: large;
+  }
 `;
 
 export const Product = styled.div`
@@ -99,6 +120,12 @@ export const Product = styled.div`
   height: 450px;
   width: 270px;
   border-radius: 5%;
+  position: relative;
+`;
+
+export const ProductDiv = styled.div`
+  :hover {
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -108,6 +135,9 @@ export const ImageContainer = styled.div`
   justify-content: center;
 
   img {
+    :hover + .productBio {
+      display: flex;
+    }
     width: 200px;
   }
 `;
