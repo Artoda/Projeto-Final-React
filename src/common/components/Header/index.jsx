@@ -12,10 +12,9 @@ import {
   SearchContainer,
   SearchBar,
   LoginContainer,
-  TextContainer,
   ButtonContainer,
   SearchItens,
-  SearchResults,
+  SearchResults
 } from "./style";
 
 export function Header() {
@@ -23,6 +22,7 @@ export function Header() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const { signout } = useAuth();
 
@@ -33,7 +33,20 @@ export function Header() {
       setError(res);
       return;
     }
+  }
+
+  const checkIsLoggedIn = () => {
+    const res = localStorage.length;
+    if (res > 1) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+    return;
+  }
+
   };
+
 
   const fetchData = (value) => {
     fetch(
@@ -125,25 +138,33 @@ export function Header() {
             <img
               src="https://avatars.githubusercontent.com/u/127253895?v=4"
               alt="Romulo Andriolo"
-              onClick={handleClick}
+              onClick={() => {
+                handleClick();
+                checkIsLoggedIn();
+              }}
             />
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
-              <TextContainer>
-                <span>
+                <span className="square"></span>
+                <span style={{ display: isLoggedIn ? "none" : "flex" }}>
                   Para ver seus pedidos e ter uma experiencia personalizada,
                   acesse sua conta 😊
                 </span>
-              </TextContainer>
               <Link to={"/login"}>
-                <ButtonContainer>Entrar</ButtonContainer>
+                <ButtonContainer style={{ display: isLoggedIn ? "none" : "flex" }}>entrar</ButtonContainer>
               </Link>
               <Link to={"/register"}>
-                <ButtonContainer>Cadastrar</ButtonContainer>
+                <ButtonContainer style={{ display: isLoggedIn ? "none" : "flex" }}>cadastrar</ButtonContainer>
               </Link>
-              <ButtonContainer onClick={handleSignout}>
-                Deslogar
-              </ButtonContainer>
+              <Link to={"/myprofile"}>
+                <ButtonContainer style={{ display: isLoggedIn ? "flex" : "none" }}>meu perfil</ButtonContainer>
+              </Link>
+              <ButtonContainer style={{ display: isLoggedIn ? "flex" : "none" }} 
+              onClick={() => {
+                handleSignout();
+                checkIsLoggedIn();
+              }}>deslogar</ButtonContainer>
+
             </LoginContainer>
           </ProfileContainer>
 

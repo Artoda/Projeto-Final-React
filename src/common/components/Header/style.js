@@ -122,36 +122,47 @@ export const LoginContainer = styled.div`
   right: 50px;
   left: -9px;
   top: 72px;
-  background-color: #ffffff;
-  gap: 15px;
-  padding: 10px;
-`;
-
-export const TextContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: start;
+  background-color: var(--terciary-color);
+  padding: 15px 15px 0;
+  border-radius: 10px;
 
   span {
-    color: black;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
+  span.square {
+    position: absolute;
+    top: -15px;
+    right: 22%;
+    height: 30px;
+    width: 30px;
+    background-color: var(--terciary-color);
+    transform: rotate(45deg);
+  }
+  
 `;
 
 export const ButtonContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 220px;
   cursor: pointer;
-  border-radius: 5%;
-  height: 50px;
-  width: 100px;
-  transition-duration: 0.4s;
-  background-color: white;
-  color: black;
+  transition-duration: 0.2s;
+
+  background: var(--bg-button);
+  font-size: 16px;
+  color: var(--terciary-color);
+  border: none;
+  border-radius: 5px;
+  margin: 0px 20px 20px;
+  height: 45px;
 
   :hover {
-    background-color: red;
-    color: white;
+    background-color: var(--terciary-color);
+    color: var(--alert-color);
+    border: 1px solid var(--alert-color);
   }
 `;
 
