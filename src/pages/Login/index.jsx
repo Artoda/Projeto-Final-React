@@ -37,6 +37,7 @@ export function Login() {
     setShowPassword(!showPassword);
   };
 
+
   const handleLogin = () => {
     if (!email | !password) {
       setError("Preencha todos os campos");
@@ -88,7 +89,10 @@ export function Login() {
                 </PasswordInput>
                 <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <ButtonComponent Text="login" onClick={handleLogin} />
+              <ButtonComponent Text="login" onClick={() => {
+                handleLogin();
+                // checkIsLoggedIn();
+              }} />
             </FormContainer>
             <FooterContainer>
               <span>

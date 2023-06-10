@@ -41,6 +41,7 @@ export function Register() {
     setShowPassword(!showPassword);
   };
 
+
   const handleSignup = () => {
     if (!nome | !email | !passwordConf | !password) {
       setError("preencha todos os campos");
@@ -115,7 +116,10 @@ export function Register() {
                 </PasswordInput>
               <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <ButtonComponent Text="finalizar cadastro" onClick={handleSignup} />
+              <ButtonComponent Text="finalizar cadastro" onClick={() => {
+                handleSignup();
+                // checkIsLoggedIn();
+              }} />
             </FormContainer>
             <FooterContainer>
               <span>
