@@ -1,5 +1,6 @@
 import { Link, Outlet, json, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 import {
   Container,
@@ -22,6 +23,18 @@ export function Header() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
+
+  const { signout } = useAuth();
+
+  const handleSignout = () => {
+    const res = signout();
+    alert("deslogado");
+    if (res) {
+      setError(res);
+      return;
+    }
+  }
+
 
   const fetchData = (value) => {
     fetch(
@@ -129,7 +142,7 @@ export function Header() {
               <Link to={"/register"}>
                 <ButtonContainer>Cadastrar</ButtonContainer>
               </Link>
-              <ButtonContainer>Deslogar</ButtonContainer>
+              <ButtonContainer onClick={handleSignout}>Deslogar</ButtonContainer>
             </LoginContainer>
           </ProfileContainer>
 
