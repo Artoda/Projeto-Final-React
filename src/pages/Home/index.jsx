@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { Footer } from "../../common/components/Footer";
 import { api } from "../../services/api";
 import {
   Container,
@@ -22,12 +23,7 @@ export function Home() {
     async function fetchData() {
       let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
-      var categorieAnt = product.filter(
-        (prod) => prod.categoriaProdDto.nome == "antiguidade"
-      );
-      console.log(categorieAnt);
     }
-
     fetchData();
   }, []);
 
@@ -71,21 +67,42 @@ export function Home() {
         </TitleContainer>
         <ProductsContainer>
           {location.pathname === "/antiguidades"
-            ? products.map((productM) => {
-                return (
-                  <Product key={productM.nome}>
-                    <ImageContainer>
-                      <img src={productM.descricao} alt="Arma" />
-                    </ImageContainer>
-                    <ProductTitleContainer>
-                      <h2>{productM.nome}</h2>
-                    </ProductTitleContainer>
-                    <ShopContainer>
-                      <span>R$ {productM.valor_unitario}</span>
-                    </ShopContainer>
-                  </Product>
-                );
-              })
+            ? products
+                .filter((prod) => prod.categoriaProdDto.nome == "antiguidades")
+                .map((productM) => {
+                  return (
+                    <Product key={productM.nome}>
+                      <ImageContainer>
+                        <img src={productM.descricao} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ShopContainer>
+                        <span>R$ {productM.valor_unitario}</span>
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
+            : null}
+          {location.pathname === "/artes"
+            ? products
+                .filter((prod) => prod.categoriaProdDto.nome == "artes")
+                .map((productM) => {
+                  return (
+                    <Product key={productM.nome}>
+                      <ImageContainer>
+                        <img src={productM.descricao} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ShopContainer>
+                        <span>R$ {productM.valor_unitario}</span>
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
             : null}
         </ProductsContainer>
       </Container>
