@@ -6,6 +6,7 @@ import {
   NavBarContainer,
   NavBar,
   NavItem,
+  HomeContainer,
   ProductsContainer,
   Product,
   ImageContainer,
@@ -65,6 +66,15 @@ export function Home() {
           />
         </TitleContainer>
         <ProductsContainer>
+          {location.pathname === "/" ? (
+            <HomeContainer>
+              <span>Bem vindo!</span>
+              <img
+                src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
+                alt="Logo"
+              />
+            </HomeContainer>
+          ) : null}
           {location.pathname === "/antiguidades"
             ? products
                 .filter((prod) => prod.categoriaProdDto.nome == "antiguidades")

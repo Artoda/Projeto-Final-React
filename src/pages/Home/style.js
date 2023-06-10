@@ -59,6 +59,18 @@ export const NavItem = styled.li`
   color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
 `;
 
+export const HomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  span {
+    font-size: xx-large;
+  }
+  img {
+    width: 500px;
+  }
+`;
+
 export const ProductsContainer = styled.div`
   display: flex;
   flex-direction: row;

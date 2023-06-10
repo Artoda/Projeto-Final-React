@@ -91,10 +91,12 @@ export function Header() {
           <SearchItens products={products}>
             {products.map((prod, id) => {
               return (
-                <SearchResults>
-                  <span key={id}> {prod.nome} </span>
-                  <img src={prod.descricao} />
-                </SearchResults>
+                <Link to={prod.categoriaProdDto.nome}>
+                  <SearchResults>
+                    <span key={id}>{prod.nome}</span>
+                    <img src={prod.descricao} />
+                  </SearchResults>
+                </Link>
               );
             })}
           </SearchItens>
@@ -127,6 +129,7 @@ export function Header() {
               <Link to={"/register"}>
                 <ButtonContainer>Cadastrar</ButtonContainer>
               </Link>
+              <ButtonContainer>Deslogar</ButtonContainer>
             </LoginContainer>
           </ProfileContainer>
 
