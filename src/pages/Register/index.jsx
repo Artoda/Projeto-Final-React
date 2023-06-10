@@ -29,23 +29,28 @@ export function Register() {
   //REGISTER
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [senhaConf, setSenhaConf] = useState("");
-  const [senha, setSenha] = useState("");
+  const [passwordConf, setPasswordConf] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const { signup } = useAuth();
 
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleSignup = () => {
-    if (!nome | !email | !senhaConf | !senha) {
+    if (!nome | !email | !passwordConf | !password) {
       setError("preencha todos os campos");
       return;
-    } else if (senha !== senhaConf) {
+    } else if (password !== passwordConf) {
       setError("as senhas não são iguais");
       return;
     }
 
-    const res = signup(email, senha);
+    const res = signup(email, password);
 
     if (res) {
       setError(res);
@@ -69,7 +74,7 @@ export function Register() {
               <NameContainer>
                 <h3>* nome</h3>
                 <InputComponent
-                  type="nome"
+                  type="text"
                   placeholder="digite seu nome completo"
                   value={nome}
                   onChange={(e) => [setNome(e.target.value), setError("")]}
@@ -78,7 +83,7 @@ export function Register() {
               <EmailContainer>
                 <h3>* e-mail</h3>
                 <InputComponent
-                  type="email"
+                  type="text"
                   placeholder="digite seu e-mail"
                   value={email}
                   onChange={(e) => [setEmail(e.target.value), setError("")]}
@@ -87,24 +92,25 @@ export function Register() {
               <PasswordContainer>
                 <h3>* senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" /> 
+                   <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />  
+                   {/*ao apertar o icone, mudar o type do input para text*/}
                   <InputComponent
-                    type="senha"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="digite sua senha"
-                    value={senha}
-                    onChange={(e) => [setSenha(e.target.value), setError("")]}
+                    value={password}
+                    onChange={(e) => [setPassword(e.target.value), setError("")]}
                   />
                 </PasswordInput>
               </PasswordContainer>
               <PasswordContainer>
                 <h3>* confirmar senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" />
+                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
                   <InputComponent
-                      type="senha"
+                      type={showPassword ? 'text' : 'password'}
                       placeholder="digite sua senha"
-                      value={senhaConf}
-                      onChange={(e) => [setSenhaConf(e.target.value), setError("")]}
+                      value={passwordConf}
+                      onChange={(e) => [setPasswordConf(e.target.value), setError("")]}
                     />
                 </PasswordInput>
               <LabelError>{error}</LabelError>

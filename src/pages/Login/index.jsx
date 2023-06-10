@@ -29,16 +29,21 @@ export function Login() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleLogin = () => {
-    if (!email | !senha) {
+    if (!email | !password) {
       setError("Preencha todos os campos");
       return;
     }
 
-    const res = signin(email, senha);
+    const res = signin(email, password);
 
     if (res) {
       setError(res);
@@ -63,7 +68,7 @@ export function Login() {
                 <h3>* e-mail</h3>
 
                 <InputComponent
-                  type="email"
+                  type="text"
                   placeholder="digite seu e-mail"
                   value={email}
                   onChange={(e) => [setEmail(e.target.value), setError("")]}
@@ -73,12 +78,12 @@ export function Login() {
               <PasswordContainer>
                 <h3>* senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" />
+                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
                   <InputComponent
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="digite sua senha"
-                    value={senha}
-                    onChange={(e) => [setSenha(e.target.value), setError("")]}
+                    value={password}
+                    onChange={(e) => [setPassword(e.target.value), setError("")]}
                   />
                 </PasswordInput>
                 <LabelError>{error}</LabelError>
