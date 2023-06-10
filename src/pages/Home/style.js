@@ -85,7 +85,8 @@ export const ProductsContainer = styled.div`
 export const ProductBio = styled.div`
   display: flex;
   background-color: black;
-  height: 450px;
+  top: 0;
+  height: 330px;
   width: 270px;
   position: absolute;
   opacity: 0%;
