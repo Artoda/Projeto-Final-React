@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  background-color: #f8f8f8;
   height: 100%;
 `;
 
@@ -15,15 +16,14 @@ export const PeopleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 55%;
-  margin-top: 150px;
+  width: 55%;  
 `;
 
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--bg-box);
   width: 100%;
   padding: 40px;
     

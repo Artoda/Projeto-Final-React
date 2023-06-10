@@ -5,6 +5,7 @@ import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Contact } from "../pages/Contact";
 import { AboutUs } from "../pages/AboutUs";
+import { Cart } from "../pages/Cart";
 import useAuth from "../hooks/useAuth";
 import { Footer } from "../common/components/Footer";
 
@@ -30,6 +31,7 @@ export function AllRoutes() {
             <Route Component={Home} path="/livros" />
             <Route Component={Login} path="/login" />
             <Route Component={Register} path="/register" />
+            <Route Component={Cart} path="/cart" />
             <Route Component={Contact} path="/contact" />
             <Route Component={AboutUs} path="/aboutus" />
           </Route>
