@@ -55,6 +55,26 @@ export const SearchBar = styled.input`
   border: none;
 `;
 
+export const SearchItens = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 500px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #e9d5d5;
+  top: 33px;
+  span {
+    font-size: xx-large;
+  }
+  img {
+    position: relative;
+    border-radius: 5px;
+    width: 100px;
+  }
+`;
+
 export const RightContainer = styled.div`
   display: flex;
   align-items: center;

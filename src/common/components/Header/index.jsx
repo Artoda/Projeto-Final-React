@@ -13,6 +13,7 @@ import {
   LoginContainer,
   TextContainer,
   ButtonContainer,
+  SearchItens,
 } from "./style";
 
 export function Header() {
@@ -56,6 +57,10 @@ export function Header() {
             src="https://media.discordapp.net/attachments/1081311873481322597/1116415331209072681/lupa-icon.png"
             alt="lupa"
           />
+          <SearchItens>
+            <span>Galinha do mal</span>
+            <img src="https://cdn.discordapp.com/attachments/1081311873481322597/1116881935063597117/2.jpg" />
+          </SearchItens>
         </SearchContainer>
 
         <RightContainer>
