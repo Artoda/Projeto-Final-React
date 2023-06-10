@@ -12,10 +12,9 @@ import {
   SearchContainer,
   SearchBar,
   LoginContainer,
-  TextContainer,
   ButtonContainer,
   SearchItens,
-  SearchResults,
+  SearchResults
 } from "./style";
 
 export function Header() {
@@ -130,19 +129,18 @@ export function Header() {
             />
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
-              <TextContainer>
+                <span className="square"></span>
                 <span>
                   Para ver seus pedidos e ter uma experiencia personalizada,
                   acesse sua conta 😊
                 </span>
-              </TextContainer>
               <Link to={"/login"}>
-                <ButtonContainer>Entrar</ButtonContainer>
+                <ButtonContainer>entrar</ButtonContainer>
               </Link>
               <Link to={"/register"}>
-                <ButtonContainer>Cadastrar</ButtonContainer>
+                <ButtonContainer>cadastrar</ButtonContainer>
               </Link>
-              <ButtonContainer onClick={handleSignout}>Deslogar</ButtonContainer>
+              <ButtonContainer onClick={handleSignout}>deslogar</ButtonContainer>
             </LoginContainer>
           </ProfileContainer>
 
