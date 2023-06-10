@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Footer } from "../../common/components/Footer";
 import { api } from "../../services/api";
 import {
   Container,
@@ -80,6 +79,10 @@ export function Home() {
                       </ProductTitleContainer>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
+                        <img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        />
                       </ShopContainer>
                     </Product>
                   );
@@ -99,6 +102,10 @@ export function Home() {
                       </ProductTitleContainer>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
+                        <img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        />
                       </ShopContainer>
                     </Product>
                   );

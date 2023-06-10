@@ -75,7 +75,7 @@ export const Product = styled.div`
   justify-content: center;
   background-color: #e9e9e9;
   padding: 20px;
-  height: 400px;
+  height: 450px;
   width: 270px;
   border-radius: 5%;
 `;
@@ -100,8 +100,17 @@ export const ProductTitleContainer = styled.div`
 
 export const ShopContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+
+  span {
+    font-size: large;
+  }
+  img {
+    width: 50px;
+  }
 
   width: 100%;
 `;

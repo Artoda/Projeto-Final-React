@@ -8,6 +8,7 @@ import { AboutUs } from "../pages/AboutUs";
 import { Cart } from "../pages/Cart";
 import useAuth from "../hooks/useAuth";
 import { Footer } from "../common/components/Footer";
+import { MyProfile } from "../pages/Profile/MyProfile";
 
 // verifica se está logado
 const Private = ({ Item }) => {
@@ -34,6 +35,7 @@ export function AllRoutes() {
             <Route Component={Cart} path="/cart" />
             <Route Component={Contact} path="/contact" />
             <Route Component={AboutUs} path="/aboutus" />
+            <Route Component={MyProfile} path="/myProfile" />
           </Route>
         </Route>
       </Routes>

@@ -1,6 +1,5 @@
 import { Link, Outlet, json, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { api } from "../../../services/api";
 
 import {
   Container,
@@ -35,7 +34,7 @@ export function Header() {
             value &&
             prods &&
             prods.nome &&
-            prods.nome.toLowerCase().includes(value)
+            prods.nome.toLowerCase().includes(value.toLowerCase())
           );
         });
         setProducts(results);
@@ -104,7 +103,10 @@ export function Header() {
         <RightContainer>
           <ProfileContainer>
             <span>
-              Welcome, <span>Romulo</span>
+              Welcome,
+              <Link to={"/myProfile"}>
+                <span>Romulo</span>
+              </Link>
             </span>
             <img
               src="https://avatars.githubusercontent.com/u/127253895?v=4"

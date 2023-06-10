@@ -63,7 +63,7 @@ export const SearchItens = styled.div`
   position: absolute;
   width: 500px;
   border-radius: 5px;
-  background-color: #e9d5d5;
+  background-color: white;
   top: 33px;
   gap: 30px;
   span {
