@@ -8,6 +8,7 @@ import {
   NavItem,
   HomeContainer,
   ProductsContainer,
+  ProductBio,
   Product,
   ImageContainer,
   ProductTitleContainer,
@@ -82,7 +83,7 @@ export function Home() {
                   return (
                     <Product key={productM.nome}>
                       <ImageContainer>
-                        <img src={productM.descricao} alt="imagem" />
+                        <img src={productM.url_imagem} alt="imagem" />
                       </ImageContainer>
                       <ProductTitleContainer>
                         <h2>{productM.nome}</h2>
@@ -103,21 +104,23 @@ export function Home() {
                 .filter((prod) => prod.categoriaProdDto.nome == "artes")
                 .map((productM) => {
                   return (
-                    <Product key={productM.nome}>
-                      <ImageContainer>
-                        <img src={productM.descricao} alt="imagem" />
-                      </ImageContainer>
-                      <ProductTitleContainer>
-                        <h2>{productM.nome}</h2>
-                      </ProductTitleContainer>
-                      <ShopContainer>
-                        <span>R$ {productM.valor_unitario}</span>
-                        <img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        />
-                      </ShopContainer>
-                    </Product>
+                    <ProductBio>
+                      <Product key={productM.nome}>
+                        <ImageContainer>
+                          <img src={productM.url_imagem} alt="imagem" />
+                        </ImageContainer>
+                        <ProductTitleContainer>
+                          <h2>{productM.nome}</h2>
+                        </ProductTitleContainer>
+                        <ShopContainer>
+                          <span>R$ {productM.valor_unitario}</span>
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </ShopContainer>
+                      </Product>
+                    </ProductBio>
                   );
                 })
             : null}

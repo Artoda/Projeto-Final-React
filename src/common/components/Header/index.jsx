@@ -33,8 +33,7 @@ export function Header() {
       setError(res);
       return;
     }
-  }
-
+  };
 
   const fetchData = (value) => {
     fetch(
@@ -107,7 +106,7 @@ export function Header() {
                 <Link to={prod.categoriaProdDto.nome}>
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
-                    <img src={prod.descricao} />
+                    <img src={prod.url_imagem} />
                   </SearchResults>
                 </Link>
               );
@@ -142,7 +141,9 @@ export function Header() {
               <Link to={"/register"}>
                 <ButtonContainer>Cadastrar</ButtonContainer>
               </Link>
-              <ButtonContainer onClick={handleSignout}>Deslogar</ButtonContainer>
+              <ButtonContainer onClick={handleSignout}>
+                Deslogar
+              </ButtonContainer>
             </LoginContainer>
           </ProfileContainer>
 
