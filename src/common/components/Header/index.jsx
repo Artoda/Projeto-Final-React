@@ -1,20 +1,20 @@
-import { Link, Outlet, json, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 import {
+  ButtonContainer,
   Container,
   LeftContainer,
+  LoginContainer,
   LogoContainer,
   ProfileContainer,
-  ShopContainer,
   RightContainer,
-  SearchContainer,
   SearchBar,
-  LoginContainer,
-  ButtonContainer,
+  SearchContainer,
   SearchItens,
-  SearchResults
+  SearchResults,
+  ShopContainer
 } from "./style";
 
 export function Header() {
@@ -167,10 +167,12 @@ export function Header() {
           </ProfileContainer>
 
           <ShopContainer>
+          <Link to={"/Cart"}>
             <img
               src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
               alt="Carrinho"
             />
+            </Link>
           </ShopContainer>
         </RightContainer>
       </Container>

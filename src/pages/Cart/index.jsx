@@ -8,73 +8,60 @@ import {
   ContentContainer,
   SelectedItems,
   BoxListTotal,
-  Product,
-  ImageContainer,
-  ProductsContainer,
-  ProductTitleContainer,
-  ShopContainer,
   ProductsList,
   ProdItem,
   ProdTotal,
-  Cupom,
+  AddCupon,
 } from "./style";
 
-export function Cart() {
-  
-        const [products, setProducts] = useState([]);
-  
-    useEffect(() => {
-      async function fetchData() {
-        let { data: product } = await api.get("/produtos/dto");
-        setProducts(product);
-        const categories = product.forEach((prod) => prod.categoriaProdDto);
-      }
-      fetchData();
-    }, []);
+export function Cart() {   
+
+  // teste localStorage
+  const cart = JSON.parse(localStorage.getItem("cart"));
+  console.log(cart);
+
 
 
   return (
-    <>
-      <Container>
+    <>    
+       <Container>
         <BoxContainer>                      
-            <TitleContainer>
-                <BsCartCheck className="icon" />
-                <h2>Carrinho do cliente</h2>
-            </TitleContainer>
-            <ContentContainer> 
-              <SelectedItems>
-                <h2>Itens selecionados</h2>
-                <ProductsContainer>
-                 {products.map((productM) => {
-                     return (
-                        <Product key={productM.nome}>
-                            <ImageContainer>
-                            <img src={productM.descricao} alt="Arma" />
-                            </ImageContainer>
-                            <ProductTitleContainer>
-                            <h2>{productM.nome}</h2>
-                            </ProductTitleContainer>
-                            <ShopContainer>
-                            <span>R$ {productM.valor_unitario}</span>
-                            </ShopContainer>
-                        </Product>    
-                        );
-                  })}
-              </ProductsContainer>    
-              </SelectedItems>  
-              <BoxListTotal>
-                <h1>Nome - Valor</h1>
-                   <ProductsList>
-                       <ProdItem >Produto 1</ProdItem>
-                       <ProdItem >Produto 1</ProdItem>
-                       <ProdItem >Produto 1</ProdItem>
-                       <ProdItem >Produto 1</ProdItem>
-                       <ProdTotal >Total</ProdTotal>
-                    </ProductsList>
-                    <Cupom>
-
-                    </Cupom>
-              </BoxListTotal>  
+          <TitleContainer>
+            <BsCartCheck className="icon" />
+            <h2>Carrinho do cliente</h2>
+          </TitleContainer>
+          <ContentContainer> 
+            <SelectedItems>
+              <h2>Itens selecionados</h2>
+              {/* <ProductsContainer>
+               {cart.map((product) => (
+                  <Product key={product.id}>
+                    <ImageContainer>
+                      <img src={product.image} alt={product.name} />
+                    </ImageContainer>
+                    <ProductTitleContainer>
+                      <h2>{product.name}</h2>
+                    </ProductTitleContainer>
+                    <ShopContainer>
+                      <span>R$ {product.price}</span>
+                    </ShopContainer>
+                  </Product>
+                ))} 
+              </ProductsContainer>     */}
+            </SelectedItems>  
+            <BoxListTotal>
+              <h1>Nome - Valor</h1>
+              <ProductsList>
+                <ProdItem>Produto 1</ProdItem>
+                <ProdItem>Produto 1</ProdItem>
+                <ProdItem>Produto 1</ProdItem>
+                <ProdItem>Produto 1</ProdItem>
+                <ProdTotal>Total</ProdTotal>
+              </ProductsList>
+              <AddCupon>
+                <input type="text" />
+              </AddCupon>
+            </BoxListTotal>  
           </ContentContainer>
         </BoxContainer>
       </Container>

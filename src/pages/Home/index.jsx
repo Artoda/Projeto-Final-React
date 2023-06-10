@@ -1,25 +1,26 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 import {
   Container,
-  TitleContainer,
-  NavBarContainer,
-  NavBar,
-  NavItem,
   HomeContainer,
-  ProductsContainer,
-  Product,
   ImageContainer,
-  ProductTitleContainer,
-  ShopContainer,
+  NavBar,
+  NavBarContainer,
+  NavItem,
+  Product,
   ProductBio,
   ProductBioText,
+  ProductTitleContainer,
+  ProductsContainer,
+  ShopContainer,
+  TitleContainer,
 } from "./style";
-import { useEffect, useState } from "react";
 
 export function Home() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,6 +29,13 @@ export function Home() {
     }
     fetchData();
   }, []);
+
+  // salvando carrinho no localStorage
+  const handleAddToCart = (product) => {
+    setCart((prevItems) => [...prevItems, product]);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    console.log(cart)
+  };
 
   return (
     <>
@@ -73,7 +81,7 @@ export function Home() {
               <span>Bem vindo!</span>
               <img
                 src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-                alt="Logo"
+                alt="Logo" 
               />
             </HomeContainer>
           ) : null}
@@ -98,7 +106,7 @@ export function Home() {
                         <span>R$ {productM.valor_unitario}</span>
                         <img
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
+                          alt="Carrinho" onClick={() => handleAddToCart(productM)}
                         />
                       </ShopContainer>
                     </Product>
@@ -124,9 +132,9 @@ export function Home() {
                       </ProductBio>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
-                        <img
+                       <img
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
+                          alt="Carrinho" onClick={() => handleAddToCart(productM)}
                         />
                       </ShopContainer>
                     </Product>

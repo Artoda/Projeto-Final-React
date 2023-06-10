@@ -128,7 +128,7 @@ width: 100%;
 border-top: 2px solid black;
 `;
 
-export const Cupom = styled.div`
+export const AddCupon = styled.div`
 display: flex;
 flex-direction: column;
 align-items: start;
