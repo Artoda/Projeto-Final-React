@@ -1,5 +1,6 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { Link, Outlet, json, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { api } from "../../../services/api";
 
 import {
   Container,
@@ -14,11 +15,37 @@ import {
   TextContainer,
   ButtonContainer,
   SearchItens,
+  SearchResults,
 } from "./style";
 
 export function Header() {
   const [isHidden, setIsHidden] = useState(false);
   const location = useLocation();
+  const [products, setProducts] = useState([]);
+  const [message, setMessage] = useState("");
+
+  const fetchData = (value) => {
+    fetch(
+      "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        const results = json.filter((prods) => {
+          return (
+            value &&
+            prods &&
+            prods.nome &&
+            prods.nome.toLowerCase().includes(value)
+          );
+        });
+        setProducts(results);
+      });
+  };
+
+  const handleChange = (prop) => {
+    setMessage(prop.target.value);
+    fetchData(prop.target.value);
+  };
 
   const handleClick = () => {
     setIsHidden((current) => !current);
@@ -52,14 +79,25 @@ export function Header() {
                 : "none",
           }}
         >
-          <SearchBar placeholder="O que ta procurando?"></SearchBar>
+          <SearchBar
+            placeholder="O que ta procurando?"
+            onChange={handleChange}
+            value={message}
+            setProducts={setProducts}
+          ></SearchBar>
           <img
             src="https://media.discordapp.net/attachments/1081311873481322597/1116415331209072681/lupa-icon.png"
             alt="lupa"
           />
-          <SearchItens>
-            <span>Galinha do mal</span>
-            <img src="https://cdn.discordapp.com/attachments/1081311873481322597/1116881935063597117/2.jpg" />
+          <SearchItens products={products}>
+            {products.map((prod, id) => {
+              return (
+                <SearchResults>
+                  <span key={id}> {prod.nome} </span>
+                  <img src={prod.descricao} />
+                </SearchResults>
+              );
+            })}
           </SearchItens>
         </SearchContainer>
 

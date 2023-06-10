@@ -59,12 +59,13 @@ export const SearchItens = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
   position: absolute;
   width: 500px;
-  padding: 5px;
   border-radius: 5px;
   background-color: #e9d5d5;
   top: 33px;
+  gap: 30px;
   span {
     font-size: xx-large;
   }
@@ -73,6 +74,13 @@ export const SearchItens = styled.div`
     border-radius: 5px;
     width: 100px;
   }
+`;
+
+export const SearchResults = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 13px;
 `;
 
 export const RightContainer = styled.div`
