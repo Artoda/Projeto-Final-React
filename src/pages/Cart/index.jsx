@@ -1,51 +1,63 @@
 import { useEffect, useState } from "react";
 import { BsCartCheck } from "react-icons/bs";
-import { api } from "../../services/api";
+import ButtonComponent from "../../common/components/Button";
 import {
-  Container,
-  TitleContainer,
-  ContentContainer,
-  ProductsContainer,
-  Product,
-  ImageContainer,
-  ProductTitleContainer,
-  ProductBio,
-  ShopContainer,
-  SelectedItems,
+  AddCupon,
   BoxListTotal,
-  ProductsList,
+  Container,
+  ContentContainer,
+  ImageContainer,
   ProdItem,
   ProdName,
-  ProdValue,
   ProdTotal,
+  ProdValue,
+  Product,
+  ProductBio,
+  ProductBioText,
+  ProductTitleContainer,
+  ProductsContainer,
+  ProductsList,
+  SelectedItems,
+  ShopContainer,
+  TitleContainer,
   TotalName,
   TotalValue,
-  AddCupon,
-  ProductBioText,
 } from "./style";
 
 export function Cart() {   
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
-
-  // teste localStorage
-  // const cart = JSON.parse(localStorage.getItem("cart"));
-  // console.log(cart);
-
+ 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    const savedCart = localStorage.getItem("cart");
     if (savedCart) {
-      setCart(savedCart);
-      console.log(savedCart)
-      // calculateTotal(savedCart); // calcula total soma de produtos
+      setCart(JSON.parse(savedCart));
     }
-  }, []);  // VERIFICAR PRODUTOS DUPLICANDO
+  }, []);
+  
+  useEffect(() => {  // verifica estado do valor total
+    const calculateTotal = () => {
+      let sum = 0;
+      for (const product of cart) {
+        sum += product.valor_unitario;
+      }
+      setTotal(sum);
+    };
 
-  // const calculateTotal = (cart) => {
-  //   const totalValue = cart.reduce(
-  //     (acc, product) => acc + product.valor_unitario, 0);
-  //   setTotal(totalValue);
-  // };
+    calculateTotal();
+  }, [cart]);
+
+  // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
+  const handleFinalizePurchase = () => {
+    if (cart.length === 0) {
+      alert("Não há produtos no carrinho.");
+      return;
+    }
+
+    localStorage.removeItem("cart");
+    setCart([]);
+    alert("Compra realizada com sucesso.");
+  };
 
   return (
     <>    
@@ -82,7 +94,7 @@ export function Cart() {
                   <h2>Nome e valor</h2>
                   <ProductsList>
                   {cart.map((product) => (
-                    <ProdItem>
+                    <ProdItem key={product.id_produto}>
                         <ProdName>{product.nome}</ProdName>
                         <ProdValue>R$ {product.valor_unitario}</ProdValue>
                     </ProdItem>
@@ -91,13 +103,14 @@ export function Cart() {
                   <TotalName>Total</TotalName>                
                   <TotalValue>R$ {total} </TotalValue>
                   </ProdTotal>
-                  
+                
                 </ProductsList>  
                   <AddCupon>
                     <h3>Adicione cupom</h3>
                   <input type="text" />
                   </AddCupon>                
-                  </BoxListTotal>  
+                  <ButtonComponent Text="finalizar compra" onClick={handleFinalizePurchase}/>
+                  </BoxListTotal>                   
             </ContentContainer>
        </Container>
     </>

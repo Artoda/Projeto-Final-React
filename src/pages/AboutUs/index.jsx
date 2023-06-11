@@ -30,13 +30,23 @@ export function AboutUs() {
             for await (var name of names){
                 let data = await fetch(`https://api.github.com/users/${name}`)
                 let profile = await data.json()
-                userArray.push({name: profile.name, url: profile.avatar_url})                
-            }
+                userArray.push({name: profile.name, url: profile.avatar_url, link: profile.html_url, id: profile.id})               
+            }          
             setUs(userArray)            
+            console.log(userArray)
         }
 
         fetchData()
     }, [])
+
+    const linkedinLinks = {
+      "125571407": "https://www.linkedin.com/in/filipe-oliveira95/",
+      "127253895": "https://www.linkedin.com/",
+      "105232781": "https://www.linkedin.com/in/drirsantos/",
+      "127313448":"https://www.linkedin.com/in/paulo-cezar-vicente-94582926b/",
+      "99287995": "https://www.linkedin.com/in/fernanda-meirelles-10ab1462/",
+      "127253985": "https://www.linkedin.com/"
+    }
 
     function handleShow(){
       if(isHidden){
@@ -62,14 +72,17 @@ export function AboutUs() {
                 {isHidden === true ? (null) : (
                         us.map((user, index) => {
                             if (index < 3) {
+                              const linkedinLink = linkedinLinks[user.id];
                                 return (
-                                <UsContainer key={user.name}>                              
+                                <UsContainer key={user.id}>                              
                                    <h1>{user.name}</h1>
                                    <ImageContainer>
                                      <img src={user.url} alt="User picture" />
                                      <IconsContainer>
+                                     <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
                                         <AiOutlineLinkedin className="icon"/>
-                                    <a href={user.link}>
+                                      </a>
+                                     <a href={user.link} target="_blank" rel="noopener noreferrer">
                                         <AiOutlineGithub className="icon" />
                                      </a>
                                     </IconsContainer>
@@ -85,14 +98,18 @@ export function AboutUs() {
                    {isHidden === true ? (null) : (
                        us.map((user, index) => {
                           if (index >= 3 && index < 6) {
+                            const linkedinLink = linkedinLinks[user.id];
                             return (
-                                <UsContainer key={user.name}>                              
+                                <UsContainer key={user.id}>                              
                                    <h1>{user.name}</h1>
                                    <ImageContainer>
                                      <img src={user.url} alt="User picture" />
-                                     <IconsContainer>
-                                        <AiOutlineLinkedin className="icon"/>
-                                     <a href={user.link}>
+                                     <IconsContainer>                                    
+                                     <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
+                                           <AiOutlineLinkedin className="icon"/>
+                                        </a>
+                                    
+                                     <a href={user.link} target="_blank" rel="noopener noreferrer">
                                         <AiOutlineGithub className="icon"/>
                                      </a>
                                     </IconsContainer>

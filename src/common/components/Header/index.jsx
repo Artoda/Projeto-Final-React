@@ -15,8 +15,7 @@ import {
   LoginContainer,
   ButtonContainer,
   SearchItens,
-  SearchResults,
-  CountShopItems
+  SearchResults
 } from "./style";
 
 export function Header() {
@@ -34,7 +33,7 @@ export function Header() {
       setError(res);
       return;
     }
-  }
+  };
 
   const fetchData = (value) => {
     fetch(
@@ -142,19 +141,35 @@ export function Header() {
                   acesse sua conta 😊
                 </span>
               <Link to={"/login"}>
-                <ButtonContainer style={{ display: isLoggedIn ? "none" : "flex" }}>entrar</ButtonContainer>
+                <ButtonContainer
+                  style={{ display: isLoggedIn ? "none" : "flex" }}
+                >
+                  entrar
+                </ButtonContainer>
               </Link>
               <Link to={"/register"}>
-                <ButtonContainer style={{ display: isLoggedIn ? "none" : "flex" }}>cadastrar</ButtonContainer>
+                <ButtonContainer
+                  style={{ display: isLoggedIn ? "none" : "flex" }}
+                >
+                  cadastrar
+                </ButtonContainer>
               </Link>
               <Link to={"/myprofile"}>
-                <ButtonContainer style={{ display: isLoggedIn ? "flex" : "none" }}>meu perfil</ButtonContainer>
+                <ButtonContainer
+                  style={{ display: isLoggedIn ? "flex" : "none" }}
+                >
+                  meu perfil
+                </ButtonContainer>
               </Link>
-              <ButtonContainer style={{ display: isLoggedIn ? "flex" : "none" }} 
-              onClick={() => {
-                handleSignout();
-                checkIsLoggedIn();
-              }}>deslogar</ButtonContainer>
+              <ButtonContainer
+                style={{ display: isLoggedIn ? "flex" : "none" }}
+                onClick={() => {
+                  handleSignout();
+                  checkIsLoggedIn();
+                }}
+              >
+                deslogar
+              </ButtonContainer>
             </LoginContainer>
           </ProfileContainer>
 

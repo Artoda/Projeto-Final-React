@@ -26,32 +26,37 @@ export function Home() {
     async function fetchData() {
       let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
-      console.log(product)
+      // console.log(product)
     }
     fetchData();
   }, []);
 
   // salvando carrinho no localStorage
   const handleAddToCart = (product) => {
-      //  setCart((prevItems) => [...prevItems, product]);
-      // localStorage.setItem("cart", JSON.stringify(cart));
-      // console.log(cart) 
-      setCart((prevCart) => { // nao permitir duplicado
-        const updatedCart = { ...prevCart };
-        if (updatedCart[product.id]) {
-          updatedCart[product.id].quantity += 1;
-        } else {
-          updatedCart[product.id] = {
-            ...product,
-            quantity: 1,
-          };
-        }
+    const isProductInCart = cart.some((item) => item.id_produto === product.id_produto);
+    if (isProductInCart) {
+      alert('Este produto já está no carrinho.');
+      return;
+    }
 
-        console.log(updatedCart)
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
-       return updatedCart;
-      });
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
   };
+
+  useEffect(() => { // atualiza os dados do carrinho com localStorage
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // verifica o estado do carrinho após atualizar
+    useEffect(() => {
+      console.log(cart);
+    }, [cart]);
 
   return (
     <>
@@ -97,7 +102,7 @@ export function Home() {
               <span>Bem vindo!</span>
               <img
                 src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-                alt="Logo" 
+                alt="Logo"
               />
             </HomeContainer>
           ) : null}
@@ -122,7 +127,7 @@ export function Home() {
                         <span>R$ {productM.valor_unitario}</span>
                         <button onClick={() => handleAddToCart(productM)}><img
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho" onClick={() => handleAddToCart(productM)}
+                          alt="Carrinho"
                         /></button>
                       </ShopContainer>
                     </Product>
@@ -149,16 +154,18 @@ export function Home() {
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         {/* tem que deixar button senão não pega o localStorage */}
-                        <button onClick={() => handleAddToCart(productM)}><img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        /></button>
+                        <button onClick={() => handleAddToCart(productM)}>
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </button>
                       </ShopContainer>
                     </Product>
                   );
                 })
             : null}
-            {location.pathname === "/armas"
+          {location.pathname === "/armas"
             ? products
                 .filter((prod) => prod.categoriaProdDto.id_categoria == 1)
                 .map((productM) => {
@@ -178,10 +185,12 @@ export function Home() {
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         {/* tem que deixar button senão não pega o localStorage */}
-                        <button onClick={() => handleAddToCart(productM)}><img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        /></button>
+                        <button onClick={() => handleAddToCart(productM)}>
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </button>
                       </ShopContainer>
                     </Product>
                   );
