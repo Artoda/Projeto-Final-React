@@ -103,7 +103,7 @@ export function Home() {
           ) : null}
           {location.pathname === "/antiguidades"
             ? products
-                .filter((prod) => prod.categoriaProdDto.nome == "antiguidades")
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 2)
                 .map((productM) => {
                   return (
                     <Product key={productM.id_produto}>
@@ -131,7 +131,36 @@ export function Home() {
             : null}
           {location.pathname === "/artes"
             ? products
-                .filter((prod) => prod.categoriaProdDto.nome == "artes")
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 3)
+                .map((productM) => {
+                  return (
+                    <Product key={productM.id_produto}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        <span>R$ {productM.valor_unitario}</span>
+                        {/* tem que deixar button senão não pega o localStorage */}
+                        <button onClick={() => handleAddToCart(productM)}><img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        /></button>
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
+            : null}
+            {location.pathname === "/armas"
+            ? products
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 1)
                 .map((productM) => {
                   return (
                     <Product key={productM.id_produto}>
