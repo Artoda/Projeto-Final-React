@@ -122,12 +122,6 @@ export function Home() {
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
                           alt="Carrinho"
                         /></button>
-                        <button onClick={() => handleAddToCart(productM)}>
-                          <img
-                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                            alt="Carrinho"
-                          />
-                        </button>
                       </ShopContainer>
                     </Product>
                   );
