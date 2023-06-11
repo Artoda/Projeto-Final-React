@@ -33,13 +33,23 @@ export function Home() {
 
   // salvando carrinho no localStorage
   const handleAddToCart = (product) => {
+    const isProductInCart = cart.some((item) => item.id_produto === product.id_produto);
+    if (isProductInCart) {
+      alert('Este produto já está no carrinho.');
+      return;
+    }
+
     setCart((prevCart) => {
       const updatedCart = [...prevCart, product];
       localStorage.setItem("cart", JSON.stringify(updatedCart));
-      console.log(updatedCart);
+      // console.log(updatedCart); // carrinho atualizado
       return updatedCart;
     });
   };
+    // verifica o estado do carrinho após atualizar
+    useEffect(() => {
+      console.log(cart);
+    }, [cart]);
 
   return (
     <>

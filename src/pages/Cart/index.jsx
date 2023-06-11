@@ -36,6 +36,7 @@ export function Cart() {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     if (savedCart) {
       setCart(savedCart);
+      console.log(savedCart);
       calculateTotal(savedCart); // calcula total soma de produtos
     }
   }, []);  // VERIFICAR PRODUTOS DUPLICANDO
