@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, json, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 import {
-  ButtonContainer,
   Container,
   LeftContainer,
-  LoginContainer,
   LogoContainer,
   ProfileContainer,
+  ShopContainer,
   RightContainer,
-  SearchBar,
   SearchContainer,
+  SearchBar,
+  LoginContainer,
+  ButtonContainer,
   SearchItens,
-  SearchResults,
-  ShopContainer
+  SearchResults
 } from "./style";
 
 export function Header() {
@@ -36,15 +36,10 @@ export function Header() {
   }
 
   const checkIsLoggedIn = () => {
-    const res = localStorage.length;
-    if (res > 1) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
+    const userToken = localStorage.getItem('user_token');
+      setIsLoggedIn(!!userToken);
     return;
   }
-
 
   const fetchData = (value) => {
     fetch(
@@ -117,7 +112,7 @@ export function Header() {
                 <Link to={prod.categoriaProdDto.nome}>
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
-                    <img src={prod.url_imagem} />
+                    <img src={prod.descricao} />
                   </SearchResults>
                 </Link>
               );
@@ -162,21 +157,18 @@ export function Header() {
                 handleSignout();
                 checkIsLoggedIn();
               }}>deslogar</ButtonContainer>
-
             </LoginContainer>
           </ProfileContainer>
 
           <ShopContainer>
-          <Link to={"/Cart"}>
             <img
               src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
               alt="Carrinho"
             />
-            </Link>
           </ShopContainer>
         </RightContainer>
       </Container>
       <Outlet />
     </>
-  )
-};
+  );
+}
