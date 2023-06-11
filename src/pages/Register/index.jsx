@@ -118,7 +118,6 @@ export function Register() {
               </PasswordContainer>
               <ButtonComponent Text="finalizar cadastro" onClick={() => {
                 handleSignup();
-                // checkIsLoggedIn();
               }} />
             </FormContainer>
             <FooterContainer>
