@@ -15,7 +15,12 @@ import {
   BoxListTotal,
   ProductsList,
   ProdItem,
+  ProdName,
+  ProdValue,
   ProdTotal,
+  TotalName,
+  TotalValue,
+  AddCupon,
   ProductBioText,
 } from "./style";
 
@@ -31,8 +36,15 @@ export function Cart() {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     if (savedCart) {
       setCart(savedCart);
+      calculateTotal(savedCart); // calcula total soma de produtos
     }
-  }, []);
+  }, []);  // VERIFICAR PRODUTOS DUPLICANDO
+
+  const calculateTotal = (cart) => {
+    const totalValue = cart.reduce(
+      (acc, product) => acc + product.valor_unitario, 0);
+    setTotal(totalValue);
+  };
 
   return (
     <>    
@@ -64,20 +76,27 @@ export function Cart() {
                     </Product>
                   ))}
                 </ProductsContainer> 
-                </SelectedItems>  
-                <BoxListTotal>
-                  <h1>Nome - Valor</h1>
+                </SelectedItems>                  
+                <BoxListTotal> 
+                  <h2>Nome e valor</h2>
                   <ProductsList>
-                    <ProdItem>Produto 1</ProdItem>
-                    <ProdItem>Produto 1</ProdItem>
-                    <ProdItem>Produto 1</ProdItem>
-                    <ProdItem>Produto 1</ProdItem>
-                    <ProdTotal>Total</ProdTotal>
-                  </ProductsList>
-                  {/* <AddCupon> */}
-                    <input type="text" />
-                  {/* </AddCupon> */}
-                </BoxListTotal>  
+                  {cart.map((product) => (
+                    <ProdItem>
+                        <ProdName>{product.nome}</ProdName>
+                        <ProdValue>R$ {product.valor_unitario}</ProdValue>
+                    </ProdItem>
+                  ))}
+                  <ProdTotal>
+                  <TotalName>Total</TotalName>                
+                  <TotalValue>R$ {total} </TotalValue>
+                  </ProdTotal>
+                  
+                </ProductsList>  
+                  <AddCupon>
+                    <h3>Adicione cupom</h3>
+                  <input type="text" />
+                  </AddCupon>                
+                  </BoxListTotal>  
             </ContentContainer>
        </Container>
     </>

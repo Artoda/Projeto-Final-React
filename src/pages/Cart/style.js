@@ -36,20 +36,14 @@ export const SelectedItems = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0px 50px;
 `;
 
 export const BoxListTotal = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin: 0px 50px;
-
-  h1{
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 50px;
 `;
 
 export const ProductsContainer = styled.div`
@@ -58,7 +52,7 @@ export const ProductsContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 80%;
-  gap: 50px;
+  gap: 20px;
   flex-wrap: wrap;
 `;
 
@@ -100,34 +94,64 @@ export const ShopContainer = styled.div`
 `;
 
 export const ProductsList = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  border-top: 2px solid black;
 `;
 
 export const ProdItem = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-width: 100%;
-padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+`;
+
+export const ProdName = styled.div`
+  display: flex;
+  align-items: start;
+  width: 100%;
+  padding: 5px;
+`;
+
+export const ProdValue = styled.div`
+  display: flex;
+  align-items: start;
+  width: 100%;
+  padding: 5px;
 `;
 
 export const ProdTotal = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-width: 100%;
-border-top: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  padding: 10px;
+`;
+
+export const TotalName = styled.div`
+  display: flex;
+  align-items: start;
+  width: 100%;
+`;
+
+export const TotalValue = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const AddCupon = styled.div`
 `;
 
 export const ProductBio = styled.div`
-display: flex;
-flex-direction: column;
-align-items: start;
-width: 100%;
-border-top: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  border-top: 2px solid black;
 `;
 
 export const ProductBioText = styled.div`
