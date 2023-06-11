@@ -21,19 +21,19 @@ import {
 } from "./style";
 
 export function Cart() {   
-  // const [cart, setCart] = useState([]);
-  // const [total, setTotal] = useState(0);
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   // teste localStorage
-  const cart = JSON.parse(localStorage.getItem("cart"));
-  console.log(cart);
+  // const cart = JSON.parse(localStorage.getItem("cart"));
+  // console.log(cart);
 
-  // useEffect(() => {
-  //   const savedCart = JSON.parse(localStorage.getItem("cart"));
-  //   if (savedCart) {
-  //     setCart(savedCart);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    if (savedCart) {
+      setCart(savedCart);
+    }
+  }, []);
 
 
   return (

@@ -101,7 +101,6 @@ export const ShopContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-
   width: 100%;
 `;
 

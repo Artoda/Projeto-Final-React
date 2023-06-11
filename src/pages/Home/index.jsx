@@ -132,9 +132,10 @@ export function Home() {
                       </ProductBio>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
+                        {/* tem que deixar button senão não pega o localStorage */}
                         <button onClick={() => handleAddToCart(productM)}><img
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho" 
+                          alt="Carrinho"
                         /></button>
                       </ShopContainer>
                     </Product>
