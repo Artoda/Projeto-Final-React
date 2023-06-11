@@ -1,5 +1,5 @@
 import { Link, Outlet, json, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 import {
@@ -22,9 +22,8 @@ export function Header() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const { signout } = useAuth();
+  const { signout, checkIsLoggedIn, isLoggedIn } = useAuth();
 
   const handleSignout = () => {
     const res = signout();
@@ -33,12 +32,6 @@ export function Header() {
       setError(res);
       return;
     }
-  }
-
-  const checkIsLoggedIn = () => {
-    const userToken = localStorage.getItem('user_token');
-      setIsLoggedIn(!!userToken);
-    return;
   }
 
   const fetchData = (value) => {
@@ -133,7 +126,6 @@ export function Header() {
               alt="Romulo Andriolo"
               onClick={() => {
                 handleClick();
-                checkIsLoggedIn();
               }}
             />
 
