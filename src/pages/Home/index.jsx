@@ -26,31 +26,19 @@ export function Home() {
     async function fetchData() {
       let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
-      console.log(product)
+      // console.log(product)
     }
     fetchData();
   }, []);
 
   // salvando carrinho no localStorage
   const handleAddToCart = (product) => {
-      //  setCart((prevItems) => [...prevItems, product]);
-      // localStorage.setItem("cart", JSON.stringify(cart));
-      // console.log(cart) 
-      setCart((prevCart) => { // nao permitir duplicado
-        const updatedCart = { ...prevCart };
-        if (updatedCart[product.id]) {
-          updatedCart[product.id].quantity += 1;
-        } else {
-          updatedCart[product.id] = {
-            ...product,
-            quantity: 1,
-          };
-        }
-
-        console.log(updatedCart)
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
-       return updatedCart;
-      });
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      console.log(updatedCart);
+      return updatedCart;
+    });
   };
 
   return (

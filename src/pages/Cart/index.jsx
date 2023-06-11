@@ -36,16 +36,15 @@ export function Cart() {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     if (savedCart) {
       setCart(savedCart);
-      console.log(savedCart)
-      // calculateTotal(savedCart); // calcula total soma de produtos
+      calculateTotal(savedCart); // calcula total soma de produtos
     }
   }, []);  // VERIFICAR PRODUTOS DUPLICANDO
 
-  // const calculateTotal = (cart) => {
-  //   const totalValue = cart.reduce(
-  //     (acc, product) => acc + product.valor_unitario, 0);
-  //   setTotal(totalValue);
-  // };
+  const calculateTotal = (cart) => {
+    const totalValue = cart.reduce(
+      (acc, product) => acc + product.valor_unitario, 0);
+    setTotal(totalValue);
+  };
 
   return (
     <>    
@@ -82,7 +81,7 @@ export function Cart() {
                   <h2>Nome e valor</h2>
                   <ProductsList>
                   {cart.map((product) => (
-                    <ProdItem>
+                    <ProdItem key={product.id_produto}>
                         <ProdName>{product.nome}</ProdName>
                         <ProdValue>R$ {product.valor_unitario}</ProdValue>
                     </ProdItem>
