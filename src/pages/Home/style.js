@@ -157,10 +157,6 @@ export const ShopContainer = styled.div`
   justify-content: center;
   justify-content: space-between;
 
-  button {
-    style: none;
-  }
-
   span {
     font-size: large;
   }
