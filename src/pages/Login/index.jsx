@@ -25,7 +25,7 @@ export function Login() {
   const location = useLocation();
 
   // LOGIN
-  const { signin } = useAuth();
+  const { signin, checkIsLoggedIn } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -91,7 +91,7 @@ export function Login() {
               </PasswordContainer>
               <ButtonComponent Text="login" onClick={() => {
                 handleLogin();
-                // checkIsLoggedIn();
+                checkIsLoggedIn();
               }} />
             </FormContainer>
             <FooterContainer>
