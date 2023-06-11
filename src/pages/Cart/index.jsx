@@ -27,6 +27,7 @@ import {
 export function Cart() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [coupon, setCoupon] = useState("");
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
@@ -48,6 +49,17 @@ export function Cart() {
     calculateTotal();
   }, [cart]);
 
+  const coupons = ["teste", "teste2"];
+
+  const totalCoupon = () => {
+    let newTotal = 0;
+
+    if (coupons.includes(coupon)) {
+      newTotal = total - Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+    }
+
+    setTotal(newTotal);
+  };
   // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
   const handleFinalizePurchase = () => {
     if (cart.length === 0) {
@@ -60,9 +72,12 @@ export function Cart() {
     alert("Compra realizada com sucesso.");
   };
 
-  const removeItems = (product) => {
-    localStorage.removeItem(0);
-    setCart([]);
+  const removeItems = (productId) => {
+    const updatedCart = cart.filter(
+      (product) => product.id_produto !== productId
+    );
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
@@ -91,9 +106,11 @@ export function Cart() {
                   </ProductBio>
                   <ShopContainer>
                     <span>R$ {product.valor_unitario}</span>
-                    <button onClick={() => removeItems(product)}>
-                      <BsTrash size={"25px"}></BsTrash>
-                    </button>
+
+                    <BsTrash
+                      size={"25px"}
+                      onClick={() => removeItems(product.id_produto)}
+                    ></BsTrash>
                   </ShopContainer>
                 </Product>
               ))}
@@ -115,7 +132,14 @@ export function Cart() {
             </ProductsList>
             <AddCupon>
               <h3>Adicione Cupom</h3>
-              <input type="text" />
+              <input
+                type="text"
+                value={coupon}
+                onChange={(e) => {
+                  setCoupon(e.target.value);
+                }}
+              />
+              <button onClick={totalCoupon}></button>
             </AddCupon>
             <ButtonComponent
               Text="Finalizar Compra"

@@ -43,14 +43,13 @@ export const SearchBar = styled.input`
   background: var(--bg-box);
   border: 1px solid var(--primary-color);
 
-  ::placeholder{
+  ::placeholder {
     color: var(--primary-color);
-
   }
 `;
 
 export const SearchItens = styled.div`
-  z-index:1;
+  z-index: 1;
   display: flex;
   align-items: left;
   flex-direction: column;
@@ -79,7 +78,6 @@ export const SearchResults = styled.div`
   width: 100%;
   img {
     width: 70px;
-
   }
 `;
 
@@ -95,7 +93,6 @@ export const ProfileContainer = styled.div`
   align-items: center;
   gap: 10px;
   cursor: pointer;
-
 
   img {
     width: 50px;
@@ -141,7 +138,6 @@ export const LoginContainer = styled.div`
     background-color: var(--terciary-color);
     transform: rotate(45deg);
   }
-  
 `;
 
 export const ButtonContainer = styled.button`
@@ -174,11 +170,11 @@ export const ShopContainer = styled.div`
   gap: 10px;
   position: relative;
   cursor: pointer;
-  .icon{
+  .icon {
     font-size: 40px;
     color: black;
   }
-  span{
+  span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,10 +188,9 @@ export const ShopContainer = styled.div`
     width: 25px;
     height: 25px;
     color: white;
-    background-color:  rgba(203, 18, 28, 1);
+    background-color: rgba(203, 18, 28, 1);
     border-radius: 50%;
   }
-  
 `;
 
 export const CountShopItems = styled.div`
@@ -212,6 +207,6 @@ export const CountShopItems = styled.div`
   width: 25px;
   height: 25px;
   color: white;
-  background-color:  rgba(203, 18, 28, 1);
+  background-color: rgba(203, 18, 28, 1);
   border-radius: 50%;
-`
+`;

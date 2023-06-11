@@ -21,11 +21,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
 
-  useEffect(() => {
-    var items = JSON.parse(localStorage.getItem('cart')).length;
-    setCartItems(items);
+  // useEffect(() => {
+  //   var items = JSON.parse(localStorage.getItem('cart')).length;
+  //   setCartItems(items);
     
-  }, [cartItems]);
+  // }, [cartItems]);
 
   const checkIsLoggedIn = () => {
     const userToken = localStorage.getItem('user_token');
