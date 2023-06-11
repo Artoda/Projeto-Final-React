@@ -14,7 +14,7 @@ import {
   LoginContainer,
   ButtonContainer,
   SearchItens,
-  SearchResults
+  SearchResults,
 } from "./style";
 
 export function Header() {
@@ -32,7 +32,7 @@ export function Header() {
       setError(res);
       return;
     }
-  }
+  };
 
   const fetchData = (value) => {
     fetch(
@@ -130,33 +130,51 @@ export function Header() {
             />
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
-                <span className="square"></span>
-                <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-                  Para ver seus pedidos e ter uma experiencia personalizada,
-                  acesse sua conta 😊
-                </span>
+              <span className="square"></span>
+              <span style={{ display: isLoggedIn ? "none" : "flex" }}>
+                Para ver seus pedidos e ter uma experiencia personalizada,
+                acesse sua conta 😊
+              </span>
               <Link to={"/login"}>
-                <ButtonContainer style={{ display: isLoggedIn ? "none" : "flex" }}>entrar</ButtonContainer>
+                <ButtonContainer
+                  style={{ display: isLoggedIn ? "none" : "flex" }}
+                >
+                  entrar
+                </ButtonContainer>
               </Link>
               <Link to={"/register"}>
-                <ButtonContainer style={{ display: isLoggedIn ? "none" : "flex" }}>cadastrar</ButtonContainer>
+                <ButtonContainer
+                  style={{ display: isLoggedIn ? "none" : "flex" }}
+                >
+                  cadastrar
+                </ButtonContainer>
               </Link>
               <Link to={"/myprofile"}>
-                <ButtonContainer style={{ display: isLoggedIn ? "flex" : "none" }}>meu perfil</ButtonContainer>
+                <ButtonContainer
+                  style={{ display: isLoggedIn ? "flex" : "none" }}
+                >
+                  meu perfil
+                </ButtonContainer>
               </Link>
-              <ButtonContainer style={{ display: isLoggedIn ? "flex" : "none" }} 
-              onClick={() => {
-                handleSignout();
-                checkIsLoggedIn();
-              }}>deslogar</ButtonContainer>
+              <ButtonContainer
+                style={{ display: isLoggedIn ? "flex" : "none" }}
+                onClick={() => {
+                  handleSignout();
+                  checkIsLoggedIn();
+                }}
+              >
+                deslogar
+              </ButtonContainer>
             </LoginContainer>
           </ProfileContainer>
 
           <ShopContainer>
-            <img
-              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-              alt="Carrinho"
-            />
+            <Link to={"/cart"}>
+              <img
+                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                alt="Carrinho"
+              />
+            </Link>
           </ShopContainer>
         </RightContainer>
       </Container>
