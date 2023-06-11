@@ -85,7 +85,7 @@ export function Home() {
               <span>Bem vindo!</span>
               <img
                 src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-                alt="Logo" 
+                alt="Logo"
               />
             </HomeContainer>
           ) : null}
@@ -112,6 +112,12 @@ export function Home() {
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
                           alt="Carrinho"
                         /></button>
+                        <button onClick={() => handleAddToCart(productM)}>
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </button>
                       </ShopContainer>
                     </Product>
                   );
@@ -137,16 +143,18 @@ export function Home() {
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         {/* tem que deixar button senão não pega o localStorage */}
-                        <button onClick={() => handleAddToCart(productM)}><img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        /></button>
+                        <button onClick={() => handleAddToCart(productM)}>
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </button>
                       </ShopContainer>
                     </Product>
                   );
                 })
             : null}
-            {location.pathname === "/armas"
+          {location.pathname === "/armas"
             ? products
                 .filter((prod) => prod.categoriaProdDto.id_categoria == 1)
                 .map((productM) => {
@@ -166,10 +174,12 @@ export function Home() {
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         {/* tem que deixar button senão não pega o localStorage */}
-                        <button onClick={() => handleAddToCart(productM)}><img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        /></button>
+                        <button onClick={() => handleAddToCart(productM)}>
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </button>
                       </ShopContainer>
                     </Product>
                   );
