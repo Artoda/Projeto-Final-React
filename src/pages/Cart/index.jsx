@@ -1,5 +1,3 @@
-CART 
-
 import { useEffect, useState } from "react";
 import { BsCartCheck } from "react-icons/bs";
 import ButtonComponent from "../../common/components/Button";
