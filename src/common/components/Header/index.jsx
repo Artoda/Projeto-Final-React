@@ -1,10 +1,11 @@
 import { Link, Outlet, json, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import useAuth from "../../../hooks/useAuth";
+import { GrSearch } from 'react-icons/gr';
+import { BsCart3 } from 'react-icons/bs';
 
 import {
   Container,
-  LeftContainer,
   LogoContainer,
   ProfileContainer,
   ShopContainer,
@@ -14,7 +15,8 @@ import {
   LoginContainer,
   ButtonContainer,
   SearchItens,
-  SearchResults
+  SearchResults,
+  CountShopItems
 } from "./style";
 
 export function Header() {
@@ -64,16 +66,15 @@ export function Header() {
   return (
     <>
       <Container>
-        <LeftContainer>
-          <LogoContainer>
-            <Link to={"/"}>
-              <img
-                src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-                alt="Logo"
-              />
-            </Link>
-          </LogoContainer>
-        </LeftContainer>
+        
+        <LogoContainer>
+          <Link to={"/"}>
+            <img
+              src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
+              alt="Logo"
+            />
+          </Link>
+        </LogoContainer>
 
         <SearchContainer
           style={{
@@ -95,10 +96,10 @@ export function Header() {
             value={message}
             setProducts={setProducts}
           ></SearchBar>
-          <img
-            src="https://media.discordapp.net/attachments/1081311873481322597/1116415331209072681/lupa-icon.png"
-            alt="lupa"
-          />
+          
+            <GrSearch className="icon" />
+          
+
           <SearchItens products={products}>
             {products.map((prod, id) => {
               return (
@@ -111,28 +112,33 @@ export function Header() {
               );
             })}
           </SearchItens>
+
         </SearchContainer>
 
         <RightContainer>
-          <ProfileContainer>
-            <span>
+          <ProfileContainer onClick={() => {
+                handleClick();
+              }}>
+            
+            <span style={{ display: isLoggedIn ? "none" : "flex" }}>
+              Olá, faça login ou cadastre-se ↓
+            </span>
+            <span style={{ display: isLoggedIn ? "flex" : "none" }}>
               Welcome,
               <Link to={"/myProfile"}>
                 <span>Romulo</span>
               </Link>
             </span>
             <img
-              src="https://avatars.githubusercontent.com/u/127253895?v=4"
-              alt="Romulo Andriolo"
-              onClick={() => {
-                handleClick();
-              }}
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/European_Brown_Bear.jpg/280px-European_Brown_Bear.jpg"
+              alt="urso"
+              style={{ display: isLoggedIn ? "flex" : "none" }}
             />
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
                 <span className="square"></span>
                 <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-                  Para ver seus pedidos e ter uma experiencia personalizada,
+                  Para ver seus pedidos e ter uma experiência personalizada,
                   acesse sua conta 😊
                 </span>
               <Link to={"/login"}>
@@ -153,12 +159,14 @@ export function Header() {
           </ProfileContainer>
 
           <ShopContainer>
-            <img
-              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-              alt="Carrinho"
-            />
+            
+          <Link to={"/cart"}>
+            <BsCart3 className="icon" />
+          </Link>
+           <span>1</span>
           </ShopContainer>
         </RightContainer>
+
       </Container>
       <Outlet />
     </>
