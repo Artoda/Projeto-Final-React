@@ -36,15 +36,16 @@ export function Cart() {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     if (savedCart) {
       setCart(savedCart);
-      calculateTotal(savedCart); // calcula total soma de produtos
+      console.log(savedCart)
+      // calculateTotal(savedCart); // calcula total soma de produtos
     }
   }, []);  // VERIFICAR PRODUTOS DUPLICANDO
 
-  const calculateTotal = (cart) => {
-    const totalValue = cart.reduce(
-      (acc, product) => acc + product.valor_unitario, 0);
-    setTotal(totalValue);
-  };
+  // const calculateTotal = (cart) => {
+  //   const totalValue = cart.reduce(
+  //     (acc, product) => acc + product.valor_unitario, 0);
+  //   setTotal(totalValue);
+  // };
 
   return (
     <>    
@@ -58,7 +59,7 @@ export function Cart() {
               <h2>Itens selecionados</h2>
               <ProductsContainer>
           {cart.map((product) => (
-            <Product key={product.id}>
+            <Product key={product.id_produto}>
               <ImageContainer>
                 <img src={product.url_imagem} alt={product.nome} />
                 </ImageContainer>
