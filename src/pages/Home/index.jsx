@@ -42,11 +42,18 @@ export function Home() {
     setCart((prevCart) => {
       const updatedCart = [...prevCart, product];
       localStorage.setItem("cart", JSON.stringify(updatedCart));
-      // console.log(updatedCart); // carrinho atualizado
       return updatedCart;
     });
   };
-    // verifica o estado do carrinho após atualizar
+
+  useEffect(() => { // atualiza os dados do carrinho com localStorage
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // verifica o estado do carrinho após atualizar
     useEffect(() => {
       console.log(cart);
     }, [cart]);
