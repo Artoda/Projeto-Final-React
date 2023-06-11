@@ -80,10 +80,9 @@ export function AboutUs() {
                                      <img src={user.url} alt="User picture" />
                                      <IconsContainer>
                                      <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
-                                            <AiOutlineLinkedin className="icon"/>
-                                          </a>
-                          
-                                   <a href={user.link} target="_blank" rel="noopener noreferrer">
+                                        <AiOutlineLinkedin className="icon"/>
+                                      </a>
+                                     <a href={user.link} target="_blank" rel="noopener noreferrer">
                                         <AiOutlineGithub className="icon" />
                                      </a>
                                     </IconsContainer>

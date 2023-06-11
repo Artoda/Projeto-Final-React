@@ -110,7 +110,7 @@ export function Home() {
                         <span>R$ {productM.valor_unitario}</span>
                         <button onClick={() => handleAddToCart(productM)}><img
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho" onClick={() => handleAddToCart(productM)}
+                          alt="Carrinho"
                         /></button>
                       </ShopContainer>
                     </Product>
