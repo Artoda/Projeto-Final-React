@@ -20,8 +20,7 @@ import {
 export function MyProfile() {
     const location = useLocation();
 
-    console.log("olá");
-
+   
     return (
         <>
             <Container>
@@ -44,7 +43,7 @@ export function MyProfile() {
                         </EnderecoContainer>
                     </BoxContainer>
                     <FooterContainer>
-                        <Link to={"/register"}>
+                        <Link to={"/profile"}>
                             <span>"clique aqui" para alterar endereço</span>
                         </Link>
                     </FooterContainer>

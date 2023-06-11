@@ -60,4 +60,9 @@ export const FooterContainer = styled.div`
     padding: 10px;
     width: 50vh;
     height: 10vh;
+
+    span{
+        color: red;
+    }
+    
 `;

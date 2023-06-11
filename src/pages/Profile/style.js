@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { TitleContainer } from "../Home/style";
-
 
 export const Container = styled.div`
   background: white ;
@@ -19,107 +17,80 @@ export const Container = styled.div`
   
 `;
 
-
-export const ContentContainer = styled.div`
-  text-align: left;
- 
+export const BoxContainer = styled.div`
+ text-align: left;
+ width: 100%;
+ display: flex;
+ flex-direction: row ;
+gap: 10px;
 `;
 
+export const ContentContainer = styled.div`
+  background: white ;
 
-export const InformationContainer = styled.div`
+`;
+
+export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   gap: 10px;
-`;
 
-export const BoxContainer = styled.div`
-  background: white ;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-`;
-
-export const FooterContainer = styled.div`
-  background: white ;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-
- input {
-        width: 98%;
-        background: white;
-        border-radius: 5px;
-        border: 1px solid #737070;
-        height: 30px;
-        }
-
+  
 `;
 
 export const FormContainer = styled.div`
+  text-align: left ;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px;
  
   
-
 `;
 
-export const TextContainer = styled.div`
+export const FooterContainer = styled.div`
+  text-align: left;
   display: flex;
-  width: 100%;
-  gap: 10px;  
   flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 
+  button{
+    background: var(--bg-button);
+    font-size: 16px;
+    list-style: none;
+    color: var(--terciary-color);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 35px;
+    margin: 10px 0px 20px;
+    cursor: pointer;
+  }
+
+  input{
+    border-radius: 5px;
+    height: 30px;
+  }
 `;
 
 export const NumberContainer = styled.div`
   text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  input{
+    width: 10vh;
+  }
   
-
-  input {
-        width: 100px;
-        background: white;
-        border-radius: 5px;
-        border: 1px solid #737070;
-        height: 30px;
-        }
-
 `;
 
 export const ComplementContainer = styled.div`
-   text-align: left;
-    width: 100%;
-
-  input {
-        width: 98%;
-        background: white;
-        border-radius: 5px;
-        border: 1px solid #737070;
-        height: 30px;
-        }
-
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  
 `;
 
-export const EnderecoBt = styled.button`
-  list-style: none;
-    background: rgba(203, 18, 28, 0.7);
-    color:white;
-    border: none;
-    border-radius: 5px;
-    margin:10px;
-    width: 100%;
-    height: 35px;
-
-    padding: 0px;
-    margin: 20px;
-    
-`;
