@@ -1,38 +1,33 @@
 import { useEffect, useState } from "react";
 import { BsCartCheck } from "react-icons/bs";
 import ButtonComponent from "../../common/components/Button";
-import { api } from "../../services/api";
 import {
-  Container,
-  TitleContainer,
-  ContentContainer,
-  ProductsContainer,
-  Product,
-  ImageContainer,
-  ProductTitleContainer,
-  ProductBio,
-  ShopContainer,
-  SelectedItems,
+  AddCupon,
   BoxListTotal,
-  ProductsList,
+  Container,
+  ContentContainer,
+  ImageContainer,
   ProdItem,
   ProdName,
-  ProdValue,
   ProdTotal,
+  ProdValue,
+  Product,
+  ProductBio,
+  ProductBioText,
+  ProductTitleContainer,
+  ProductsContainer,
+  ProductsList,
+  SelectedItems,
+  ShopContainer,
+  TitleContainer,
   TotalName,
   TotalValue,
-  AddCupon,
-  ProductBioText,
 } from "./style";
 
 export function Cart() {   
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
-
-  // teste localStorage
-  // const cart = JSON.parse(localStorage.getItem("cart"));
-  // console.log(cart);
-
+ 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
@@ -40,7 +35,7 @@ export function Cart() {
     }
   }, []);
   
-  useEffect(() => {
+  useEffect(() => {  // verifica estado do valor total
     const calculateTotal = () => {
       let sum = 0;
       for (const product of cart) {
@@ -52,7 +47,7 @@ export function Cart() {
     calculateTotal();
   }, [cart]);
 
-  // para verificar se tem produtos no carrinho ao finalizar
+  // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
   const handleFinalizePurchase = () => {
     if (cart.length === 0) {
       alert("Não há produtos no carrinho.");
