@@ -3,7 +3,6 @@ import { BsCartCheck } from "react-icons/bs";
 import { api } from "../../services/api";
 import {
   Container,
-  BoxContainer,
   TitleContainer,
   ContentContainer,
   ProductsContainer,
@@ -35,16 +34,14 @@ export function Cart() {
     }
   }, []);
 
-
   return (
     <>    
        <Container>
-        <BoxContainer>                      
           <TitleContainer>
-            <BsCartCheck className="icon" />
+            <BsCartCheck size={"30px"} />
             <h2>Carrinho do cliente</h2>
           </TitleContainer>
-          <ContentContainer> 
+          <ContentContainer>
             <SelectedItems>
               <h2>Itens selecionados</h2>
               <ProductsContainer>
@@ -55,16 +52,16 @@ export function Cart() {
                 </ImageContainer>
                   <ProductTitleContainer>
                     <h2>{product.nome}</h2>
-                </ProductTitleContainer>
+                 </ProductTitleContainer>
                   <ProductBio>
-                <ProductBioText>
-                  <span>{product.descricao}</span>
-                </ProductBioText>
-              </ProductBio>
-              <ShopContainer>
-                <span>R$ {product.valor_unitario}</span>
-              </ShopContainer>
-                      </Product>
+                   <ProductBioText>
+                  {/* <span>{product.descricao}</span> */}
+                 </ProductBioText>
+                    </ProductBio>
+                    <ShopContainer>
+                      <span>R$ {product.valor_unitario}</span>
+                    </ShopContainer>
+                    </Product>
                   ))}
                 </ProductsContainer> 
                 </SelectedItems>  
@@ -81,9 +78,8 @@ export function Cart() {
                     <input type="text" />
                   {/* </AddCupon> */}
                 </BoxListTotal>  
-              </ContentContainer>
-            </BoxContainer>
-          </Container>
+            </ContentContainer>
+       </Container>
     </>
   );
 }

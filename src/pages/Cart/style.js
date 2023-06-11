@@ -3,29 +3,23 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin: 0;
   padding: 0px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-sizing: border-box;  
   width: 100%;
   background-color: #f8f8f8;
-  height: 100%;
 `;
 
-export const BoxContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;    
-`;
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   font-size: 20px;
+  height: 100%;
 `;
 
 export const ContentContainer = styled.div`
@@ -34,6 +28,7 @@ export const ContentContainer = styled.div`
   align-items: center;
   justify-content: space-evenly;
   padding-bottom: 20px;
+  height: 100%;
 `;
 
 export const SelectedItems = styled.div`
@@ -55,7 +50,6 @@ margin: 0px 50px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
   }
-
 `;
 
 export const ProductsContainer = styled.div`
@@ -63,8 +57,9 @@ export const ProductsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 80%;
   gap: 50px;
+  flex-wrap: wrap;
 `;
 
 export const Product = styled.div`
