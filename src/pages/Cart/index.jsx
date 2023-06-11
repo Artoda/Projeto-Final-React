@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsCartCheck } from "react-icons/bs";
+import ButtonComponent from "../../common/components/Button";
 import { api } from "../../services/api";
 import {
   Container,
@@ -33,18 +34,34 @@ export function Cart() {
   // console.log(cart);
 
   useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart"));
+    const savedCart = localStorage.getItem("cart");
     if (savedCart) {
-      setCart(savedCart);
-      console.log(savedCart);
-      calculateTotal(savedCart); // calcula total soma de produtos
+      setCart(JSON.parse(savedCart));
     }
-  }, []);  // VERIFICAR PRODUTOS DUPLICANDO
+  }, []);
+  
+  useEffect(() => {
+    const calculateTotal = () => {
+      let sum = 0;
+      for (const product of cart) {
+        sum += product.valor_unitario;
+      }
+      setTotal(sum);
+    };
 
-  const calculateTotal = (cart) => {
-    const totalValue = cart.reduce(
-      (acc, product) => acc + product.valor_unitario, 0);
-    setTotal(totalValue);
+    calculateTotal();
+  }, [cart]);
+
+  // para verificar se tem produtos no carrinho ao finalizar
+  const handleFinalizePurchase = () => {
+    if (cart.length === 0) {
+      alert("Não há produtos no carrinho.");
+      return;
+    }
+
+    localStorage.removeItem("cart");
+    setCart([]);
+    alert("Compra realizada com sucesso.");
   };
 
   return (
@@ -91,13 +108,14 @@ export function Cart() {
                   <TotalName>Total</TotalName>                
                   <TotalValue>R$ {total} </TotalValue>
                   </ProdTotal>
-                  
+                
                 </ProductsList>  
                   <AddCupon>
                     <h3>Adicione cupom</h3>
                   <input type="text" />
                   </AddCupon>                
-                  </BoxListTotal>  
+                  <ButtonComponent Text="finalizar compra" onClick={handleFinalizePurchase}/>
+                  </BoxListTotal>                   
             </ContentContainer>
        </Container>
     </>
