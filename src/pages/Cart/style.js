@@ -11,6 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #f8f8f8;
+  height: 100%;
 `;
 
 export const TitleContainer = styled.div`
@@ -19,16 +20,16 @@ export const TitleContainer = styled.div`
   justify-content: center;
   gap: 10px;
   font-size: 20px;
-  height: 100%;
 `;
 
 export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
   justify-content: space-evenly;
   padding-bottom: 20px;
-  height: 100%;
+  gap: 70px;
+  height: 70%;
 `;
 
 export const SelectedItems = styled.div`
@@ -44,16 +45,21 @@ export const BoxListTotal = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0px 50px;
+  height: 79%;
+  h2 {
+    font-size: x-large;
+  }
 `;
 
 export const ProductsContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  height: 80%;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 25px;
+  overflow: auto;
+  max-height: 600px;
+  max-width: 900px;
 `;
 
 export const Product = styled.div`
@@ -62,7 +68,7 @@ export const Product = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #e9e9e9;
-  padding: 20px;
+  padding: 10px;
   height: 400px;
   width: 270px;
   border-radius: 5%;
@@ -76,6 +82,8 @@ export const ImageContainer = styled.div`
 
   img {
     width: 200px;
+    padding: 10px;
+    border-radius: 10%;
   }
 `;
 
@@ -88,9 +96,22 @@ export const ProductTitleContainer = styled.div`
 
 export const ShopContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: start;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+  span {
+    font-size: large;
+  }
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
 `;
 
 export const ProductsList = styled.div`
@@ -99,27 +120,30 @@ export const ProductsList = styled.div`
   align-items: start;
   width: 100%;
   border-top: 2px solid black;
+  padding: 10px;
+  gap: 5px;
 `;
 
 export const ProdItem = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   width: 100%;
+  gap: 10px;
 `;
 
 export const ProdName = styled.div`
   display: flex;
   align-items: start;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
 `;
 
 export const ProdValue = styled.div`
   display: flex;
   align-items: start;
   width: 100%;
-  padding: 5px;
+  padding: 10px;
 `;
 
 export const ProdTotal = styled.div`
@@ -144,6 +168,13 @@ export const TotalValue = styled.div`
 `;
 
 export const AddCupon = styled.div`
+  h3 {
+    font-size: large;
+  }
+
+  input {
+    padding: 5px;
+  }
 `;
 
 export const ProductBio = styled.div`
