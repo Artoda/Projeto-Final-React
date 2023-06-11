@@ -25,6 +25,8 @@ export const BoxContainer = styled.div`
 gap: 10px;
 `;
 
+
+
 export const ContentContainer = styled.div`
   background: white ;
 
@@ -93,4 +95,7 @@ export const ComplementContainer = styled.div`
   flex-direction: column;
   
 `;
+
+
+
 

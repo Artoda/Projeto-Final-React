@@ -27,7 +27,7 @@ export function MyProfile() {
                 <ContentContainer>
                     <InformationContainer>
                         <span>
-                            <FiUser />
+                            <FiUser size={"30px"}/>
                         </span>
                         <h2>Minha Conta</h2>
                     </InformationContainer>

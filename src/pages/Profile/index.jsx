@@ -19,17 +19,19 @@ export function Profile() {
     const location = useLocation();
     const { register, handleSubmit, setValue, setFocus } = useForm();
 
-const onSubmit = (data) => {
-    console.log(data);
-}
+    const onSubmit = (data) => {
+        console.log(data);
+    }
 
     const checkCEP = (e) => {
         const cep = e.target.value.replace(/\D/g, '');
-      //  console.log(cep);
+        //  console.log(cep);
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
             .then(res => res.json()).then(data => {
                 console.log(data);
-                setValue('endereco', data.logradouro);
+                setValue('neighborhood', data.bairro);
+                setValue('address', data.logradouro);
+                setValue('locality', data.localidade);
                 setFocus('numero');
             });
     }
@@ -37,43 +39,53 @@ const onSubmit = (data) => {
     return (
         <>
             <Container>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <ContentContainer>
-                    <TitleContainer>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <ContentContainer>
                         <TitleContainer>
-                            <FiUser className="icon" />
-                            <h2>Minha Conta</h2>
+                            <TitleContainer>
+                                <FiUser size={"30px"} />
+                                <h2>Minha Conta</h2>
+                            </TitleContainer>
                         </TitleContainer>
-                    </TitleContainer>
-                    <FormContainer>
-                        <span>* nome</span>
-                        <span>* e-mail</span>
-                    </FormContainer>
-                    <FooterContainer>
-                        <span> endereço</span>
+                        <FormContainer>
+                            <span>* nome</span>
+                            <span>* e-mail</span>
+                        </FormContainer>
+                        <FooterContainer>
+                            <span> endereço</span>
 
-                        <span>cep</span>
+                            <span>cep</span>
+                            <input type="text" {...register("cep")} onBlur={checkCEP} />
 
-                        <input type="text" {...register("cep")} onBlur={checkCEP} />
+                          
+                                <span>bairro</span>
+                                <input type="bairro" {...register("neighborhood")} />
+                          
+                           
+                                <span>logradouro</span>
+                                <input type="logradouro" {...register("address")} />
+                            
 
-                        <span>endereço</span>
+                          
+                                <span>localidade</span>
+                                <input type="localidade" {...register("locality")} />
+                            
 
-                        <input type="endereço" {...register("endereco")} />
-                        <BoxContainer>
-                            <NumberContainer>
-                                <span>número</span>
-                                <input type="número" {...register("numero")} />
-                            </NumberContainer>
-                            <ComplementContainer>
-                                <span>complemento</span>
-                                <input type="complemento"  />
-                            </ComplementContainer>
-                        </BoxContainer>
-                        <Link to={"/myprofile"}>
-                            <button >Confirmar endereço</button>
+                            <BoxContainer>
+                                <NumberContainer>
+                                    <span>número</span>
+                                    <input type="número" {...register("numero")} />
+                                </NumberContainer>
+                                <ComplementContainer>
+                                    <span>complemento</span>
+                                    <input type="complemento" />
+                                </ComplementContainer>
+                            </BoxContainer>
+                            <Link to={"/myprofile"}>
+                                <button >Confirmar endereço</button>
                             </Link>
-                    </FooterContainer>
-                </ContentContainer>
+                        </FooterContainer>
+                    </ContentContainer>
                 </form>
             </Container>
         </>
