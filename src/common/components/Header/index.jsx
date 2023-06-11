@@ -24,7 +24,7 @@ export function Header() {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
 
-  const { signout, checkIsLoggedIn, isLoggedIn } = useAuth();
+  const { signout, checkIsLoggedIn, isLoggedIn, cartItems } = useAuth();
 
   const handleSignout = () => {
     const res = signout();
@@ -178,7 +178,7 @@ export function Header() {
           <Link to={"/cart"}>
             <BsCart3 className="icon" />
           </Link>
-           <span>1</span>
+           <span style={{ display: cartItems > 0 ? "flex" : "none" }} >{cartItems}</span>
           </ShopContainer>
         </RightContainer>
 
