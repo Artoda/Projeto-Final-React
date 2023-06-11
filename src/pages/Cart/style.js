@@ -128,10 +128,23 @@ width: 100%;
 border-top: 2px solid black;
 `;
 
-export const AddCupon = styled.div`
+export const ProductBio = styled.div`
 display: flex;
 flex-direction: column;
 align-items: start;
 width: 100%;
 border-top: 2px solid black;
+`;
+
+export const ProductBioText = styled.div`
+  display: flex;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  span {
+    background-color: black;
+    color: white;
+    font-size: large;
+  }
 `;
