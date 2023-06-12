@@ -11,11 +11,11 @@ export const AuthProvider = ({ children }) => {
     const userToken = localStorage.getItem("user_token");
     const usersStorage = localStorage.getItem("users_bd");
 
+    checkCartItems();
     if (userToken && usersStorage) {
       const hasUser = JSON.parse(usersStorage)?.filter(
         (user) => user.email === JSON.parse(userToken).email
       );
-
       if (hasUser) setUser(hasUser[0]);
     }
   }, []);
