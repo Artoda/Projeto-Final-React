@@ -1,8 +1,8 @@
 import { Link, Outlet, json, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import useAuth from "../../../hooks/useAuth";
-import { GrSearch } from 'react-icons/gr';
-import { BsCart3 } from 'react-icons/bs';
+import { GrSearch } from "react-icons/gr";
+import { BsCart3 } from "react-icons/bs";
 
 import {
   Container,
@@ -15,7 +15,7 @@ import {
   LoginContainer,
   ButtonContainer,
   SearchItens,
-  SearchResults
+  SearchResults,
 } from "./style";
 
 export function Header() {
@@ -65,7 +65,6 @@ export function Header() {
   return (
     <>
       <Container>
-        
         <LogoContainer>
           <Link to={"/"}>
             <img
@@ -95,9 +94,8 @@ export function Header() {
             value={message}
             setProducts={setProducts}
           ></SearchBar>
-          
-            <GrSearch className="icon" />
-          
+
+          <GrSearch className="icon" />
 
           <SearchItens products={products}>
             {products.map((prod, id) => {
@@ -105,20 +103,20 @@ export function Header() {
                 <Link to={prod.categoriaProdDto.nome}>
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
-                    <img src={prod.descricao} />
+                    <img src={prod.url_imagem} />
                   </SearchResults>
                 </Link>
               );
             })}
           </SearchItens>
-
         </SearchContainer>
 
         <RightContainer>
-          <ProfileContainer onClick={() => {
-                handleClick();
-              }}>
-            
+          <ProfileContainer
+            onClick={() => {
+              handleClick();
+            }}
+          >
             <span style={{ display: isLoggedIn ? "none" : "flex" }}>
               Olá, faça login ou cadastre-se ↓
             </span>
@@ -135,11 +133,11 @@ export function Header() {
             />
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
-                <span className="square"></span>
-                <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-                  Para ver seus pedidos e ter uma experiência personalizada,
-                  acesse sua conta 😊
-                </span>
+              <span className="square"></span>
+              <span style={{ display: isLoggedIn ? "none" : "flex" }}>
+                Para ver seus pedidos e ter uma experiência personalizada,
+                acesse sua conta 😊
+              </span>
               <Link to={"/login"}>
                 <ButtonContainer
                   style={{ display: isLoggedIn ? "none" : "flex" }}
@@ -174,14 +172,14 @@ export function Header() {
           </ProfileContainer>
 
           <ShopContainer>
-            
-          <Link to={"/cart"}>
-            <BsCart3 className="icon" />
-          </Link>
-           <span style={{ display: cartItems > 0 ? "flex" : "none" }} >{cartItems}</span>
+            <Link to={"/cart"}>
+              <BsCart3 className="icon" />
+            </Link>
+            <span style={{ display: cartItems > 0 ? "flex" : "none" }}>
+              {cartItems}
+            </span>
           </ShopContainer>
         </RightContainer>
-
       </Container>
       <Outlet />
     </>

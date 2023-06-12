@@ -23,12 +23,16 @@ import {
   TitleContainer,
   TotalName,
   TotalValue,
+  TotalDescont,
 } from "./style";
+import { Link } from "react-router-dom";
 
 export function Cart() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [newTotal, setNewTotal] = useState(0);
   const [coupon, setCoupon] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   const { checkCartItems } = useAuth();
 
@@ -55,12 +59,18 @@ export function Cart() {
   const coupons = ["teste", "teste2"];
 
   const totalCoupon = () => {
-    let newTotal = 0;
+    let newTotal = total;
+    let anotherTotal = 0;
 
     if (coupons.includes(coupon)) {
-      newTotal = total - Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+      setDisabled(true);
+
+      anotherTotal = total - Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+    } else {
+      alert("Cupon Inexistente");
     }
 
+    setNewTotal(anotherTotal);
     setTotal(newTotal);
   };
   // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
@@ -93,7 +103,7 @@ export function Cart() {
           <h2>Carrinho do cliente</h2>
         </TitleContainer>
         <ContentContainer>
-          <SelectedItems>
+          <SelectedItems style={{ display: cart.length > 0 ? "flex" : "none" }}>
             <h2>Itens selecionados</h2>
             <ProductsContainer>
               {cart.map((product) => (
@@ -114,6 +124,7 @@ export function Cart() {
 
                     <BsTrash
                       size={"25px"}
+                      style={{ cursor: "pointer" }}
                       onClick={() => removeItems(product.id_produto)}
                     ></BsTrash>
                   </ShopContainer>
@@ -132,11 +143,21 @@ export function Cart() {
               ))}
               <ProdTotal>
                 <TotalName>Total</TotalName>
-                <TotalValue>R$ {total} </TotalValue>
+
+                <TotalValue
+                  style={{
+                    textDecorationLine: disabled ? "line-through" : "none",
+                  }}
+                >
+                  R$ {total}{" "}
+                </TotalValue>
+                <TotalDescont style={{ display: disabled ? "flex" : "none" }}>
+                  R$ {newTotal}
+                </TotalDescont>
               </ProdTotal>
             </ProductsList>
             <AddCupon>
-              <h3>Adicione Cupom</h3>
+              <h3>Adicionar Cupom</h3>
               <input
                 type="text"
                 value={coupon}
@@ -144,12 +165,16 @@ export function Cart() {
                   setCoupon(e.target.value);
                 }}
               />
-              <button onClick={totalCoupon}></button>
+              <button disabled={disabled} onClick={totalCoupon}>
+                Checar Cupom
+              </button>
             </AddCupon>
-            <ButtonComponent
-              Text="Finalizar Compra"
-              onClick={handleFinalizePurchase}
-            />
+            <Link to={"/"}>
+              <ButtonComponent
+                Text="Finalizar Compra"
+                onClick={handleFinalizePurchase}
+              />
+            </Link>
           </BoxListTotal>
         </ContentContainer>
       </Container>
