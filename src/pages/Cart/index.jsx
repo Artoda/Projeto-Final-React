@@ -67,15 +67,15 @@ export function Cart() {
     if (coupons.includes(coupon)) {
       setDisabled(true);
       setIsCouponApplied(true);
+      document.querySelector(".input").disabled = true;
 
-      anotherTotal = total - Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+      anotherTotal = total - Math.floor(Math.random() * (400 - 100 + 1)) - 100;
     } else {
       alert("Cupon Inexistente");
     }
 
     setNewTotal(anotherTotal);
     setTotal(newTotal);
-
   };
 
   // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
@@ -164,12 +164,15 @@ export function Cart() {
                   R$ {newTotal}
                 </TotalDescont>
               </ProdTotal>
-              <Coupon>{isCouponApplied && <span>Cupom {coupon} aplicado</span>}</Coupon>
+              <Coupon>
+                {isCouponApplied && <span>Cupom {coupon} aplicado</span>}
+              </Coupon>
             </ProductsList>
             <AddCupon>
               <h3>Adicionar Cupom</h3>
               <input
                 type="text"
+                className="input"
                 value={coupon}
                 onChange={(e) => {
                   setCoupon(e.target.value);
