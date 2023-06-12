@@ -69,10 +69,6 @@ export function Header() {
         <LogoContainer>
           <Link to={"/"}>
             <LogoComponent />
-            {/* <img
-              src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-              alt="Logo"
-            /> */}
           </Link>
         </LogoContainer>
 
@@ -82,7 +78,6 @@ export function Header() {
               location.pathname === "/" ||
               location.pathname === "/artes" ||
               location.pathname === "/antiguidades" ||
-              location.pathname === "/joias" ||
               location.pathname === "/armas" ||
               location.pathname === "/jogos" ||
               location.pathname === "/livros"
@@ -96,8 +91,6 @@ export function Header() {
             value={message}
             setProducts={setProducts}
           ></SearchBar>
-
-          <GrSearch className="icon" />
 
           <SearchItens products={products}>
             {products.map((prod, id) => {

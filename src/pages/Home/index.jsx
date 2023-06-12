@@ -86,9 +86,6 @@ export function Home() {
                 Antiguidades
               </NavItem>
             </Link>
-            <Link to={"/joias"}>
-              <NavItem isActive={location.pathname === "/joias"}>Jóias</NavItem>
-            </Link>
             <Link to={"/armas"}>
               <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
             </Link>

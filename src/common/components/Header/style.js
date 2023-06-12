@@ -9,11 +9,7 @@ export const Container = styled.div`
   gap: 15px;
 `;
 
-export const LogoContainer = styled.div`
-  img {
-    width: 230px;
-  }
-`;
+export const LogoContainer = styled.div``;
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -58,7 +54,7 @@ export const SearchItens = styled.div`
   border-radius: 5px;
   border: none;
   background-color: white;
-  top: 33px;
+  top: 42px;
   span {
     font-size: 18px;
   }
@@ -170,8 +166,9 @@ export const ShopContainer = styled.div`
   gap: 10px;
   position: relative;
   cursor: pointer;
+  padding: 5px;
   .icon {
-    font-size: 40px;
+    font-size: 250%;
     color: black;
   }
   span {
@@ -183,8 +180,8 @@ export const ShopContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    right: -20%;
-    top: -20%;
+    right: -7%;
+    top: -8%;
     width: 25px;
     height: 25px;
     color: white;
