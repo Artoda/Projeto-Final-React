@@ -1,28 +1,27 @@
 import React, { useState } from "react";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import InputComponent from "../../common/components/Input";
 import ButtonComponent from "../../common/components/Button";
+import InputComponent from "../../common/components/Input";
 
 import useAuth from "../../hooks/useAuth";
 
-import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-
+import { FiUser } from "react-icons/fi";
+import { api } from "../../services/api";
 import {
-  Container,
   BoxContainer,
-  TitleContainer,
+  Container,
   ContentContainer,
-  NameContainer,
   EmailContainer,
-  PasswordContainer,
-  PasswordInput,
+  FooterContainer,
   FormContainer,
   LabelError,
-  FooterContainer
+  NameContainer,
+  PasswordContainer,
+  PasswordInput,
+  TitleContainer
 } from "./style";
-import { apiLocal } from "../../services/api";
 
 export function Register() {
   const location = useLocation();
