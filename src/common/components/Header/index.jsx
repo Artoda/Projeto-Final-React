@@ -92,10 +92,16 @@ export function Header() {
             setProducts={setProducts}
           ></SearchBar>
 
-          <SearchItens products={products}>
+          <SearchItens
+            products={products}
+            style={{ display: message.length === 0 ? "none" : "flex" }}
+          >
             {products.map((prod, id) => {
               return (
-                <Link to={prod.categoriaProdDto.nome}>
+                <Link
+                  to={prod.categoriaProdDto.nome}
+                  onClick={() => setMessage("")}
+                >
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
                     <img src={prod.url_imagem} />
