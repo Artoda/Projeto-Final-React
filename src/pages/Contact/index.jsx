@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
+import { api } from "../../services/api";
 import {
   BoxContainer,
   Container,
@@ -13,25 +14,12 @@ import {
   NameContainer,
   TitleContainer,
 } from "./style";
-import { api } from "../../services/api";
 
 export function Contact() {
   const location = useLocation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");  
-
-  // useEffect(() => {
-  //   async function fetchData(){
-  //   const faleConosco = await api.post('/clientes/mensagem', {
-  //     name:{name},
-  //     email:{email},
-  //     message:{message}
-  //   })
-  //   console.log(faleConosco)
-  // }
-  // fetchData();
-  // }, []);
 
   const handleSendMessage = async () => {
     if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
@@ -45,8 +33,11 @@ export function Contact() {
         email: email,
         mensagem: message
       });
-      alert("Mensagem enviada com sucesso.");
+      alert("Mensagem enviada com sucesso. Responderemos em breve!");
 
+      setName("");
+      setEmail("");
+      setMessage("");
     } 
     catch (error) {
       console.error(error);
