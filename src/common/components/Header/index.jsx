@@ -2,7 +2,7 @@ import { Link, Outlet, json, useLocation } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { GrSearch } from "react-icons/gr";
-import { BsCart3 } from "react-icons/bs";
+import { BsCart3, BsPersonCircle } from "react-icons/bs";
 import LogoComponent from "../Logo";
 
 import {
@@ -25,7 +25,7 @@ export function Header() {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
 
-  const { signout, checkIsLoggedIn, isLoggedIn, cartItems } = useAuth();
+  const { signout, checkIsLoggedIn, isLoggedIn, cartItems, nome, getName } = useAuth();
 
   const handleSignout = () => {
     const res = signout();
@@ -35,6 +35,10 @@ export function Header() {
       return;
     }
   };
+
+  useEffect(() => {
+    getName();
+  }, [isLoggedIn]);
 
   const fetchData = (value) => {
     fetch(
@@ -119,22 +123,19 @@ export function Header() {
             }}
           >
             <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-              Olá, click aqui ↓
+              Olá, clique aqui para fazer login ou cadastre-se ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
-              Welcome,
+                <span className="nome" > { nome } </span>
+              , seja bem vindo!
               <Link to={"/myProfile"}>
-                <span>Romulo</span>
               </Link>
             </span>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/European_Brown_Bear.jpg/280px-European_Brown_Bear.jpg"
-              alt="urso"
-              style={{ display: isLoggedIn ? "flex" : "none" }}
-            />
+            <BsPersonCircle className="icon"style={{ display: isLoggedIn ? "flex" : "none" }} />
+              
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
-              <span className="square"></span>
+              <span className="triangle"></span>
               <span style={{ display: isLoggedIn ? "none" : "flex" }}>
                 Para ver seus pedidos e ter uma experiência personalizada,
                 acesse sua conta 😊

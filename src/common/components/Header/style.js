@@ -102,15 +102,17 @@ export const ProfileContainer = styled.div`
     border-radius: 50%;
     object-fit: cover;
   }
-
+  span.nome {
+    text-transform: capitalize;
+    color: var(--alert-color);
+    font-weight: bold;
+  }
+  .icon {
+    font-size: 40px;
+  }
   span {
     font-weight: 500;
     font-size: 20px;
-
-    span {
-      text-decoration: underline;
-      color: #a80808;
-    }
   }
 `;
 
@@ -132,14 +134,15 @@ export const LoginContainer = styled.div`
     font-size: 16px;
     margin-bottom: 10px;
   }
-  span.square {
+  span.triangle {
     position: absolute;
     top: -15px;
     right: 22%;
-    height: 30px;
-    width: 30px;
-    background-color: var(--terciary-color);
-    transform: rotate(45deg);
+    width: 0; 
+    height: 0; 
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid var(--terciary-color);
   }
 
   button {
