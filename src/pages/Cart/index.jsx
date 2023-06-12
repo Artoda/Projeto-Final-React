@@ -3,7 +3,7 @@ import { BsCartCheck, BsTrash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import useAuth from "../../hooks/useAuth";
-import { api } from "../../services/api";
+// import { api } from "../../services/api";
 import {
   AddCupon,
   BoxListTotal,
@@ -91,16 +91,16 @@ export function Cart() {
       return;
     }
 
-    // remover produto após venda
-    cart.forEach((product) => {
-      api.delete(`/produtos/${product.id_produto}`)
-        .then((response) => {
-          console.log("Produto removido do estoque com sucesso.");
-        })
-        .catch((error) => {
-          console.error("Erro ao remover o produto do estoque:", error);
-        });
-    });
+    // remover produto após venda deixar comentado
+    // cart.forEach((product) => {
+    //   api.delete(`/produtos/${product.id_produto}`)
+    //     .then((response) => {
+    //       console.log("Produto removido do estoque com sucesso.");
+    //     })
+    //     .catch((error) => {
+    //       console.error("Erro ao remover o produto do estoque:", error);
+    //     });
+    // });
 
     localStorage.removeItem("cart");
     setCart([]);
