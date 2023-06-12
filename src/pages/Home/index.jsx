@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 import useAuth from "../../hooks/useAuth";
+import React from "react";
+import ReactPlayer from "react-player";
 import {
   Container,
   HomeContainer,
@@ -16,6 +18,7 @@ import {
   ProductsContainer,
   ShopContainer,
   TitleContainer,
+  VideoContainer,
 } from "./style";
 
 export function Home() {
@@ -25,10 +28,7 @@ export function Home() {
 
   const { checkCartItems } = useAuth();
 
-  useEffect(() => {
-
-  }, []);
-
+  useEffect(() => {}, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -41,9 +41,11 @@ export function Home() {
 
   // salvando carrinho no localStorage
   const handleAddToCart = (product) => {
-    const isProductInCart = cart.some((item) => item.id_produto === product.id_produto);
+    const isProductInCart = cart.some(
+      (item) => item.id_produto === product.id_produto
+    );
     if (isProductInCart) {
-      alert('Este produto já está no carrinho.');
+      alert("Este produto já está no carrinho.");
       return;
     }
 
@@ -55,7 +57,8 @@ export function Home() {
     });
   };
 
-  useEffect(() => { // atualiza os dados do carrinho com localStorage
+  useEffect(() => {
+    // atualiza os dados do carrinho com localStorage
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
       setCart(JSON.parse(savedCart));
@@ -63,9 +66,9 @@ export function Home() {
   }, []);
 
   // verifica o estado do carrinho após atualizar
-    useEffect(() => {
-      console.log(cart);
-    }, [cart]);
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
 
   return (
     <>
@@ -108,11 +111,10 @@ export function Home() {
         <ProductsContainer>
           {location.pathname === "/" ? (
             <HomeContainer>
-              <span>Bem vindo!</span>
-              <img
-                src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
-                alt="Logo"
-              />
+              <span>Bem vindo ao melhor site de penhoras da sua região!</span>
+              <VideoContainer>
+                <ReactPlayer url="https://youtu.be/MANh1Ys2tDQ" />
+              </VideoContainer>
             </HomeContainer>
           ) : null}
           {location.pathname === "/antiguidades"
@@ -134,10 +136,16 @@ export function Home() {
                       </ProductBio>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
-                        <button onClick={() => { handleAddToCart(productM)}}><img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        /></button>
+                        <button
+                          onClick={() => {
+                            handleAddToCart(productM);
+                          }}
+                        >
+                          <img
+                            src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                            alt="Carrinho"
+                          />
+                        </button>
                       </ShopContainer>
                     </Product>
                   );
@@ -163,7 +171,11 @@ export function Home() {
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         {/* tem que deixar button senão não pega o localStorage */}
-                        <button onClick={() => { handleAddToCart(productM)}}>
+                        <button
+                          onClick={() => {
+                            handleAddToCart(productM);
+                          }}
+                        >
                           <img
                             src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
                             alt="Carrinho"

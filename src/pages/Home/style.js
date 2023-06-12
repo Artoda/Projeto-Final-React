@@ -72,6 +72,12 @@ export const HomeContainer = styled.div`
   }
 `;
 
+export const VideoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ProductsContainer = styled.div`
   display: flex;
   flex-direction: row;
