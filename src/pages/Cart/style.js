@@ -179,7 +179,7 @@ export const AddCupon = styled.div`
   h3 {
     font-size: large;
   }
-
+  
   input {
     padding: 5px;
     border-radius: 3px;
@@ -204,6 +204,13 @@ export const AddCupon = styled.div`
       display: none;
     }
   }
+`;
+
+export const Coupon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const ProductBio = styled.div`

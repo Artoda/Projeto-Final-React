@@ -24,6 +24,7 @@ import {
   TotalName,
   TotalValue,
   TotalDescont,
+  Coupon,
 } from "./style";
 import { Link } from "react-router-dom";
 
@@ -34,6 +35,7 @@ export function Cart() {
   const [newTotal, setNewTotal] = useState(0);
   const [coupon, setCoupon] = useState("");
   const [disabled, setDisabled] = useState(false);
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
 
   const { checkCartItems } = useAuth();
 
@@ -58,13 +60,13 @@ export function Cart() {
   }, [cart]);
 
   const coupons = ["teste", "teste2"];
-
   const totalCoupon = () => {
     let newTotal = total;
     let anotherTotal = 0;
 
     if (coupons.includes(coupon)) {
       setDisabled(true);
+      setIsCouponApplied(true);
 
       anotherTotal = total - Math.floor(Math.random() * (500 - 100 + 1)) + 100;
     } else {
@@ -73,7 +75,9 @@ export function Cart() {
 
     setNewTotal(anotherTotal);
     setTotal(newTotal);
+
   };
+
   // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
   const handleFinalizePurchase = () => {
     if (!isLoggedIn) {
@@ -149,7 +153,6 @@ export function Cart() {
               ))}
               <ProdTotal>
                 <TotalName>Total</TotalName>
-
                 <TotalValue
                   style={{
                     textDecorationLine: disabled ? "line-through" : "none",
@@ -161,6 +164,7 @@ export function Cart() {
                   R$ {newTotal}
                 </TotalDescont>
               </ProdTotal>
+              <Coupon>{isCouponApplied && <span>Cupom {coupon} aplicado</span>}</Coupon>
             </ProductsList>
             <AddCupon>
               <h3>Adicionar Cupom</h3>
