@@ -21,25 +21,37 @@ export function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");  
 
-  useEffect(() => {
-    async function fetchData(){
-    const faleConosco = await api.post('/clientes/mensagem', {
-      name:{name},
-      email:{email},
-      message:{message}
-    })
-    console.log(faleConosco)
-  }
-  fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData(){
+  //   const faleConosco = await api.post('/clientes/mensagem', {
+  //     name:{name},
+  //     email:{email},
+  //     message:{message}
+  //   })
+  //   console.log(faleConosco)
+  // }
+  // fetchData();
+  // }, []);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
       alert("Por favor, preencha todos os campos.");
       return;
     }
 
-    alert("Mensagem enviada com sucesso.");
+    try {
+      await api.post("/clientes/mensagem", {
+        nome: name,
+        email: email,
+        mensagem: message
+      });
+      alert("Mensagem enviada com sucesso.");
+
+    } 
+    catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.");
+    }
   };
 
   return (
