@@ -11,3 +11,9 @@ export const apiGit = axios.create({
   baseURL: "https://api.github.com/users",
 });
 
+// export const apiLocal = axios.create({ teste
+//   baseURL: "http://localhost:8080/postgres"
+//   // headers: {
+//   //   Authorization:''
+//   // }
+// });

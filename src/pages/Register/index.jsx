@@ -22,6 +22,7 @@ import {
   LabelError,
   FooterContainer
 } from "./style";
+import { apiLocal } from "../../services/api";
 
 export function Register() {
   const location = useLocation();
@@ -42,7 +43,7 @@ export function Register() {
   };
 
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (!nome | !email | !passwordConf | !password) {
       setError("preencha todos os campos");
       return;
@@ -51,8 +52,23 @@ export function Register() {
       return;
     }
 
-    const res = signup(email, password);
+    // TESTANDO SALVAMENTO NO BANCO
+    try {
+      await apiLocal.post("/auth/signup", {
+        username: nome,
+        email: email,
+        password: password,
+        passwordConf: passwordConf,
+        role: ["user"]
+      });
+    }
+    catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro ao salvar os dados. Por favor, tente novamente.");
+    }
+    // ATE AQUI SALVA BANCO
 
+    const res = signup(email, password);
     if (res) {
       setError(res);
       return;
@@ -68,7 +84,7 @@ export function Register() {
         <BoxContainer>
           <ContentContainer>
             <TitleContainer>
-                <FiUser className="icon" />
+              <FiUser className="icon" />
               <h2>cadastro do cliente</h2>
             </TitleContainer>
             <FormContainer>
@@ -93,8 +109,8 @@ export function Register() {
               <PasswordContainer>
                 <h3>* senha</h3>
                 <PasswordInput>
-                   <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />  
-                   {/*ao apertar o icone, mudar o type do input para text*/}
+                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
+                  {/*ao apertar o icone, mudar o type do input para text*/}
                   <InputComponent
                     type={showPassword ? 'text' : 'password'}
                     placeholder="digite sua senha"
@@ -108,13 +124,13 @@ export function Register() {
                 <PasswordInput>
                   <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
                   <InputComponent
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="digite sua senha"
-                      value={passwordConf}
-                      onChange={(e) => [setPasswordConf(e.target.value), setError("")]}
-                    />
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="digite sua senha"
+                    value={passwordConf}
+                    onChange={(e) => [setPasswordConf(e.target.value), setError("")]}
+                  />
                 </PasswordInput>
-              <LabelError>{error}</LabelError>
+                <LabelError>{error}</LabelError>
               </PasswordContainer>
               <ButtonComponent Text="finalizar cadastro" onClick={() => {
                 handleSignup();
@@ -127,7 +143,7 @@ export function Register() {
                   <span className="alert">&nbsp;faça o login</span>
                 </Link>
               </span>
-              
+
             </FooterContainer>
           </ContentContainer>
         </BoxContainer>
