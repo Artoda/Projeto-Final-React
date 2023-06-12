@@ -93,7 +93,7 @@ export function Cart() {
 
     // remover produto após venda
     cart.forEach((product) => {
-      axios.delete(`/produtos/${product.id_produto}`)
+      api.delete(`/produtos/${product.id_produto}`)
         .then((response) => {
           console.log("Produto removido do estoque com sucesso.");
         })
