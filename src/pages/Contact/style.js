@@ -52,13 +52,23 @@ export const MessageContainer = styled.div`
     flex-direction: column;
     text-align: left;
     width: 100%;
-        input {
-        height: 300px;
-        position: relative;
+        span {
+        padding: 10px 0;
+
+        }
+    /* position: relative; */
+        textarea {
+        border-radius: 5px;
+        height: 200px;
+        width: 100%;
+        font-family: inherit;
+        padding: 10px 10px;
+        resize: none;
+        overflow: auto;
           ::placeholder {
-            /* position: absolute; */
+            position: absolute;
             top: 0;
-            padding: 10px 0 0;
+            padding: 10px 0;
           }
         }
 `;

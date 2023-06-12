@@ -75,12 +75,12 @@ export function Contact() {
               </EmailContainer>
               <MessageContainer>
                 <span>* mensagem</span>                
-                <InputComponent
-                  type="text"
+                <textarea 
+                  type="textarea"
                   placeholder="Escreva sua mensagem aqui..."
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}                     
-                />   
+                  onChange={(e) => setMessage(e.target.value)}>
+                </textarea>
               </MessageContainer>             
               <ButtonComponent Text="enviar mensagem" onClick={handleSendMessage}/>
             </FormContainer>

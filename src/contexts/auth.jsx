@@ -5,7 +5,7 @@ export const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [cartItems, setCartItems] = useState(0);
+  const [cartItems, setCartItems] = useState();
 
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
