@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { api } from "../../services/api";
+import useAuth from "../../hooks/useAuth";
 import {
   Container,
   HomeContainer,
@@ -22,6 +23,13 @@ export function Home() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
+  const { checkCartItems } = useAuth();
+
+  useEffect(() => {
+
+  }, []);
+
+
   useEffect(() => {
     async function fetchData() {
       let { data: product } = await api.get("/produtos/dto");
@@ -42,6 +50,7 @@ export function Home() {
     setCart((prevCart) => {
       const updatedCart = [...prevCart, product];
       localStorage.setItem("cart", JSON.stringify(updatedCart));
+      checkCartItems();
       return updatedCart;
     });
   };
@@ -125,7 +134,7 @@ export function Home() {
                       </ProductBio>
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
-                        <button onClick={() => handleAddToCart(productM)}><img
+                        <button onClick={() => { handleAddToCart(productM)}}><img
                           src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
                           alt="Carrinho"
                         /></button>
@@ -154,7 +163,7 @@ export function Home() {
                       <ShopContainer>
                         <span>R$ {productM.valor_unitario}</span>
                         {/* tem que deixar button senão não pega o localStorage */}
-                        <button onClick={() => handleAddToCart(productM)}>
+                        <button onClick={() => { handleAddToCart(productM)}}>
                           <img
                             src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
                             alt="Carrinho"

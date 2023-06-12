@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BsCartCheck, BsTrash } from "react-icons/bs";
 import ButtonComponent from "../../common/components/Button";
+import useAuth from "../../hooks/useAuth";
 import {
   AddCupon,
   BoxListTotal,
@@ -32,6 +33,8 @@ export function Cart() {
   const [newTotal, setNewTotal] = useState(0);
   const [coupon, setCoupon] = useState("");
   const [disabled, setDisabled] = useState(false);
+
+  const { checkCartItems } = useAuth();
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
@@ -76,9 +79,10 @@ export function Cart() {
       alert("Não há produtos no carrinho.");
       return;
     }
-
+    
     localStorage.removeItem("cart");
     setCart([]);
+    checkCartItems();
     alert("Compra realizada com sucesso.");
   };
 
@@ -88,6 +92,7 @@ export function Cart() {
     );
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    checkCartItems();
   };
 
   return (
