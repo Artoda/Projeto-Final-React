@@ -26,12 +26,31 @@ export const TitleContainer = styled.header`
   }
   background-color: #ffffff;
   width: 100%;
+
+  @media only all and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const NavBarContainer = styled.div`
   margin: 0;
   width: 100%;
   height: 80px;
+
+  @media only all and (max-width: 700px) {
+    display: none;
+  }
+`;
+
+export const NavBarButton = styled.div`
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media only all and (max-width: 700px) {
+    display: flex;
+  }
 `;
 export const NavBar = styled.ul`
   list-style-type: none;
@@ -45,6 +64,9 @@ export const NavBar = styled.ul`
 
   a {
     height: 100%;
+  }
+  @media only all and (max-width: 700px) {
+    flex-direction: column;
   }
 `;
 
@@ -76,6 +98,11 @@ export const VideoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  @media only all and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const ProductsContainer = styled.div`

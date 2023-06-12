@@ -9,6 +9,7 @@ import {
   HomeContainer,
   ImageContainer,
   NavBar,
+  NavBarButton,
   NavBarContainer,
   NavItem,
   Product,
@@ -97,6 +98,9 @@ export function Home() {
                 Livros
               </NavItem>
             </Link>
+            <NavBarButton>
+              <span>Categorias</span>
+            </NavBarButton>
           </NavBar>
         </NavBarContainer>
         <TitleContainer>

@@ -7,6 +7,9 @@ export const Container = styled.div`
   padding: 10px 70px;
   background-color: var(--bg-header);
   gap: 15px;
+  @media only all and (max-width: 700px) {
+    padding: 10px 30px;
+  }
 `;
 
 export const LogoContainer = styled.div``;
@@ -41,6 +44,10 @@ export const SearchBar = styled.input`
 
   ::placeholder {
     color: var(--primary-color);
+  }
+
+  @media only all and (max-width: 1023px) {
+    display: none;
   }
 `;
 
@@ -133,6 +140,10 @@ export const LoginContainer = styled.div`
     width: 30px;
     background-color: var(--terciary-color);
     transform: rotate(45deg);
+  }
+
+  button {
+    width: 100px;
   }
 `;
 

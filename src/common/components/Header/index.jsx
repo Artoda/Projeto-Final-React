@@ -113,7 +113,7 @@ export function Header() {
             }}
           >
             <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-              Olá, click aqui para fazer login ou cadastre-se ↓
+              Olá, click aqui ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
               Welcome,
