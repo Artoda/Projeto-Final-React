@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
@@ -13,12 +13,25 @@ import {
   NameContainer,
   TitleContainer,
 } from "./style";
+import { api } from "../../services/api";
 
 export function Contact() {
   const location = useLocation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");  
+
+  useEffect(() => {
+    async function fetchData(){
+    const faleConosco = await api.post('/clientes/mensagem', {
+      name:{name},
+      email:{email},
+      message:{message}
+    })
+    console.log(faleConosco)
+  }
+  fetchData();
+  }, []);
 
   const handleSendMessage = () => {
     if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
@@ -28,7 +41,7 @@ export function Contact() {
 
     alert("Mensagem enviada com sucesso.");
   };
-          // AINDA VERIFICANDO O ENVIO NO SPRING
+
   return (
     <>
       <Container>
