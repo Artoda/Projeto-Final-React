@@ -49,6 +49,7 @@ export function MyProfile() {
                     </FooterContainer>
                 </ContentContainer>
             </Container>
+            
         </>
     );
 }

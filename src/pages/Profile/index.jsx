@@ -3,6 +3,7 @@ import { FiUser } from "react-icons/fi";
 import { useForm } from 'react-hook-form';
 import { Link } from "react-router-dom";
 
+
 import {
     Container,
     ContentContainer,
@@ -16,13 +17,13 @@ import {
 
 
 export function Profile() {
+
     const location = useLocation();
     const { register, handleSubmit, setValue, setFocus } = useForm();
 
     const onSubmit = (data) => {
         console.log(data);
     }
-
     const checkCEP = (e) => {
         const cep = e.target.value.replace(/\D/g, '');
         //  console.log(cep);
@@ -35,6 +36,8 @@ export function Profile() {
                 setFocus('numero');
             });
     }
+    
+    
 
     return (
         <>
@@ -55,30 +58,30 @@ export function Profile() {
                             <span> endereço</span>
 
                             <span>cep</span>
-                            <input type="text" {...register("cep")} onBlur={checkCEP} />
-
+                            <input type="text" {...register("cep")} onBlur={checkCEP}  placeholder=" 00000-000"/>
+                        
                           
                                 <span>bairro</span>
-                                <input type="bairro" {...register("neighborhood")} />
+                                <input type="bairro" {...register("neighborhood")}  placeholder=" Alto da Serra" />
                           
                            
                                 <span>logradouro</span>
-                                <input type="logradouro" {...register("address")} />
+                                <input type="logradouro" {...register("address")}  placeholder=" Rua Teresa - até 0608 - lado par" />
                             
 
                           
                                 <span>localidade</span>
-                                <input type="localidade" {...register("locality")} />
+                                <input type="localidade" {...register("locality")}  placeholder=" Petrópolis" />
                             
 
                             <BoxContainer>
                                 <NumberContainer>
                                     <span>número</span>
-                                    <input type="número" {...register("numero")} />
+                                    <input type="número" {...register("numero")}  placeholder=" 000" />
                                 </NumberContainer>
                                 <ComplementContainer>
                                     <span>complemento</span>
-                                    <input type="complemento" />
+                                    <input type="complemento"  placeholder=" centro" />
                                 </ComplementContainer>
                             </BoxContainer>
                             <Link to={"/myprofile"}>
