@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { GrSearch } from "react-icons/gr";
 import { BsCart3 } from "react-icons/bs";
+import LogoComponent from "../Logo";
 
 import {
   Container,
@@ -67,10 +68,11 @@ export function Header() {
       <Container>
         <LogoContainer>
           <Link to={"/"}>
-            <img
+          <LogoComponent/>
+            {/* <img
               src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
               alt="Logo"
-            />
+            /> */}
           </Link>
         </LogoContainer>
 
