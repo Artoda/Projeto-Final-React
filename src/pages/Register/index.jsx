@@ -43,7 +43,7 @@ export function Register() {
 
 
   const handleSignup = async () => {
-    if (!nome | !email | !passwordConf | !password) {
+    if (!nome | !email | !password | !passwordConf ) {
       setError("preencha todos os campos");
       return;
     } else if (password !== passwordConf) {
@@ -67,7 +67,7 @@ export function Register() {
     }
     // ATE AQUI SALVA BANCO
 
-    const res = signup(email, password);
+    const res = signup(email, password, nome);
     if (res) {
       setError(res);
       return;
