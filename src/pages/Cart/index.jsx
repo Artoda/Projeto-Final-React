@@ -28,6 +28,7 @@ import {
 import { Link } from "react-router-dom";
 
 export function Cart() {
+  const { isLoggedIn } = useAuth(); // para verificar se pessoa está logada antes de confirmar compra
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [newTotal, setNewTotal] = useState(0);
@@ -75,11 +76,16 @@ export function Cart() {
   };
   // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
   const handleFinalizePurchase = () => {
+    if (!isLoggedIn) {
+      alert("Faça login para finalizar a compra.");
+      return;
+    }
+
     if (cart.length === 0) {
       alert("Não há produtos no carrinho.");
       return;
     }
-    
+
     localStorage.removeItem("cart");
     setCart([]);
     checkCartItems();
