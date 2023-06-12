@@ -7,13 +7,12 @@ export const Container = styled.div`
   padding: 10px 70px;
   background-color: var(--bg-header);
   gap: 15px;
-`;
-
-export const LogoContainer = styled.div`
-  img {
-    width: 230px;
+  @media only all and (max-width: 700px) {
+    padding: 10px 30px;
   }
 `;
+
+export const LogoContainer = styled.div``;
 
 export const SearchContainer = styled.div`
   display: flex;
@@ -46,6 +45,10 @@ export const SearchBar = styled.input`
   ::placeholder {
     color: var(--primary-color);
   }
+
+  @media only all and (max-width: 1023px) {
+    display: none;
+  }
 `;
 
 export const SearchItens = styled.div`
@@ -58,7 +61,7 @@ export const SearchItens = styled.div`
   border-radius: 5px;
   border: none;
   background-color: white;
-  top: 33px;
+  top: 42px;
   span {
     font-size: 18px;
   }
@@ -141,6 +144,10 @@ export const LoginContainer = styled.div`
     border-right: 25px solid transparent;
     border-bottom: 25px solid var(--terciary-color);
   }
+
+  button {
+    width: 100px;
+  }
 `;
 
 export const ButtonContainer = styled.button`
@@ -173,8 +180,9 @@ export const ShopContainer = styled.div`
   gap: 10px;
   position: relative;
   cursor: pointer;
+  padding: 5px;
   .icon {
-    font-size: 40px;
+    font-size: 250%;
     color: black;
   }
   span {
@@ -186,8 +194,8 @@ export const ShopContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    right: -20%;
-    top: -20%;
+    right: -7%;
+    top: -8%;
     width: 25px;
     height: 25px;
     color: white;

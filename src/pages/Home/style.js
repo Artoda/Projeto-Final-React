@@ -14,6 +14,19 @@ export const Container = styled.div`
   height: 100%;
 `;
 
+export const ButtonCategorie = styled.div`
+  button {
+    display: none;
+  }
+  @media only all and (max-width: 700px) {
+    button {
+      display: flex;
+      padding: 5px;
+      margin-top: 10px;
+    }
+  }
+`;
+
 export const TitleContainer = styled.header`
   display: flex;
   align-items: center;
@@ -26,14 +39,28 @@ export const TitleContainer = styled.header`
   }
   background-color: #ffffff;
   width: 100%;
+
+  @media only all and (max-width: 700px) {
+    display: none;
+  }
 `;
 
 export const NavBarContainer = styled.div`
   margin: 0;
   width: 100%;
   height: 80px;
+  display: flex;
+  flex-direction: column;
+
+  @media only all and (max-width: 700px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
 `;
-export const NavBar = styled.ul`
+
+export const NavBar = styled.div`
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -46,14 +73,19 @@ export const NavBar = styled.ul`
   a {
     height: 100%;
   }
+  @media only all and (max-width: 700px) {
+    flex-direction: column;
+    padding: 0;
+  }
 `;
 
-export const NavItem = styled.li`
+export const NavItem = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: center;
   font-size: 20px;
   height: 100%;
+  width: 100%;
   padding: 0 2px;
   border-bottom: ${(props) =>
     props.isActive ? "4px solid rgba(203, 18, 28, 0.8)" : "none"};
@@ -64,6 +96,9 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
   span {
     font-size: xx-large;
   }
@@ -76,6 +111,8 @@ export const VideoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
 `;
 
 export const ProductsContainer = styled.div`
@@ -83,7 +120,6 @@ export const ProductsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  position: relative;
   height: 100%;
   gap: 50px;
 `;

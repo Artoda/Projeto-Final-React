@@ -63,7 +63,7 @@ export function Register() {
     }
     catch (error) {
       console.error(error);
-      alert("Ocorreu um erro ao salvar os dados. Por favor, tente novamente.");
+      alert("Ocorreu um erro ao salvar os dados. ESTE É DO BANCO DE DADOS, mas salvou no localStorage.");
     }
     // ATE AQUI SALVA BANCO
 

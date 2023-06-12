@@ -6,6 +6,7 @@ import React from "react";
 import ReactPlayer from "react-player";
 import {
   Container,
+  ButtonCategorie,
   HomeContainer,
   ImageContainer,
   NavBar,
@@ -25,6 +26,7 @@ export function Home() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [isHidden, setIsHidden] = useState(true);
 
   const { checkCartItems } = useAuth();
 
@@ -34,7 +36,6 @@ export function Home() {
     async function fetchData() {
       let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
-      // console.log(product)
     }
     fetchData();
   }, []);
@@ -44,6 +45,7 @@ export function Home() {
     const isProductInCart = cart.some(
       (item) => item.id_produto === product.id_produto
     );
+
     if (isProductInCart) {
       alert("Este produto já está no carrinho.");
       return;
@@ -56,6 +58,9 @@ export function Home() {
       return updatedCart;
     });
   };
+  const handleClick = () => {
+    setIsHidden((current) => !current);
+  };
 
   useEffect(() => {
     // atualiza os dados do carrinho com localStorage
@@ -66,14 +71,21 @@ export function Home() {
   }, []);
 
   // verifica o estado do carrinho após atualizar
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
+  useEffect(() => {}, [cart]);
 
   return (
     <>
       <Container>
-        <NavBarContainer>
+        <ButtonCategorie>
+          <button
+            onClick={() => {
+              handleClick();
+            }}
+          >
+            Categorias
+          </button>
+        </ButtonCategorie>
+        <NavBarContainer style={{ display: isHidden ? "flex" : "none" }}>
           <NavBar>
             <Link to={"/"}>
               <NavItem isActive={location.pathname === "/"}>Home</NavItem>
@@ -85,9 +97,6 @@ export function Home() {
               <NavItem isActive={location.pathname === "/antiguidades"}>
                 Antiguidades
               </NavItem>
-            </Link>
-            <Link to={"/joias"}>
-              <NavItem isActive={location.pathname === "/joias"}>Jóias</NavItem>
             </Link>
             <Link to={"/armas"}>
               <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>

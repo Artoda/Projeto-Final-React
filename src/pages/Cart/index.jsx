@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { BsCartCheck, BsTrash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import useAuth from "../../hooks/useAuth";
+// import { api } from "../../services/api";
 import {
   AddCupon,
   BoxListTotal,
   Container,
   ContentContainer,
+  Coupon,
   ImageContainer,
   ProdItem,
   ProdName,
@@ -21,12 +24,10 @@ import {
   SelectedItems,
   ShopContainer,
   TitleContainer,
+  TotalDescont,
   TotalName,
   TotalValue,
-  TotalDescont,
-  Coupon,
 } from "./style";
-import { Link } from "react-router-dom";
 
 export function Cart() {
   const { isLoggedIn } = useAuth(); // para verificar se pessoa está logada antes de confirmar compra
@@ -67,15 +68,15 @@ export function Cart() {
     if (coupons.includes(coupon)) {
       setDisabled(true);
       setIsCouponApplied(true);
+      document.querySelector(".input").disabled = true;
 
-      anotherTotal = total - Math.floor(Math.random() * (500 - 100 + 1)) + 100;
+      anotherTotal = total - Math.floor(Math.random() * (400 - 100 + 1)) - 100;
     } else {
       alert("Cupon Inexistente");
     }
 
     setNewTotal(anotherTotal);
     setTotal(newTotal);
-
   };
 
   // para verificar se tem produtos no carrinho ao finalizar, apaga local e carrinho
@@ -89,6 +90,17 @@ export function Cart() {
       alert("Não há produtos no carrinho.");
       return;
     }
+
+    // remover produto após venda deixar comentado
+    // cart.forEach((product) => {
+    //   api.delete(`/produtos/${product.id_produto}`)
+    //     .then((response) => {
+    //       console.log("Produto removido do estoque com sucesso.");
+    //     })
+    //     .catch((error) => {
+    //       console.error("Erro ao remover o produto do estoque:", error);
+    //     });
+    // });
 
     localStorage.removeItem("cart");
     setCart([]);
@@ -164,12 +176,15 @@ export function Cart() {
                   R$ {newTotal}
                 </TotalDescont>
               </ProdTotal>
-              <Coupon>{isCouponApplied && <span>Cupom {coupon} aplicado</span>}</Coupon>
+              <Coupon>
+                {isCouponApplied && <span>Cupom {coupon} aplicado</span>}
+              </Coupon>
             </ProductsList>
             <AddCupon>
               <h3>Adicionar Cupom</h3>
               <input
                 type="text"
+                className="input"
                 value={coupon}
                 onChange={(e) => {
                   setCoupon(e.target.value);

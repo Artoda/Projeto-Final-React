@@ -19,7 +19,7 @@ export function Contact() {
   const location = useLocation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");  
+  const [message, setMessage] = useState("");
 
   const handleSendMessage = async () => {
     if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
@@ -31,17 +31,18 @@ export function Contact() {
       await api.post("/clientes/mensagem", {
         nome: name,
         email: email,
-        mensagem: message
+        mensagem: message,
       });
       alert("Mensagem enviada com sucesso. Responderemos em breve!");
 
       setName("");
       setEmail("");
       setMessage("");
-    } 
-    catch (error) {
+    } catch (error) {
       console.error(error);
-      alert("Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.");
+      alert(
+        "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente."
+      );
     }
   };
 
@@ -50,39 +51,42 @@ export function Contact() {
       <Container>
         <BoxContainer>
           <TitleContainer>
-              <AiOutlineMail className="icon" />
+            <AiOutlineMail className="icon" />
             <h2>Nos mande uma mensagem :)</h2>
           </TitleContainer>
           <ContentContainer>
             <FormContainer>
               <NameContainer>
-                <span>* nome</span>
+                <span>* Nome</span>
                 <InputComponent
                   type="text"
-                  placeholder="digite seu nome completo"                     
+                  placeholder="Digite seu nome completo"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                />   
+                />
               </NameContainer>
               <EmailContainer>
-                <span>* e-mail</span>
+                <span>* E-mail</span>
                 <InputComponent
                   type="email"
-                  placeholder="digite seu e-mail"
+                  placeholder="Digite seu e-mail"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}                     
-                />          
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </EmailContainer>
               <MessageContainer>
-                <span>* mensagem</span>                
-                <textarea 
+                <span>* Mensagem</span>
+                <textarea
                   type="textarea"
                   placeholder="Escreva sua mensagem aqui..."
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}>
-                </textarea>
-              </MessageContainer>             
-              <ButtonComponent Text="enviar mensagem" onClick={handleSendMessage}/>
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+              </MessageContainer>
+              <ButtonComponent
+                Text="enviar mensagem"
+                onClick={handleSendMessage}
+              />
             </FormContainer>
           </ContentContainer>
         </BoxContainer>

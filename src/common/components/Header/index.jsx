@@ -82,7 +82,6 @@ export function Header() {
               location.pathname === "/" ||
               location.pathname === "/artes" ||
               location.pathname === "/antiguidades" ||
-              location.pathname === "/joias" ||
               location.pathname === "/armas" ||
               location.pathname === "/jogos" ||
               location.pathname === "/livros"
@@ -97,12 +96,16 @@ export function Header() {
             setProducts={setProducts}
           ></SearchBar>
 
-          <GrSearch className="icon" />
-
-          <SearchItens products={products}>
+          <SearchItens
+            products={products}
+            style={{ display: message.length === 0 ? "none" : "flex" }}
+          >
             {products.map((prod, id) => {
               return (
-                <Link to={prod.categoriaProdDto.nome}>
+                <Link
+                  to={prod.categoriaProdDto.nome}
+                  onClick={() => setMessage("")}
+                >
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
                     <img src={prod.url_imagem} />

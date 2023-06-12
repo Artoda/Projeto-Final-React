@@ -5,10 +5,13 @@ export const LogoContainer = styled.div`
   gap: 3px;
   span {
     font-size: 30px;
-    color:  rgba(203, 18, 28, 0.7);
+    color: rgba(203, 18, 28, 0.7);
+    @media only all and (max-width: 700px) {
+      font-size: 20px;
+    }
   }
   .alert {
-    color:  rgba(203, 18, 28, 0.9);
+    color: rgba(203, 18, 28, 0.9);
   }
 `;
 
@@ -16,18 +19,18 @@ export const LogoIcon = styled.div`
   display: flex;
   align-items: center;
   gap: 2px;
-  
-  span{
+
+  span {
     width: 11px;
     height: 32px;
   }
-  .square1{
+  .square1 {
     background-color: rgba(203, 18, 28, 1);
   }
-  .square2{
+  .square2 {
     background-color: rgba(203, 18, 28, 0.7);
   }
-  .square3{
+  .square3 {
     background-color: rgba(203, 18, 28, 0.4);
   }
 `;

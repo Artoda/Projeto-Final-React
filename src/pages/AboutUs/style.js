@@ -16,7 +16,7 @@ export const PeopleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;  
+  width: 80%;
 `;
 
 export const TitleContainer = styled.div`
@@ -26,29 +26,30 @@ export const TitleContainer = styled.div`
   background-color: var(--bg-box);
   width: 100%;
   padding: 40px;
-    
-    h1{
-      font-size: 50px;
-      color: #CB1212;
-    }
 
-    button {
-      background-color: #ffffff;
-      border: none;
-    }
-  `;
+  h1 {
+    cursor: pointer;
+    font-size: 50px;
+    color: #cb1212;
+  }
 
-  export const PersonContainer = styled.div`
-    display: flex;    
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-    background-color:  #ffffff;
-    
-    @media (max-width: 768px) {
-      flex-wrap: wrap;  
-    }
-  `;
+  button {
+    background-color: #ffffff;
+    border: none;
+  }
+`;
+
+export const PersonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  background-color: #ffffff;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+`;
 
 export const UsContainer = styled.div`
   display: flex;
@@ -57,7 +58,7 @@ export const UsContainer = styled.div`
   justify-content: center;
   width: 100%;
 
-  h1{   
+  h1 {
     font-size: 30px;
     color: #737070;
     padding: 10px;
@@ -70,10 +71,10 @@ export const ImageContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  
+
   img {
-   width: 180px;
-   border-radius: 50%;
+    width: 180px;
+    border-radius: 50%;
   }
 `;
 
@@ -83,7 +84,7 @@ export const IconsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  .icon{
+  .icon {
     color: black;
     font-size: 60px;
     padding: 10px;
