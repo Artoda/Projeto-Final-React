@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { BsCartCheck, BsTrash } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import useAuth from "../../hooks/useAuth";
+import { api } from "../../services/api";
 import {
   AddCupon,
   BoxListTotal,
   Container,
   ContentContainer,
+  Coupon,
   ImageContainer,
   ProdItem,
   ProdName,
@@ -21,12 +24,10 @@ import {
   SelectedItems,
   ShopContainer,
   TitleContainer,
+  TotalDescont,
   TotalName,
   TotalValue,
-  TotalDescont,
-  Coupon,
 } from "./style";
-import { Link } from "react-router-dom";
 
 export function Cart() {
   const { isLoggedIn } = useAuth(); // para verificar se pessoa está logada antes de confirmar compra
@@ -89,6 +90,17 @@ export function Cart() {
       alert("Não há produtos no carrinho.");
       return;
     }
+
+    // remover produto após venda
+    cart.forEach((product) => {
+      axios.delete(`/produtos/${product.id_produto}`)
+        .then((response) => {
+          console.log("Produto removido do estoque com sucesso.");
+        })
+        .catch((error) => {
+          console.error("Erro ao remover o produto do estoque:", error);
+        });
+    });
 
     localStorage.removeItem("cart");
     setCart([]);
