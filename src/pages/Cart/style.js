@@ -100,17 +100,9 @@ export const ShopContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 8px;
   span {
     font-size: large;
-  }
-  button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
   }
 `;
 
@@ -135,6 +127,7 @@ export const ProdItem = styled.div`
 export const ProdName = styled.div`
   display: flex;
   align-items: start;
+  justify-content: center;
   width: 100%;
   padding: 10px;
 `;
@@ -142,6 +135,7 @@ export const ProdName = styled.div`
 export const ProdValue = styled.div`
   display: flex;
   align-items: start;
+  justify-content: center;
   width: 100%;
   padding: 10px;
 `;
@@ -149,7 +143,7 @@ export const ProdValue = styled.div`
 export const ProdTotal = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   width: 100%;
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -158,22 +152,57 @@ export const ProdTotal = styled.div`
 
 export const TotalName = styled.div`
   display: flex;
-  align-items: start;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 `;
 
 export const TotalValue = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+export const TotalDescont = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
 `;
 
 export const AddCupon = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  gap: 10px;
+
   h3 {
     font-size: large;
   }
 
   input {
     padding: 5px;
+    border-radius: 3px;
+  }
+
+  button {
+    background: none;
+    color: inherit;
+    border: solid 2.25px;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    transition: 0.5s;
+    border-radius: 4px;
+    :hover {
+      background-color: rgba(203, 18, 28, 0.7);
+      transition: 0.5s;
+    }
+
+    &:disabled {
+      display: none;
+    }
   }
 `;
 
