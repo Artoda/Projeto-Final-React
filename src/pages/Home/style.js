@@ -145,7 +145,8 @@ export const ImageContainer = styled.div`
     :hover + .productBio {
       display: flex;
     }
-    width: 200px;
+    width: 80%;
+    border-radius: 5%;
   }
 `;
 
@@ -167,7 +168,17 @@ export const ShopContainer = styled.div`
     font-size: large;
   }
   img {
-    width: 50px;
+    width: 50%;
+  }
+
+  button {
+    cursor: pointer;
+    border-radius: 7%;
+    background: var(--terciary-color);
+
+    :hover {
+      background-color: var(--bg-button);
+    }
   }
 
   width: 100%;

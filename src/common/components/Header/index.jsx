@@ -68,7 +68,7 @@ export function Header() {
       <Container>
         <LogoContainer>
           <Link to={"/"}>
-          <LogoComponent/>
+            <LogoComponent />
             {/* <img
               src="https://cdn.discordapp.com/attachments/1081311873481322597/1116370527892819978/g2pawnshop-logo.png"
               alt="Logo"
@@ -120,7 +120,7 @@ export function Header() {
             }}
           >
             <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-              Olá, faça login ou cadastre-se ↓
+              Olá, click aqui para fazer login ou cadastre-se ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
               Welcome,
@@ -144,21 +144,21 @@ export function Header() {
                 <ButtonContainer
                   style={{ display: isLoggedIn ? "none" : "flex" }}
                 >
-                  entrar
+                  Entrar
                 </ButtonContainer>
               </Link>
               <Link to={"/register"}>
                 <ButtonContainer
                   style={{ display: isLoggedIn ? "none" : "flex" }}
                 >
-                  cadastrar
+                  Cadastrar
                 </ButtonContainer>
               </Link>
               <Link to={"/myprofile"}>
                 <ButtonContainer
                   style={{ display: isLoggedIn ? "flex" : "none" }}
                 >
-                  meu perfil
+                  Meu Perfil
                 </ButtonContainer>
               </Link>
               <ButtonContainer
@@ -168,7 +168,7 @@ export function Header() {
                   checkIsLoggedIn();
                 }}
               >
-                deslogar
+                Deslogar
               </ButtonContainer>
             </LoginContainer>
           </ProfileContainer>

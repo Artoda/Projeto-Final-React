@@ -20,11 +20,10 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-
   const checkCartItems = () => {
     const hasItems = localStorage.getItem("cart");
     if (!!hasItems) {
-      let items = JSON.parse(localStorage.getItem('cart')).length; //retorna o número de itens no carrinho
+      let items = JSON.parse(localStorage.getItem("cart")).length; //retorna o número de itens no carrinho
       console.log(items);
       setCartItems(items);
     } else setCartItems(0);
@@ -89,7 +88,19 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, signed: !!user, signin, signup, signout, isLoggedIn, setIsLoggedIn, checkIsLoggedIn, cartItems, setCartItems, checkCartItems }}
+      value={{
+        user,
+        signed: !!user,
+        signin,
+        signup,
+        signout,
+        isLoggedIn,
+        setIsLoggedIn,
+        checkIsLoggedIn,
+        cartItems,
+        setCartItems,
+        checkCartItems,
+      }}
     >
       {children}
     </AuthContext.Provider>
