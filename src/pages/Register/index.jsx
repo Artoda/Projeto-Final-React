@@ -54,7 +54,7 @@ export function Register() {
 
     // TESTANDO SALVAMENTO NO BANCO
     try {
-      await apiLocal.post("/auth/signup", {
+      await api.post("/auth/signup", {
         username: nome,
         email: email,
         password: password,
