@@ -37,15 +37,27 @@ export function Login() {
     setShowPassword(!showPassword);
   };
 
-
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email | !password) {
       setError("Preencha todos os campos");
       return;
     }
 
-    const res = signin(email, password);
+    // // TESTANDO LOGIN pelo BANCO
+    // try {
+    //   await api.post("/auth/signin", {
+    //     email: email,
+    //     password: password
+    //   });
+    // }
+    // catch (error) {
+    //   console.error(error);
+    //   alert("Ocorreu um erro no login. Por favor tente novamente");
+    // }
+    // // ATE AQUI busca no banco os dados
 
+
+    const res = signin(email, password);
     if (res) {
       setError(res);
       return;
@@ -61,7 +73,7 @@ export function Login() {
         <BoxContainer>
           <ContentContainer>
             <TitleContainer>
-                <FiUser className="icon" />
+              <FiUser className="icon" />
               <h2>login do cliente</h2>
             </TitleContainer>
             <FormContainer>
