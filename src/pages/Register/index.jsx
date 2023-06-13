@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
-import { api } from "../../services/api";
+import { apiLocal } from "../../services/api";
 import {
   BoxContainer,
   Container,
@@ -57,7 +57,7 @@ export function Register() {
 
     // TESTANDO SALVAMENTO NO BANCO
     try {
-      await api.post("/auth/signup", {
+      await apiLocal.post("/auth/signup", {
         username: nome,
         email: email,
         password: password,
