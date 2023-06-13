@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FiUser } from "react-icons/fi";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation } from "react-router-dom";
-import { apiLocal } from "../../../services/api";
+import { api } from "../../../services/api";
 import {
     BoxContainer,
     Container,
@@ -25,7 +25,7 @@ export function MyProfile() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const respUsers = await apiLocal.get("/users");
+                const respUsers = await api.get("/users");
                 const users = respUsers.data;
                 setUserData(users);
                 console.log(users)

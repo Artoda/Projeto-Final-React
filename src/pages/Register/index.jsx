@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 
@@ -8,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
-import { apiLocal } from "../../services/api";
+import { api } from "../../services/api";
 import {
   BoxContainer,
   Container,
@@ -58,7 +57,7 @@ export function Register() {
 
     // TESTANDO SALVAMENTO NO BANCO
     try {
-      await apiLocal.post("/auth/signup", {
+      await api.post("/auth/signup", {
         username: nome,
         email: email,
         password: password,

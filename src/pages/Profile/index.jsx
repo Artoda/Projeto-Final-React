@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 import useAuth from '../../hooks/useAuth';
-import { apiLocal } from '../../services/api';
+import { api } from '../../services/api';
 import {
     BoxContainer,
     ComplementContainer,
@@ -39,7 +39,7 @@ export function Profile() {
 
     const handleClick = async () => {
         try {
-            const responseAddress = await apiLocal.post("/enderecos", {
+            const responseAddress = await api.post("/enderecos", {
                 cep: cep,
                 numero: number,
                 complemento: complement
@@ -54,7 +54,7 @@ export function Profile() {
     };
 
     const handleClick2 = async () => {
-        const responseClient = await apiLocal.post("/clientes", {
+        const responseClient = await api.post("/clientes", {
             nome_completo: nameSurname,
             email: email,
             cpf: cpf,
