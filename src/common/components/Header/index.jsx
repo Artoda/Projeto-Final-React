@@ -36,7 +36,7 @@ export function Header() {
   };
 
   useEffect(() => {
-    getName;
+    getName();
   }, [isLoggedIn]);
 
   const fetchData = (value) => {

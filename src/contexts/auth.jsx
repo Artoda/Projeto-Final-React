@@ -10,29 +10,23 @@ export const AuthProvider = ({ children }) => {
   
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
-    const usersStorage = localStorage.getItem("users_bd");
+    const usersStorage = localStorage.getItem("user_db");
     
     checkCartItems();
 
-    if (userToken && usersStorage) {
-      const hasUser = JSON.parse(usersStorage)?.filter(
-        (user) => user.email === JSON.parse(userToken).email
-        );
-        if (hasUser) setUser(hasUser[0]);
-      }
+    // if (userToken && usersStorage) {
+    //   const hasUser = JSON.parse(usersStorage)?.filter(
+    //     (user) => user.email === JSON.parse(userToken).email
+    //     );
+    //     if (hasUser) setUser(hasUser[0]);
+    //   }
     }, []);
     
   const getName = () => {
-    const user = JSON.parse(localStorage.getItem('user_token')); //retorno user_token
-    const users = JSON.parse(localStorage.getItem('users_bd')); //retorno users_bd
-    let firstName = "";
-
-    if (user && users) {
-      const completeName = users.find( u => u.email === user.email).nome;
-      firstName = completeName.split(' ')[0];
-    }
-    
-    setNome(firstName);
+    const user = localStorage.getItem('user_db'); //retorno users_db
+    // let firstName = user.split(' ')[0];
+    console.log(user);    
+    setNome(user);
   }
 
   const checkCartItems = async () => {
@@ -62,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   // const signup = (email, password) => {
-  //   const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+  //   const usersStorage = JSON.parse(localStorage.getItem("users_db"));
   //   const hasUser = usersStorage?.filter((user) => user.email === email);
 
   //   if (hasUser?.length) {
@@ -75,7 +69,7 @@ export const AuthProvider = ({ children }) => {
   //   } else {
   //     newUser = [{ email, password }];
   //   }
-  //   localStorage.setItem("users_bd", JSON.stringify(newUser));
+  //   localStorage.setItem("users_db", JSON.stringify(newUser));
   //   return;
   // };
 
@@ -98,6 +92,8 @@ export const AuthProvider = ({ children }) => {
         cartItems,
         setCartItems,
         checkCartItems,
+        getName,
+        nome
       }}
     >
       {children}
