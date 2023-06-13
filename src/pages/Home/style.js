@@ -49,13 +49,24 @@ export const TitleContainer = styled.header`
   gap: 10px;
 
   img {
-    width: 55%;
+    width: 1000px;
     padding: 10px;
   }
   background-color: #ffffff;
   width: 100%;
 
+  @media only all and (max-width: 1010px) {
+    img {
+      width: 700px;
+    }
+  }
   @media only all and (max-width: 700px) {
+    img {
+      width: 500px;
+    }
+  }
+
+  @media only all and (max-width: 500px) {
     display: none;
   }
 `;

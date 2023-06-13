@@ -10,6 +10,10 @@ export const Container = styled.div`
   @media only all and (max-width: 700px) {
     padding: 10px 30px;
   }
+
+  @media only all and (max-width: 414px) {
+    padding: 0;
+  }
 `;
 
 export const LogoContainer = styled.div``;
@@ -70,6 +74,8 @@ export const SearchItens = styled.div`
     border-radius: 5px;
     width: 100px;
   }
+  overflow: auto;
+  max-height: 600px;
 `;
 
 export const SearchResults = styled.div`
@@ -82,8 +88,6 @@ export const SearchResults = styled.div`
   img {
     width: 70px;
   }
-  overflow: auto;
-  max-height: 300px;
 `;
 
 export const RightContainer = styled.div`
