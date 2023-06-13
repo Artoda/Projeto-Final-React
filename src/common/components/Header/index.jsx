@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BsCart3 } from "react-icons/bs";
+import { useState, useEffect, useContext } from "react";
+import { BsCart3, BsPersonCircle } from "react-icons/bs";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import LogoComponent from "../Logo";
@@ -36,7 +36,7 @@ export function Header() {
   };
 
   useEffect(() => {
-    getName();
+    getName;
   }, [isLoggedIn]);
 
   const fetchData = (value) => {
@@ -125,13 +125,13 @@ export function Header() {
               Olá, clique aqui para fazer login ou cadastre-se ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
-                <span className="nome" > { nome } </span>
+              <span className="nome" > {nome} </span>
               , seja bem vindo!
               <Link to={"/myProfile"}>
               </Link>
             </span>
-            <BsPersonCircle className="icon"style={{ display: isLoggedIn ? "flex" : "none" }} />
-              
+            <BsPersonCircle className="icon" style={{ display: isLoggedIn ? "flex" : "none" }} />
+
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
               <span className="triangle"></span>
