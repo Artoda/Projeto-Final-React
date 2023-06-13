@@ -28,10 +28,29 @@ export function Home() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [isHidden, setIsHidden] = useState(true);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
   const { checkCartItems } = useAuth();
 
-  useEffect(() => {}, []);
+  function handleResize() {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+  }, []);
+
+  useEffect(() => {
+    if (windowSize.width > 700) {
+      setIsHidden(true)
+    }
+  }, [windowSize.width, windowSize.height]);
 
   useEffect(() => {
     async function fetchData() {

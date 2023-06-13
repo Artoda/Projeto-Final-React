@@ -14,6 +14,8 @@ export const Container = styled.div`
   background-color: var(--bg-color);
   min-height: calc(100vh - 30px);
 
+  position: relative;
+
 `;
 
 export const ButtonCategorie = styled.div`
@@ -108,11 +110,17 @@ export const NavBarContainer = styled.div`
   flex-direction: column;
   background-color: white;
   @media only all and (max-width: 700px) {
+    position: absolute;
+    z-index: 1;
+    top: 42px;
+    left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    /* width: 150px; */
+    height: 300px;
+    width: 120px;
+    border-radius: 5%;
+
   }
 `;
 
@@ -135,9 +143,8 @@ export const NavBar = styled.div`
     gap: 0;
     padding: 0;
     align-items: start;
-    a {
-    margin: 0 10px;
-    }
+  background-color: white;
+
   }
 `;
 
@@ -154,8 +161,8 @@ export const NavItem = styled.div`
   color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
 
   @media only all and (max-width: 700px) {
-    margin-left: 25px;
-    font-size: 16px;
+    margin-left: 10px;
+    font-size: 14px;
     padding: 10px 0;
   }
 `;
