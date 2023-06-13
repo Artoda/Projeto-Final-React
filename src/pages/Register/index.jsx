@@ -43,7 +43,7 @@ export function Register() {
 
 
   const handleSignup = async () => {
-    if (!nome | !email | !password | !passwordConf ) {
+    if (!nome | !email | !password | !passwordConf) {
       setError("preencha todos os campos");
       return;
     } else if (password !== passwordConf) {
@@ -74,7 +74,7 @@ export function Register() {
     }
     catch (error) {
       console.error(error);
-      alert("Ocorreu um erro ao salvar os dados. ERRO DO POSTGRES, mas salvou no localStorage.");
+      alert("Ocorreu um erro ao salvar os dados.");
     }
     // ATE AQUI SALVA BANCO POSTGRES
   };

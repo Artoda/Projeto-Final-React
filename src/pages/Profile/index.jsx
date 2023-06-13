@@ -36,8 +36,8 @@ export function Profile() {
                 setFocus('numero');
             });
     }
-    
-    
+
+
 
     return (
         <>
@@ -58,30 +58,30 @@ export function Profile() {
                             <span> endereço</span>
 
                             <span>cep</span>
-                            <input type="text" {...register("cep")} onBlur={checkCEP}  placeholder=" 00000-000"/>
-                        
-                          
-                                <span>bairro</span>
-                                <input type="bairro" {...register("neighborhood")}  placeholder=" Alto da Serra" />
-                          
-                           
-                                <span>logradouro</span>
-                                <input type="logradouro" {...register("address")}  placeholder=" Rua Teresa - até 0608 - lado par" />
-                            
+                            <input type="text" {...register("cep")} onBlur={checkCEP} placeholder=" 00000-000" />
 
-                          
-                                <span>localidade</span>
-                                <input type="localidade" {...register("locality")}  placeholder=" Petrópolis" />
-                            
+
+                            <span>bairro</span>
+                            <input type="bairro" {...register("neighborhood")} placeholder=" Alto da Serra" />
+
+
+                            <span>logradouro</span>
+                            <input type="logradouro" {...register("address")} placeholder=" Rua Teresa - até 0608 - lado par" />
+
+
+
+                            <span>localidade</span>
+                            <input type="localidade" {...register("locality")} placeholder=" Petrópolis" />
+
 
                             <BoxContainer>
                                 <NumberContainer>
                                     <span>número</span>
-                                    <input type="número" {...register("numero")}  placeholder=" 000" />
+                                    <input type="número" {...register("numero")} placeholder=" 000" />
                                 </NumberContainer>
                                 <ComplementContainer>
                                     <span>complemento</span>
-                                    <input type="complemento"  placeholder=" centro" />
+                                    <input type="complemento" placeholder=" centro" />
                                 </ComplementContainer>
                             </BoxContainer>
                             <Link to={"/myprofile"}>
