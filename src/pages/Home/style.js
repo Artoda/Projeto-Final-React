@@ -17,14 +17,29 @@ export const Container = styled.div`
 export const ButtonCategorie = styled.div`
   button {
     display: none;
+    background: var(--bg-button);
+    color: var(--terciary-color);
+    cursor: pointer;
+    border-radius: 5px;
+    :hover {
+      background-color: var(--terciary-color);
+      color: var(--alert-color);
+      border: 1px solid var(--alert-color);
+    }
   }
   @media only all and (max-width: 700px) {
     button {
       display: flex;
+      align-items: start;
+      justify-content: start;
       padding: 5px;
       margin-top: 10px;
     }
+    padding: 10px;
+    width: 100%;
   }
+  align-items: start;
+  justify-content: start;
 `;
 
 export const TitleContainer = styled.header`
@@ -76,6 +91,8 @@ export const NavBar = styled.div`
   @media only all and (max-width: 700px) {
     flex-direction: column;
     padding: 0;
+    align-items: start;
+    margin-left: 35px;
   }
 `;
 
