@@ -116,12 +116,24 @@ export const ProfileContainer = styled.div`
       display: none;
     }
   }
+  span.nomes {
+    display: none;
+    text-transform: capitalize;
+    color: var(--alert-color);
+    font-weight: bold;
+    @media only all and (max-width: 700px) {
+      display: flex;
+    }
+  }
   .icon {
     font-size: 40px;
   }
   span {
     font-weight: 500;
     font-size: 20px;
+  }
+  @media only all and (max-width: 320px) {
+    gap: 0;
   }
 `;
 
@@ -131,9 +143,57 @@ export const LoginContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: 50px;
-  left: -9px;
-  top: 70px;
+  right: -10px;
+  left: -167px;
+  top: 60px;
+  background-color: var(--terciary-color);
+  padding: 15px 15px 0;
+  border-radius: 10px;
+  z-index: 999;
+
+  span {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  span.triangle {
+    position: absolute;
+    top: -15px;
+    right: 22%;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid var(--terciary-color);
+  }
+
+  button {
+    width: 100px;
+  }
+  @media only all and (max-width: 466px) {
+    top: 64px;
+    right: -4%;
+  }
+  @media only all and (max-width: 400px) {
+    top: 82px;
+    right: 6%;
+  }
+
+  @media only all and (max-width: 376px) {
+    top: 61px;
+    right: 0%;
+  }
+`;
+
+export const LogoutContainer = styled.div`
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -13px;
+  left: -150px;
+  top: 55px;
   background-color: var(--terciary-color);
   padding: 15px 15px 0;
   border-radius: 10px;
@@ -160,11 +220,21 @@ export const LoginContainer = styled.div`
   }
   @media only all and (max-width: 466px) {
     top: 79px;
-    right: 37%;
+    right: -7%;
   }
+  @media only all and (max-width: 425px) {
+    top: 114px;
+    right: -7%;
+  }
+
   @media only all and (max-width: 400px) {
-    top: 111px;
-    right: 36%;
+    top: 82px;
+    right: 6%;
+  }
+
+  @media only all and (max-width: 376px) {
+    top: 116px;
+    right: 6%;
   }
 `;
 
@@ -202,6 +272,9 @@ export const ShopContainer = styled.div`
   .icon {
     font-size: 250%;
     color: black;
+    position: absolute;
+    right: 5px;
+    top: -15px;
   }
   span {
     display: flex;
@@ -213,7 +286,7 @@ export const ShopContainer = styled.div`
     align-items: center;
     justify-content: center;
     right: -7%;
-    top: -8%;
+    top: -195%;
     width: 25px;
     height: 25px;
     color: white;

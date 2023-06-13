@@ -6,10 +6,14 @@ export const Container = styled.div`
 `;
 
 export const BoxContainer = styled.div`
-    background: var(--bg-box);
-    max-width: 400px;
-    margin: 100px auto 0px;
-    padding-bottom: 20px;
+  background: var(--bg-box);
+  max-width: 400px;
+  margin: 100px auto 0px;
+  padding-bottom: 20px;
+
+  @media only all and (max-width: 432px) {
+    max-width: 300px;
+  }
 `;
 export const TitleContainer = styled.div`
   display: flex;
@@ -34,8 +38,8 @@ export const FormContainer = styled.div`
 `;
 
 export const EmailContainer = styled.div`
-    text-align: left;
-    width: 100%;
+  text-align: left;
+  width: 100%;
 `;
 export const PasswordContainer = styled.div`
   text-align: left;
@@ -46,16 +50,15 @@ export const PasswordInput = styled.div`
   width: 100%;
   align-items: center;
   position: relative;
-    .icon {
-      z-index: 1;
-      position: absolute;
-      right: 0;
-      margin-right: 5px;
-    }
+  .icon {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+  }
 `;
 
-export const LoginBt = styled.button`
-`;
+export const LoginBt = styled.button``;
 
 export const FooterContainer = styled.div`
   display: flex;

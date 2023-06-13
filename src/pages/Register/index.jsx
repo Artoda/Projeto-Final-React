@@ -51,6 +51,9 @@ export function Register() {
     } else if (password.length < 6) {
       setError("a senha tem que ter mais que seis dígitos");
       return;
+    } else if (nome.length > 11) {
+      setError("O nome escolhido é muito grande!");
+      return;
     }
 
     // TESTANDO SALVAMENTO NO BANCO

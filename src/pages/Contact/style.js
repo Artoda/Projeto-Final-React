@@ -6,10 +6,13 @@ export const Container = styled.div`
 `;
 
 export const BoxContainer = styled.div`
-    background: var(--bg-box);
-    max-width: 400px;
-    margin: 100px auto 0px;
-    padding-bottom: 20px;
+  background: var(--bg-box);
+  max-width: 400px;
+  margin: 100px auto 0px;
+  padding-bottom: 20px;
+  @media only all and (max-width: 432px) {
+    max-width: 300px;
+  }
 `;
 
 export const TitleContainer = styled.div`
@@ -17,9 +20,17 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-    .icon {
-      font-size: 21px;
+  .icon {
+    font-size: 21px;
+
+    @media only all and (max-width: 432px) {
+      font-size: 50px;
     }
+  }
+
+  @media only all and (max-width: 432px) {
+    margin-left: 20px;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -38,41 +49,38 @@ export const FormContainer = styled.div`
 `;
 
 export const EmailContainer = styled.div`
-    text-align: left;
-    width: 100%;
+  text-align: left;
+  width: 100%;
 `;
 
 export const NameContainer = styled.div`
-text-align: left;
-    width: 100%;
+  text-align: left;
+  width: 100%;
 `;
 
 export const MessageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  span {
+    padding: 10px 0;
+  }
+  /* position: relative; */
+  textarea {
+    border-radius: 5px;
+    height: 200px;
     width: 100%;
-        span {
-        padding: 10px 0;
-
-        }
-    /* position: relative; */
-        textarea {
-        border-radius: 5px;
-        height: 200px;
-        width: 100%;
-        font-family: inherit;
-        padding: 10px 10px;
-        resize: none;
-        overflow: auto;
-          ::placeholder {
-            position: absolute;
-            top: 0;
-            padding: 10px 0;
-          }
-        }
+    font-family: inherit;
+    padding: 10px 10px;
+    resize: none;
+    overflow: auto;
+    ::placeholder {
+      position: absolute;
+      top: 0;
+      padding: 10px 0;
+    }
+  }
 `;
 
-export const SendMsgBt = styled.button`
-    
-`;
+export const SendMsgBt = styled.button``;
