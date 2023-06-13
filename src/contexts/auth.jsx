@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
     const usersStorage = localStorage.getItem("user_db");
+    const usersEmail = localStorage.getItem("user_email");
 
     checkCartItems();
     checkIsLoggedIn()  // para ficar verificando se pessoa está logada, importante

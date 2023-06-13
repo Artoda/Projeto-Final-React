@@ -1,25 +1,82 @@
-import { useLocation } from "react-router-dom";
-import { FiUser } from "react-icons/fi";
 import { useForm } from 'react-hook-form';
-import { Link } from "react-router-dom";
-
-
+import { FiUser } from "react-icons/fi";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
 import {
+    BoxContainer,
+    ComplementContainer,
     Container,
     ContentContainer,
-    BoxContainer,
-    TitleContainer,
-    FormContainer,
     FooterContainer,
+    FormContainer,
     NumberContainer,
-    ComplementContainer,
+    TitleContainer,
 } from "./style";
 
 
 export function Profile() {
-
     const location = useLocation();
     const { register, handleSubmit, setValue, setFocus } = useForm();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await apiLocal.post("/clientes", {
+                    nome_completo: name_surname,
+                    email: email,
+                    cpf: cpf,
+                    telefone: phone,
+                    data_nascimento: birthday,
+                    endereco: {
+
+                    }
+                });
+
+                console.log(response) // verifica objeto salvo
+            } catch (error) {
+                console.error("Erro ao obter dados dos clientes:", error);
+            }
+        }
+        checkIsLoggedIn();
+        fetchData();
+    }, []);
+
+    // useEffect(() => {
+    //      aasync function fetchData() {
+    //         try {
+    //             const respClient = await apiLocal.get("/clientes");
+    //             const clients = respClient.data;
+    //             setClients(clients);
+    //             console.log(clients)
+
+    //             const clientData = clients.map((client) => {
+    //                 const { nome_completo, email, endereco, id_cliente } = client;
+    //                 return { nome_completo, email, endereco, id_cliente };
+    //             });
+    //             console.log(clientData);
+    //             setClientData(clientData);
+
+    //             const respUsers = await apiLocal.get("/users");
+    //             const users = respUsers.data;
+    //             setUserData(users);
+    //             console.log(users)
+
+    //             const userData = users.map((user) => {
+    //                 const { username, email } = user;
+    //                 return { username, email };
+    //             });
+    //             console.log(userData)
+    //             setUserData(userData);
+
+
+    //         } catch (error) {
+    //             console.error("Erro ao obter dados dos clientes:", error);
+    //         }
+    //     }
+
+    //     checkIsLoggedIn();
+    //     fetchData();
+    // }, []);
 
     const onSubmit = (data) => {
         console.log(data);
