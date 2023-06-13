@@ -1,22 +1,21 @@
-import { Link, Outlet, json, useLocation } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import useAuth from "../../../hooks/useAuth";
-import { GrSearch } from "react-icons/gr";
+import { useState } from "react";
 import { BsCart3 } from "react-icons/bs";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 import LogoComponent from "../Logo";
 
 import {
+  ButtonContainer,
   Container,
+  LoginContainer,
   LogoContainer,
   ProfileContainer,
-  ShopContainer,
   RightContainer,
-  SearchContainer,
   SearchBar,
-  LoginContainer,
-  ButtonContainer,
+  SearchContainer,
   SearchItens,
   SearchResults,
+  ShopContainer,
 } from "./style";
 
 export function Header() {
@@ -76,11 +75,11 @@ export function Header() {
           style={{
             display:
               location.pathname === "/" ||
-              location.pathname === "/artes" ||
-              location.pathname === "/antiguidades" ||
-              location.pathname === "/armas" ||
-              location.pathname === "/jogos" ||
-              location.pathname === "/livros"
+                location.pathname === "/artes" ||
+                location.pathname === "/antiguidades" ||
+                location.pathname === "/armas" ||
+                location.pathname === "/jogos" ||
+                location.pathname === "/livros"
                 ? "flex"
                 : "none",
           }}

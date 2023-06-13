@@ -7,7 +7,7 @@ import ButtonComponent from "../../common/components/Button";
 
 import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-
+import { api } from "../../services/api";
 import {
   Container,
   BoxContainer,
@@ -25,10 +25,10 @@ export function Login() {
   const location = useLocation();
 
   // LOGIN
-  const { signin, checkIsLoggedIn } = useAuth();
+  const { checkIsLoggedIn } = useAuth();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -38,35 +38,39 @@ export function Login() {
   };
 
   const handleLogin = async () => {
-    if (!email | !password) {
+    if (!username | !password) {
       setError("Preencha todos os campos");
       return;
     }
 
-    // // TESTANDO LOGIN pelo BANCO
-    // try {
-    //   await api.post("/auth/signin", {
-    //     email: email,
-    //     password: password
-    //   });
-    // }
-    // catch (error) {
-    //   console.error(error);
-    //   alert("Ocorreu um erro no login. Por favor tente novamente");
-    // }
-    // // ATE AQUI busca no banco os dados
+    // TESTANDO LOGIN pelo BANCO
+    try {
+      const response = await api.post("/auth/signin", {
+        username: username,
+        password: password
+      });
 
+      console.log(response) // verifica objeto salvo
 
-    const res = signin(email, password);
-    if (res) {
-      setError(res);
-      return;
+      const accessToken = response.data.accessToken;
+      const newUsername = response.data.username;
+      console.log(accessToken);
+      console.log(newUsername);
+
+      localStorage.setItem("user_token", accessToken);
+      localStorage.setItem("user_db", newUsername);
+
+      checkIsLoggedIn();
+
+      alert("seja bem vindo!");
+      navigate("/");
     }
-    alert("seja bem vindo!");
-    navigate("/");
+    catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro no login. Usuário ou senha inválidos. Tente novamente");
+    }
   };
 
-  //RETORNO HTML
   return (
     <>
       <Container>
@@ -78,13 +82,13 @@ export function Login() {
             </TitleContainer>
             <FormContainer>
               <EmailContainer>
-                <h3>* e-mail</h3>
+                <h3>* nome de usuário</h3>
 
                 <InputComponent
                   type="text"
                   placeholder="digite seu e-mail"
-                  value={email}
-                  onChange={(e) => [setEmail(e.target.value), setError("")]}
+                  value={username}
+                  onChange={(e) => [setUsername(e.target.value), setError("")]}
                 />
 
               </EmailContainer>
