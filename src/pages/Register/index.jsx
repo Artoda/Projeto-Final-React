@@ -20,7 +20,7 @@ import {
   NameContainer,
   PasswordContainer,
   PasswordInput,
-  TitleContainer
+  TitleContainer,
 } from "./style";
 
 export function Register() {
@@ -41,7 +41,6 @@ export function Register() {
     setShowPassword(!showPassword);
   };
 
-
   const handleSignup = async () => {
     if (!nome | !email | !password | !passwordConf) {
       setError("preencha todos os campos");
@@ -60,7 +59,7 @@ export function Register() {
         username: nome,
         email: email,
         password: password,
-        role: ["user"]
+        role: ["user"],
       });
 
       // const res = signup(email, password);
@@ -71,8 +70,7 @@ export function Register() {
 
       alert("usuário cadatrado com sucesso!");
       navigate("/login");
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
       alert("Ocorreu um erro ao salvar os dados.");
     }
@@ -86,56 +84,71 @@ export function Register() {
           <ContentContainer>
             <TitleContainer>
               <FiUser className="icon" />
-              <h2>cadastro do cliente</h2>
+              <h2>Cadastro do cliente</h2>
             </TitleContainer>
             <FormContainer>
               <NameContainer>
-                <h3>* nome</h3>
+                <h3>* Nome</h3>
                 <InputComponent
                   type="text"
-                  placeholder="digite seu nome completo"
+                  placeholder="Digite seu nome completo"
                   value={nome}
                   onChange={(e) => [setNome(e.target.value), setError("")]}
                 />
               </NameContainer>
               <EmailContainer>
-                <h3>* e-mail</h3>
+                <h3>* E-mail</h3>
                 <InputComponent
                   type="text"
-                  placeholder="digite seu e-mail"
+                  placeholder="Digite seu e-mail"
                   value={email}
                   onChange={(e) => [setEmail(e.target.value), setError("")]}
                 />
               </EmailContainer>
               <PasswordContainer>
-                <h3>* senha</h3>
+                <h3>* Senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
+                  <AiOutlineEyeInvisible
+                    className="icon"
+                    onClick={handleTogglePassword}
+                  />
                   {/*ao apertar o icone, mudar o type do input para text*/}
                   <InputComponent
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="digite sua senha"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Digite sua senha"
                     value={password}
-                    onChange={(e) => [setPassword(e.target.value), setError("")]}
+                    onChange={(e) => [
+                      setPassword(e.target.value),
+                      setError(""),
+                    ]}
                   />
                 </PasswordInput>
               </PasswordContainer>
               <PasswordContainer>
-                <h3>* confirmar senha</h3>
+                <h3>* Confirmar senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
+                  <AiOutlineEyeInvisible
+                    className="icon"
+                    onClick={handleTogglePassword}
+                  />
                   <InputComponent
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="digite sua senha"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Digite sua senha"
                     value={passwordConf}
-                    onChange={(e) => [setPasswordConf(e.target.value), setError("")]}
+                    onChange={(e) => [
+                      setPasswordConf(e.target.value),
+                      setError(""),
+                    ]}
                   />
                 </PasswordInput>
                 <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <ButtonComponent Text="finalizar cadastro" onClick={() => {
-                handleSignup();
-              }} />
+              <ButtonComponent
+                Text="Finalizar cadastro"
+                onClick={() => {
+                  handleSignup();
+                }}
+              />
             </FormContainer>
             <FooterContainer>
               <span>
@@ -144,7 +157,6 @@ export function Register() {
                   <span className="alert">&nbsp;faça o login</span>
                 </Link>
               </span>
-
             </FooterContainer>
           </ContentContainer>
         </BoxContainer>

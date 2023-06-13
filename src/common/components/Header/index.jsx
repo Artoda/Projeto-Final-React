@@ -126,7 +126,7 @@ export function Header() {
               Olá, clique aqui ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
-              <span className="nome"> {nome} </span>, seja bem vindo!
+              <span className="nome"> {nome} </span>
               <Link to={"/myProfile"}></Link>
             </span>
             <BsPersonCircle

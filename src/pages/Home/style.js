@@ -92,7 +92,6 @@ export const NavBar = styled.div`
     flex-direction: column;
     padding: 0;
     align-items: start;
-    margin-left: 35px;
   }
 `;
 
@@ -107,6 +106,10 @@ export const NavItem = styled.div`
   border-bottom: ${(props) =>
     props.isActive ? "4px solid rgba(203, 18, 28, 0.8)" : "none"};
   color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
+
+  @media only all and (max-width: 700px) {
+    margin-left: 20px;
+  }
 `;
 
 export const HomeContainer = styled.div`

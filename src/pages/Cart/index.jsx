@@ -60,7 +60,12 @@ export function Cart() {
     calculateTotal();
   }, [cart]);
 
-  const coupons = ["teste", "teste2"];
+  const coupons = [
+    "yuri10",
+    "romuloémuitodaora",
+    "yurimelhorprofessor",
+    "gostodebatata",
+  ];
   const totalCoupon = () => {
     let newTotal = total;
     let anotherTotal = 0;
@@ -74,7 +79,6 @@ export function Cart() {
       setDisabled(true);
       setIsCouponApplied(true);
       document.querySelector(".input").disabled = true;
-
 
       anotherTotal = total - Math.floor(Math.random() * (400 - 100 + 1)) - 100;
     } else {
@@ -100,11 +104,12 @@ export function Cart() {
     cart.forEach((product) => {
       const data = 0; // valor que atualiza o estoque
 
-      api.put(`/produtos/${product.id_produto}/quantidade`, data, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      api
+        .put(`/produtos/${product.id_produto}/quantidade`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((response) => {
           console.log("Quantidade de estoque atualizada com sucesso.");
         })

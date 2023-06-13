@@ -108,6 +108,9 @@ export const ProfileContainer = styled.div`
     text-transform: capitalize;
     color: var(--alert-color);
     font-weight: bold;
+    @media only all and (max-width: 700px) {
+      display: none;
+    }
   }
   .icon {
     font-size: 40px;
