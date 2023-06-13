@@ -74,7 +74,7 @@ export const SearchItens = styled.div`
     border-radius: 5px;
     width: 100px;
   }
-  overflow: auto;
+  overflow: scroll;
   max-height: 600px;
 `;
 

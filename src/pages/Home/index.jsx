@@ -20,7 +20,7 @@ import {
   ShopContainer,
   TitleContainer,
   VideoContainer,
-  LogoIcon
+  LogoIcon,
 } from "./style";
 
 export function Home() {
@@ -30,7 +30,7 @@ export function Home() {
   const [isHidden, setIsHidden] = useState(true);
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
   });
 
   const { checkCartItems } = useAuth();
@@ -38,17 +38,17 @@ export function Home() {
   function handleResize() {
     setWindowSize({
       width: window.innerWidth,
-      height: window.innerHeight
-    })
+      height: window.innerHeight,
+    });
   }
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (windowSize.width > 700) {
-      setIsHidden(true)
+      setIsHidden(true);
     }
   }, [windowSize.width, windowSize.height]);
 
@@ -78,7 +78,8 @@ export function Home() {
     });
   };
   const handleClick = () => {
-    setIsHidden((current) => !current);
+    if (windowSize.width < 700) setIsHidden((current) => !current);
+    else null;
   };
 
   useEffect(() => {
@@ -109,24 +110,24 @@ export function Home() {
         </ButtonCategorie>
         <NavBarContainer style={{ display: isHidden ? "flex" : "none" }}>
           <NavBar>
-            <Link to={"/"}>
+            <Link to={"/"} onClick={handleClick}>
               <NavItem isActive={location.pathname === "/"}>Home</NavItem>
             </Link>
-            <Link to={"/artes"}>
+            <Link to={"/artes"} onClick={handleClick}>
               <NavItem isActive={location.pathname === "/artes"}>Artes</NavItem>
             </Link>
-            <Link to={"/antiguidades"}>
+            <Link to={"/antiguidades"} onClick={handleClick}>
               <NavItem isActive={location.pathname === "/antiguidades"}>
                 Antiguidades
               </NavItem>
             </Link>
-            <Link to={"/armas"}>
+            <Link to={"/armas"} onClick={handleClick}>
               <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
             </Link>
-            <Link to={"/jogos"}>
+            <Link to={"/jogos"} onClick={handleClick}>
               <NavItem isActive={location.pathname === "/jogos"}>Jogos</NavItem>
             </Link>
-            <Link to={"/livros"}>
+            <Link to={"/livros"} onClick={handleClick}>
               <NavItem isActive={location.pathname === "/livros"}>
                 Livros
               </NavItem>
@@ -177,9 +178,12 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <BsCart3 onClick={() => {
-                              handleAddToCart(productM);
-                            }} className="icon" />
+                            <BsCart3
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                              className="icon"
+                            />
                           </>
                         )}
                       </ShopContainer>
@@ -210,9 +214,12 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <BsCart3 onClick={() => {
-                              handleAddToCart(productM);
-                            }} className="icon" />
+                            <BsCart3
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                              className="icon"
+                            />
                           </>
                         )}
                       </ShopContainer>
@@ -243,9 +250,12 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <BsCart3 onClick={() => {
-                              handleAddToCart(productM);
-                            }} className="icon" />
+                            <BsCart3
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                              className="icon"
+                            />
                           </>
                         )}
                       </ShopContainer>
@@ -276,9 +286,12 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <BsCart3 onClick={() => {
-                              handleAddToCart(productM);
-                            }} className="icon" />
+                            <BsCart3
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                              className="icon"
+                            />
                           </>
                         )}
                       </ShopContainer>
@@ -309,9 +322,12 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <BsCart3 onClick={() => {
-                              handleAddToCart(productM);
-                            }} className="icon" />
+                            <BsCart3
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                              className="icon"
+                            />
                           </>
                         )}
                       </ShopContainer>
