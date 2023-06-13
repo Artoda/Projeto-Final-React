@@ -30,7 +30,7 @@ export function Home() {
 
   const { checkCartItems } = useAuth();
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -60,7 +60,6 @@ export function Home() {
   const handleClick = () => {
     setIsHidden((current) => !current);
   };
-
 
   useEffect(() => {
     // atualiza os dados do carrinho com localStorage
@@ -131,123 +130,203 @@ export function Home() {
           ) : null}
           {location.pathname === "/antiguidades"
             ? products
-              .filter((prod) => prod.categoriaProdDto.id_categoria == 2)
-              .map((productM) => {
-                return (
-                  <Product key={productM.id_produto}>
-                    <ImageContainer>
-                      <img src={productM.url_imagem} alt="imagem" />
-                    </ImageContainer>
-                    <ProductTitleContainer>
-                      <h2>{productM.nome}</h2>
-                    </ProductTitleContainer>
-                    <ProductBio>
-                      <ProductBioText>
-                        <span>{productM.descricao}</span>
-                      </ProductBioText>
-                    </ProductBio>
-                    <ShopContainer>
-                      {productM.qtd_estoque === 0 ? (
-                        <span>ESGOTADO</span>
-                      ) : (
-                        <>
-                          <span>R$ {productM.valor_unitario}</span>
-                          <button
-                            onClick={() => {
-                              handleAddToCart(productM);
-                            }}
-                          >
-                            <img
-                              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                              alt="Carrinho"
-                            />
-                          </button>
-                        </>
-                      )}
-                    </ShopContainer>
-                  </Product>
-                );
-              })
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 5)
+                .map((productM) => {
+                  return (
+                    <Product key={productM.id_produto}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        {productM.qtd_estoque === 0 ? (
+                          <span>ESGOTADO</span>
+                        ) : (
+                          <>
+                            <span>R$ {productM.valor_unitario}</span>
+                            <button
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                            >
+                              <img
+                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                                alt="Carrinho"
+                              />
+                            </button>
+                          </>
+                        )}
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
             : null}
           {location.pathname === "/artes"
             ? products
-              .filter((prod) => prod.categoriaProdDto.id_categoria == 3)
-              .map((productM) => {
-                return (
-                  <Product key={productM.id_produto}>
-                    <ImageContainer>
-                      <img src={productM.url_imagem} alt="imagem" />
-                    </ImageContainer>
-                    <ProductTitleContainer>
-                      <h2>{productM.nome}</h2>
-                    </ProductTitleContainer>
-                    <ProductBio>
-                      <ProductBioText>
-                        <span>{productM.descricao}</span>
-                      </ProductBioText>
-                    </ProductBio>
-                    <ShopContainer>
-                      {productM.qtd_estoque === 0 ? (
-                        <span>ESGOTADO</span>
-                      ) : (
-                        <>
-                          <span>R$ {productM.valor_unitario}</span>
-                          <button
-                            onClick={() => {
-                              handleAddToCart(productM);
-                            }}
-                          >
-                            <img
-                              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                              alt="Carrinho"
-                            />
-                          </button>
-                        </>
-                      )}
-                    </ShopContainer>
-                  </Product>
-                );
-              })
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 4)
+                .map((productM) => {
+                  return (
+                    <Product key={productM.id_produto}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        {productM.qtd_estoque === 0 ? (
+                          <span>ESGOTADO</span>
+                        ) : (
+                          <>
+                            <span>R$ {productM.valor_unitario}</span>
+                            <button
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                            >
+                              <img
+                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                                alt="Carrinho"
+                              />
+                            </button>
+                          </>
+                        )}
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
             : null}
           {location.pathname === "/armas"
             ? products
-              .filter((prod) => prod.categoriaProdDto.id_categoria == 1)
-              .map((productM) => {
-                return (
-                  <Product key={productM.id_produto}>
-                    <ImageContainer>
-                      <img src={productM.url_imagem} alt="imagem" />
-                    </ImageContainer>
-                    <ProductTitleContainer>
-                      <h2>{productM.nome}</h2>
-                    </ProductTitleContainer>
-                    <ProductBio>
-                      <ProductBioText>
-                        <span>{productM.descricao}</span>
-                      </ProductBioText>
-                    </ProductBio>
-                    <ShopContainer>
-                      {productM.qtd_estoque === 0 ? (
-                        <span>ESGOTADO</span>
-                      ) : (
-                        <>
-                          <span>R$ {productM.valor_unitario}</span>
-                          <button
-                            onClick={() => {
-                              handleAddToCart(productM);
-                            }}
-                          >
-                            <img
-                              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                              alt="Carrinho"
-                            />
-                          </button>
-                        </>
-                      )}
-                    </ShopContainer>
-                  </Product>
-                );
-              })
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 6)
+                .map((productM) => {
+                  return (
+                    <Product key={productM.id_produto}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        {productM.qtd_estoque === 0 ? (
+                          <span>ESGOTADO</span>
+                        ) : (
+                          <>
+                            <span>R$ {productM.valor_unitario}</span>
+                            <button
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                            >
+                              <img
+                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                                alt="Carrinho"
+                              />
+                            </button>
+                          </>
+                        )}
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
+            : null}
+          {location.pathname === "/jogos"
+            ? products
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 7)
+                .map((productM) => {
+                  return (
+                    <Product key={productM.id_produto}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        {productM.qtd_estoque === 0 ? (
+                          <span>ESGOTADO</span>
+                        ) : (
+                          <>
+                            <span>R$ {productM.valor_unitario}</span>
+                            <button
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                            >
+                              <img
+                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                                alt="Carrinho"
+                              />
+                            </button>
+                          </>
+                        )}
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
+            : null}
+          {location.pathname === "/livros"
+            ? products
+                .filter((prod) => prod.categoriaProdDto.id_categoria == 8)
+                .map((productM) => {
+                  return (
+                    <Product key={productM.id_produto}>
+                      <ImageContainer>
+                        <img src={productM.url_imagem} alt="imagem" />
+                      </ImageContainer>
+                      <ProductTitleContainer>
+                        <h2>{productM.nome}</h2>
+                      </ProductTitleContainer>
+                      <ProductBio>
+                        <ProductBioText>
+                          <span>{productM.descricao}</span>
+                        </ProductBioText>
+                      </ProductBio>
+                      <ShopContainer>
+                        {productM.qtd_estoque === 0 ? (
+                          <span>ESGOTADO</span>
+                        ) : (
+                          <>
+                            <span>R$ {productM.valor_unitario}</span>
+                            <button
+                              onClick={() => {
+                                handleAddToCart(productM);
+                              }}
+                            >
+                              <img
+                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                                alt="Carrinho"
+                              />
+                            </button>
+                          </>
+                        )}
+                      </ShopContainer>
+                    </Product>
+                  );
+                })
             : null}
         </ProductsContainer>
       </Container>

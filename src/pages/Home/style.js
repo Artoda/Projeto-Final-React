@@ -120,6 +120,7 @@ export const ProductsContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   height: 100%;
   gap: 50px;
 `;
@@ -160,7 +161,7 @@ export const Product = styled.div`
   justify-content: center;
   background-color: #e9e9e9;
   padding: 20px;
-  height: 450px;
+  height: 530px;
   width: 270px;
   border-radius: 5%;
   position: relative;
