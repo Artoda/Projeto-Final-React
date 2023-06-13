@@ -55,9 +55,6 @@ export function Login() {
       const accessToken = response.data.accessToken;
       const newUsername = response.data.username;
       const userEmail = response.data.email;
-      console.log(accessToken);
-      console.log(newUsername);
-      console.log(userEmail);
 
       localStorage.setItem("user_token", accessToken);
       localStorage.setItem("user_db", newUsername);

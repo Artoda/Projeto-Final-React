@@ -48,6 +48,10 @@ export function Cart() {
   }, []);
 
   useEffect(() => {
+    checkIsLoggedIn();
+  }, []);
+
+  useEffect(() => {
     // verifica estado do valor total
     const calculateTotal = () => {
       let sum = 0;

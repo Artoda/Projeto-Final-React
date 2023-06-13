@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 
@@ -51,6 +50,9 @@ export function Register() {
     } else if (password.length < 6) {
       setError("a senha tem que ter mais que seis dígitos");
       return;
+    } else if (nome.length > 11) {
+      setError("O nome escolhido é muito grande!");
+      return;
     }
 
     // TESTANDO SALVAMENTO NO BANCO
@@ -62,19 +64,12 @@ export function Register() {
         role: ["user"],
       });
 
-      // const res = signup(email, password);
-      // if (res) {
-      //   setError(res);
-      //   return;
-      // }
-
       alert("usuário cadatrado com sucesso!");
       navigate("/login");
     } catch (error) {
       console.error(error);
       alert("Ocorreu um erro ao salvar os dados.");
     }
-    // ATE AQUI SALVA BANCO POSTGRES
   };
 
   return (

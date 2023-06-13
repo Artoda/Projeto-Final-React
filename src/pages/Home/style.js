@@ -192,6 +192,10 @@ export const ProductsContainer = styled.div`
   height: 100%;
   gap: 50px;
   padding: 50px;
+
+  @media only all and (max-width: 320px) {
+    padding: 15px;
+  }
 `;
 
 export const ProductBio = styled.div`

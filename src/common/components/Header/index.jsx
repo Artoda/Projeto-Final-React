@@ -8,6 +8,7 @@ import {
   ButtonContainer,
   Container,
   LoginContainer,
+  LogoutContainer,
   LogoContainer,
   ProfileContainer,
   RightContainer,
@@ -127,41 +128,22 @@ export function Header() {
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
               <span className="nome"> {nome} </span>
-              <Link to={"/myProfile"}></Link>
             </span>
+
             <BsPersonCircle
               className="icon"
               style={{ display: isLoggedIn ? "flex" : "none" }}
             />
 
-            <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
+            <LoginContainer
+              style={{ display: isHidden && isLoggedIn ? "flex" : "none" }}
+            >
               <span className="triangle"></span>
-              <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-                Para ter uma experiência personalizada, acesse sua conta 😊
-              </span>
-              <Link to={"/login"}>
-                <ButtonContainer
-                  style={{ display: isLoggedIn ? "none" : "flex" }}
-                >
-                  Entrar
-                </ButtonContainer>
-              </Link>
-              <Link to={"/register"}>
-                <ButtonContainer
-                  style={{ display: isLoggedIn ? "none" : "flex" }}
-                >
-                  Cadastrar
-                </ButtonContainer>
-              </Link>
+              <span className="nomes"> {nome} </span>
               <Link to={"/myprofile"}>
-                <ButtonContainer
-                  style={{ display: isLoggedIn ? "flex" : "none" }}
-                >
-                  Meu Perfil
-                </ButtonContainer>
+                <ButtonContainer>Meu Perfil</ButtonContainer>
               </Link>
               <ButtonContainer
-                style={{ display: isLoggedIn ? "flex" : "none" }}
                 onClick={() => {
                   handleSignout();
                   checkIsLoggedIn();
@@ -170,6 +152,20 @@ export function Header() {
                 Deslogar
               </ButtonContainer>
             </LoginContainer>
+            <LogoutContainer
+              style={{ display: isHidden && !isLoggedIn ? "flex" : "none" }}
+            >
+              <span className="triangle"></span>
+              <span>
+                Para ter uma experiência personalizada, acesse sua conta 😊
+              </span>
+              <Link to={"/login"}>
+                <ButtonContainer>Entrar</ButtonContainer>
+              </Link>
+              <Link to={"/register"}>
+                <ButtonContainer>Cadastrar</ButtonContainer>
+              </Link>
+            </LogoutContainer>
           </ProfileContainer>
 
           <ShopContainer>

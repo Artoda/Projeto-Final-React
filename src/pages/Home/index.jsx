@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 import useAuth from "../../hooks/useAuth";
-import React from "react";
 import ReactPlayer from "react-player";
 import { BsCart3 } from "react-icons/bs";
 import {
@@ -128,7 +127,11 @@ export function Home() {
             <HomeContainer>
               <span>Bem vindo ao melhor site de penhoras da sua região!</span>
               <VideoContainer>
-                <ReactPlayer url="https://youtu.be/MANh1Ys2tDQ" />
+                <ReactPlayer
+                  width={"100%"}
+                  height={500}
+                  url="https://youtu.be/MANh1Ys2tDQ"
+                />
               </VideoContainer>
             </HomeContainer>
           ) : null}
