@@ -36,29 +36,25 @@ export const EmailContainer = styled.div`
   width: 100%;
 `;
 
+export const UserData = styled.div`
+  text-align: left;
+  width: 100%;
+`;
+
 export const EnderecoContainer = styled.div`
   text-align: left;
   width: 100%;
+
+  span{
+        color: red;
+    }
 `;
 
 export const BoxContainer = styled.div`
   display: flex;
   width: 50vh;
-  height: 30vh;
   flex-direction: column;
   padding: 10px;
   gap: 20px;
-`;
-
-export const FooterContainer = styled.div`
-    text-align: center;
-    padding: 10px;
-    width: 50vh;
-    height: 10vh;
-
-    span{
-        color: red;
-    }
-    
 `;
 
