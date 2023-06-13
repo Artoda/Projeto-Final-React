@@ -6,10 +6,10 @@ import React from "react";
 import ReactPlayer from "react-player";
 import {
   Container,
+  ButtonCategorie,
   HomeContainer,
   ImageContainer,
   NavBar,
-  NavBarButton,
   NavBarContainer,
   NavItem,
   Product,
@@ -26,6 +26,7 @@ export function Home() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [isHidden, setIsHidden] = useState(true);
 
   const { checkCartItems } = useAuth();
 
@@ -35,7 +36,6 @@ export function Home() {
     async function fetchData() {
       let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
-      // console.log(product)
     }
     fetchData();
   }, []);
@@ -45,6 +45,7 @@ export function Home() {
     const isProductInCart = cart.some(
       (item) => item.id_produto === product.id_produto
     );
+
     if (isProductInCart) {
       alert("Este produto já está no carrinho.");
       return;
@@ -55,6 +56,9 @@ export function Home() {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     });
+  };
+  const handleClick = () => {
+    setIsHidden((current) => !current);
   };
 
 
@@ -75,7 +79,16 @@ export function Home() {
   return (
     <>
       <Container>
-        <NavBarContainer>
+        <ButtonCategorie>
+          <button
+            onClick={() => {
+              handleClick();
+            }}
+          >
+            Categorias
+          </button>
+        </ButtonCategorie>
+        <NavBarContainer style={{ display: isHidden ? "flex" : "none" }}>
           <NavBar>
             <Link to={"/"}>
               <NavItem isActive={location.pathname === "/"}>Home</NavItem>
@@ -99,9 +112,6 @@ export function Home() {
                 Livros
               </NavItem>
             </Link>
-            <NavBarButton>
-              <span>Categorias</span>
-            </NavBarButton>
           </NavBar>
         </NavBarContainer>
         <TitleContainer>

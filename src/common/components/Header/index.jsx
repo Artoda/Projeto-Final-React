@@ -24,7 +24,7 @@ export function Header() {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
 
-  const { signout, checkIsLoggedIn, isLoggedIn, cartItems } = useAuth();
+  const { signout, checkIsLoggedIn, isLoggedIn, cartItems, nome, getName } = useAuth();
 
   const handleSignout = () => {
     const res = signout();
@@ -34,6 +34,10 @@ export function Header() {
       return;
     }
   };
+
+  useEffect(() => {
+    getName();
+  }, [isLoggedIn]);
 
   const fetchData = (value) => {
     fetch(
@@ -91,10 +95,16 @@ export function Header() {
             setProducts={setProducts}
           ></SearchBar>
 
-          <SearchItens products={products}>
+          <SearchItens
+            products={products}
+            style={{ display: message.length === 0 ? "none" : "flex" }}
+          >
             {products.map((prod, id) => {
               return (
-                <Link to={prod.categoriaProdDto.nome}>
+                <Link
+                  to={prod.categoriaProdDto.nome}
+                  onClick={() => setMessage("")}
+                >
                   <SearchResults>
                     <span key={id}>{prod.nome}</span>
                     <img src={prod.url_imagem} />
@@ -112,22 +122,19 @@ export function Header() {
             }}
           >
             <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-              Olá, click aqui ↓
+              Olá, clique aqui para fazer login ou cadastre-se ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
-              Welcome,
+                <span className="nome" > { nome } </span>
+              , seja bem vindo!
               <Link to={"/myProfile"}>
-                <span>Romulo</span>
               </Link>
             </span>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/European_Brown_Bear.jpg/280px-European_Brown_Bear.jpg"
-              alt="urso"
-              style={{ display: isLoggedIn ? "flex" : "none" }}
-            />
+            <BsPersonCircle className="icon"style={{ display: isLoggedIn ? "flex" : "none" }} />
+              
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
-              <span className="square"></span>
+              <span className="triangle"></span>
               <span style={{ display: isLoggedIn ? "none" : "flex" }}>
                 Para ver seus pedidos e ter uma experiência personalizada,
                 acesse sua conta 😊
