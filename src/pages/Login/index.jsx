@@ -7,7 +7,7 @@ import ButtonComponent from "../../common/components/Button";
 
 import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-
+import { api } from "../../services/api";
 import {
   Container,
   BoxContainer,
@@ -25,65 +25,90 @@ export function Login() {
   const location = useLocation();
 
   // LOGIN
-  const { signin } = useAuth();
+  const { checkIsLoggedIn } = useAuth();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = () => {
-    if (!email | !senha) {
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleLogin = async () => {
+    if (!username | !password) {
       setError("Preencha todos os campos");
       return;
     }
 
-    const res = signin(email, senha);
+    // TESTANDO LOGIN pelo BANCO
+    try {
+      const response = await api.post("/auth/signin", {
+        username: username,
+        password: password
+      });
 
-    if (res) {
-      setError(res);
-      return;
+      console.log(response) // verifica objeto salvo
+
+      const accessToken = response.data.accessToken;
+      const newUsername = response.data.username;
+      console.log(accessToken);
+      console.log(newUsername);
+
+      localStorage.setItem("user_token", accessToken);
+      localStorage.setItem("user_db", newUsername);
+
+      checkIsLoggedIn();
+
+      alert("seja bem vindo!");
+      navigate("/");
     }
-
-    navigate("/home");
+    catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro no login. Usuário ou senha inválidos. Tente novamente");
+    }
   };
 
-  //RETORNO HTML
   return (
     <>
       <Container>
         <BoxContainer>
           <ContentContainer>
             <TitleContainer>
-                <FiUser className="icon" />
+              <FiUser className="icon" />
               <h2>login do cliente</h2>
             </TitleContainer>
             <FormContainer>
               <EmailContainer>
-                <span>* e-mail</span>
+                <h3>* nome de usuário</h3>
 
                 <InputComponent
-                  type="email"
+                  type="text"
                   placeholder="digite seu e-mail"
-                  value={email}
-                  onChange={(e) => [setEmail(e.target.value), setError("")]}
+                  value={username}
+                  onChange={(e) => [setUsername(e.target.value), setError("")]}
                 />
 
               </EmailContainer>
               <PasswordContainer>
-                <span>* senha</span>
+                <h3>* senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" />
+                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
                   <InputComponent
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="digite sua senha"
-                    value={senha}
-                    onChange={(e) => [setSenha(e.target.value), setError("")]}
+                    value={password}
+                    onChange={(e) => [setPassword(e.target.value), setError("")]}
                   />
                 </PasswordInput>
                 <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <ButtonComponent Text="Login" onClick={handleLogin} />
+              <ButtonComponent Text="login" onClick={() => {
+                handleLogin();
+                checkIsLoggedIn();
+              }} />
             </FormContainer>
             <FooterContainer>
               <span>

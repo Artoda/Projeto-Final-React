@@ -2,22 +2,18 @@ import { useLocation, Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import {
-    Container,
-    InformationContainer,
-    ContentContainer,
-    NomeContainer,
-    EmailContainer,
-    EnderecoContainer,
-    BoxContainer,
-    FooterContainer,
+  Container,
+  InformationContainer,
+  ContentContainer,
+  NomeContainer,
+  EmailContainer,
+  EnderecoContainer,
+  BoxContainer,
+  FooterContainer,
 } from "./style";
 
-
-
-
-
-
 export function MyProfile() {
+
     const location = useLocation();
 
    

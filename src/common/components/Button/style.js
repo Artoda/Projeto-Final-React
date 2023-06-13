@@ -7,9 +7,17 @@ export const Button = styled.button`
   color: var(--terciary-color);
   border: none;
   border-radius: 5px;
-  margin:10px;
+  margin: 10px;
   width: 100%;
   height: 35px;
-  margin: 10px 0 20px;
+  margin: 10px 0;
   cursor: pointer;
+  transition-duration: 0.2s;
+  padding: 10px;
+
+  :hover {
+    background-color: var(--terciary-color);
+    color: var(--alert-color);
+    border: 1px solid var(--alert-color);
+  }
 `;

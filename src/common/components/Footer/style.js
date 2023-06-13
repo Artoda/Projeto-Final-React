@@ -6,12 +6,15 @@ export const Container = styled.footer`
   justify-content: space-between;
   padding: 15px 70px 15px 70px;
   background-color: #e9d5d5;
-  height: 50px;
+  height: fit-content;
 `;
 
 export const AboutUsContainer = styled.footer`
   display: flex;
   align-items: center;
+  span {
+    font-size: larger;
+  }
 `;
 
 export const LogoContainer = styled.footer`
@@ -19,11 +22,14 @@ export const LogoContainer = styled.footer`
   align-items: center;
 
   img {
-    width: 100px;
+    width: 100%;
   }
 `;
 
 export const HelpContainer = styled.footer`
   display: flex;
   align-items: center;
+  span {
+    font-size: larger;
+  }
 `;

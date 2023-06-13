@@ -1,39 +1,94 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Footer } from "../../common/components/Footer";
+import { api } from "../../services/api";
+import useAuth from "../../hooks/useAuth";
+import React from "react";
+import ReactPlayer from "react-player";
 import {
   Container,
-  TitleContainer,
-  NavBarContainer,
-  NavBar,
-  NavItem,
-  ProductsContainer,
-  Product,
+  ButtonCategorie,
+  HomeContainer,
   ImageContainer,
+  NavBar,
+  NavBarContainer,
+  NavItem,
+  Product,
+  ProductBio,
+  ProductBioText,
   ProductTitleContainer,
+  ProductsContainer,
   ShopContainer,
+  TitleContainer,
+  VideoContainer,
 } from "./style";
-import { useEffect, useState } from "react";
 
 export function Home() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [isHidden, setIsHidden] = useState(true);
+
+  const { checkCartItems } = useAuth();
+
+  useEffect(() => { }, []);
 
   useEffect(() => {
     async function fetchData() {
-      let data = await fetch(
-        "https://trabalho-api-desenv-web-g2.up.railway.app/postgres/produtos/dto"
-      );
-      let product = await data.json();
+      let { data: product } = await api.get("/produtos/dto");
       setProducts(product);
     }
-
     fetchData();
   }, []);
+
+  // salvando carrinho no localStorage
+  const handleAddToCart = (product) => {
+    const isProductInCart = cart.some(
+      (item) => item.id_produto === product.id_produto
+    );
+
+    if (isProductInCart) {
+      alert("Este produto já está no carrinho.");
+      return;
+    }
+
+    setCart((prevCart) => {
+      const updatedCart = [...prevCart, product];
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
+    });
+  };
+  const handleClick = () => {
+    setIsHidden((current) => !current);
+  };
+
+
+  useEffect(() => {
+    // atualiza os dados do carrinho com localStorage
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // verifica o estado do carrinho após atualizar
+  useEffect(() => {
+    console.log(cart);
+    checkCartItems();
+  }, [cart]);
 
   return (
     <>
       <Container>
-        <NavBarContainer>
+        <ButtonCategorie>
+          <button
+            onClick={() => {
+              handleClick();
+            }}
+          >
+            Categorias
+          </button>
+        </ButtonCategorie>
+        <NavBarContainer style={{ display: isHidden ? "flex" : "none" }}>
           <NavBar>
             <Link to={"/"}>
               <NavItem isActive={location.pathname === "/"}>Home</NavItem>
@@ -45,9 +100,6 @@ export function Home() {
               <NavItem isActive={location.pathname === "/antiguidades"}>
                 Antiguidades
               </NavItem>
-            </Link>
-            <Link to={"/joias"}>
-              <NavItem isActive={location.pathname === "/joias"}>Jóias</NavItem>
             </Link>
             <Link to={"/armas"}>
               <NavItem isActive={location.pathname === "/armas"}>Armas</NavItem>
@@ -69,21 +121,114 @@ export function Home() {
           />
         </TitleContainer>
         <ProductsContainer>
-          {products.map((productM) => {
-            return (
-              <Product key={productM.nome}>
-                <ImageContainer>
-                  <img src={productM.descricao} alt="Arma" />
-                </ImageContainer>
-                <ProductTitleContainer>
-                  <h2>{productM.nome}</h2>
-                </ProductTitleContainer>
-                <ShopContainer>
-                  <span>R$ {productM.valor_unitario}</span>
-                </ShopContainer>
-              </Product>
-            );
-          })}
+          {location.pathname === "/" ? (
+            <HomeContainer>
+              <span>Bem vindo ao melhor site de penhoras da sua região!</span>
+              <VideoContainer>
+                <ReactPlayer url="https://youtu.be/MANh1Ys2tDQ" />
+              </VideoContainer>
+            </HomeContainer>
+          ) : null}
+          {location.pathname === "/antiguidades"
+            ? products
+              .filter((prod) => prod.categoriaProdDto.id_categoria == 2)
+              .map((productM) => {
+                return (
+                  <Product key={productM.id_produto}>
+                    <ImageContainer>
+                      <img src={productM.url_imagem} alt="imagem" />
+                    </ImageContainer>
+                    <ProductTitleContainer>
+                      <h2>{productM.nome}</h2>
+                    </ProductTitleContainer>
+                    <ProductBio>
+                      <ProductBioText>
+                        <span>{productM.descricao}</span>
+                      </ProductBioText>
+                    </ProductBio>
+                    <ShopContainer>
+                      <span>R$ {productM.valor_unitario}</span>
+                      <button
+                        onClick={() => {
+                          handleAddToCart(productM);
+                        }}
+                      >
+                        <img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        />
+                      </button>
+                    </ShopContainer>
+                  </Product>
+                );
+              })
+            : null}
+          {location.pathname === "/artes"
+            ? products
+              .filter((prod) => prod.categoriaProdDto.id_categoria == 3)
+              .map((productM) => {
+                return (
+                  <Product key={productM.id_produto}>
+                    <ImageContainer>
+                      <img src={productM.url_imagem} alt="imagem" />
+                    </ImageContainer>
+                    <ProductTitleContainer>
+                      <h2>{productM.nome}</h2>
+                    </ProductTitleContainer>
+                    <ProductBio>
+                      <ProductBioText>
+                        <span>{productM.descricao}</span>
+                      </ProductBioText>
+                    </ProductBio>
+                    <ShopContainer>
+                      <span>R$ {productM.valor_unitario}</span>
+                      {/* tem que deixar button senão não pega o localStorage */}
+                      <button
+                        onClick={() => {
+                          handleAddToCart(productM);
+                        }}
+                      >
+                        <img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        />
+                      </button>
+                    </ShopContainer>
+                  </Product>
+                );
+              })
+            : null}
+          {location.pathname === "/armas"
+            ? products
+              .filter((prod) => prod.categoriaProdDto.id_categoria == 1)
+              .map((productM) => {
+                return (
+                  <Product key={productM.id_produto}>
+                    <ImageContainer>
+                      <img src={productM.url_imagem} alt="imagem" />
+                    </ImageContainer>
+                    <ProductTitleContainer>
+                      <h2>{productM.nome}</h2>
+                    </ProductTitleContainer>
+                    <ProductBio>
+                      <ProductBioText>
+                        <span>{productM.descricao}</span>
+                      </ProductBioText>
+                    </ProductBio>
+                    <ShopContainer>
+                      <span>R$ {productM.valor_unitario}</span>
+                      {/* tem que deixar button senão não pega o localStorage */}
+                      <button onClick={() => handleAddToCart(productM)}>
+                        <img
+                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                          alt="Carrinho"
+                        />
+                      </button>
+                    </ShopContainer>
+                  </Product>
+                );
+              })
+            : null}
         </ProductsContainer>
       </Container>
     </>

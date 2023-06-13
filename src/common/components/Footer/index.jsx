@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import {
   Container,
@@ -10,21 +10,27 @@ import {
 export function Footer() {
   return (
     <>
+      <Outlet />
       <Container>
         <AboutUsContainer>
-          <span>Sobre Nós</span>
+          <Link to={"/aboutus"}>
+            <span>Sobre Nós</span>
+          </Link>
         </AboutUsContainer>
         <LogoContainer>
-          <img
-            src="https://media.discordapp.net/attachments/1081311873481322597/1116384022155755650/logo-serratec_1.png"
-            alt="SerraTec"
-          />
+          <a href="https://serratec.org" target="_blank">
+            <img
+              src="https://media.discordapp.net/attachments/1081311873481322597/1116384022155755650/logo-serratec_1.png"
+              alt="SerraTec"
+            />
+          </a>
         </LogoContainer>
         <HelpContainer>
-          <span>Fala Conosco</span>
+          <Link to={"/contact"}>
+            <span>Fala Conosco</span>
+          </Link>
         </HelpContainer>
       </Container>
-      <Outlet />
     </>
   );
 }

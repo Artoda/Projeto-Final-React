@@ -30,7 +30,6 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
   width: 100%;
 `;
 
@@ -65,6 +64,8 @@ export const FooterContainer = styled.div`
 `;
 
 export const LabelError = styled.label`
+  padding: 10px 0;
+  margin-top: 10px;
   font-size: 14px;
-  color: red;
+  color: var(--alert-color);
 `;

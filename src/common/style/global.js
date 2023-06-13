@@ -24,19 +24,6 @@ export const GlobalStyle = createGlobalStyle`
         height: 100%;
     }
 
-    .red-bt {
-        /* background: var(--bg-button);
-        font-size: 16px;
-        list-style: none;
-        color:white;
-        border: none;
-        border-radius: 5px;
-        margin:10px;
-        width: 100%;
-        height: 35px;
-        margin: 10px 0 20px; */
-    }
-
     #root {
         width: 100%;
         margin: 0 auto;
@@ -48,14 +35,6 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 22px;
     }
 
-    input {
-        /* border: 1px solid var(--primary-color);
-        background: var(--bg-box);
-        border-radius: 5px;
-        height: 30px;
-        width: 100%; */
-    }
-
     h1 {
 
     }
@@ -65,10 +44,16 @@ export const GlobalStyle = createGlobalStyle`
         color: var(--primary-color);
     }
 
+    h3 {
+        color: var(--primary-color);
+        font-size: 14px;
+    }
+
     span {
         color: var(--primary-color);
         font-size: 12px;
     }
+
     a {
         text-decoration: none;
     }
