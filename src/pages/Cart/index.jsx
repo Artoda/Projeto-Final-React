@@ -65,11 +65,17 @@ export function Cart() {
     let newTotal = total;
     let anotherTotal = 0;
 
+    if (cart.length === 0) {
+      alert("Não há produtos no carrinho.");
+      return;
+    }
+    
     if (coupons.includes(coupon)) {
       setDisabled(true);
       setIsCouponApplied(true);
       document.querySelector(".input").disabled = true;
-
+      
+      
       anotherTotal = total - Math.floor(Math.random() * (400 - 100 + 1)) - 100;
     } else {
       alert("Cupon Inexistente");
