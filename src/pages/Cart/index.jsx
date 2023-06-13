@@ -3,7 +3,7 @@ import { BsCartCheck, BsTrash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import useAuth from "../../hooks/useAuth";
-// import { api } from "../../services/api";
+// import { api } from "../../services/api"; // para exclusão dos produtos após venda
 import {
   AddCupon,
   BoxListTotal,
@@ -30,7 +30,7 @@ import {
 } from "./style";
 
 export function Cart() {
-  const { isLoggedIn } = useAuth(); // para verificar se pessoa está logada antes de confirmar compra
+  const { checkIsLoggedIn, isLoggedIn } = useAuth(); // para verificar se pessoa está logada antes de confirmar compra
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [newTotal, setNewTotal] = useState(0);
@@ -85,13 +85,12 @@ export function Cart() {
       alert("Faça login para finalizar a compra.");
       return;
     }
-
     if (cart.length === 0) {
       alert("Não há produtos no carrinho.");
       return;
     }
 
-    // remover produto após venda deixar comentado
+    // // remover produto após venda deixar comentado
     // cart.forEach((product) => {
     //   api.delete(`/produtos/${product.id_produto}`)
     //     .then((response) => {

@@ -49,6 +49,9 @@ export function Register() {
     } else if (password !== passwordConf) {
       setError("as senhas não são iguais");
       return;
+    } else if (password.length < 6) {
+      setError("a senha tem que ter mais que seis dígitos");
+      return;
     }
 
     // TESTANDO SALVAMENTO NO BANCO
@@ -57,24 +60,23 @@ export function Register() {
         username: nome,
         email: email,
         password: password,
-        passwordConf: passwordConf,
         role: ["user"]
       });
+
+      // const res = signup(email, password);
+      // if (res) {
+      //   setError(res);
+      //   return;
+      // }
+
+      alert("usuário cadatrado com sucesso!");
+      navigate("/login");
     }
     catch (error) {
       console.error(error);
-      alert("Ocorreu um erro ao salvar os dados. ESTE É DO BANCO DE DADOS, mas salvou no localStorage.");
+      alert("Ocorreu um erro ao salvar os dados. ERRO DO POSTGRES, mas salvou no localStorage.");
     }
-    // ATE AQUI SALVA BANCO
-
-    const res = signup(email, password, nome);
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    alert("usuário cadatrado com sucesso!");
-    navigate("/login");
+    // ATE AQUI SALVA BANCO POSTGRES
   };
 
   return (
