@@ -12,7 +12,7 @@ export const Container = styled.div`
   }
 
   @media only all and (max-width: 414px) {
-    padding: 0;
+    padding: 5px;
   }
 `;
 
@@ -157,6 +157,14 @@ export const LoginContainer = styled.div`
 
   button {
     width: 100px;
+  }
+  @media only all and (max-width: 466px) {
+    top: 79px;
+    right: 37%;
+  }
+  @media only all and (max-width: 400px) {
+    top: 111px;
+    right: 36%;
   }
 `;
 

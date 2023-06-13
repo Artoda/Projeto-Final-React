@@ -10,6 +10,9 @@ export const Container = styled.footer`
   position: relative;
   bottom: 0;
   left: 0;
+  @media only all and (max-width: 700px) {
+    padding: 0;
+  }
 `;
 
 export const AboutUsContainer = styled.footer`

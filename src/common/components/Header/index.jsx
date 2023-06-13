@@ -137,8 +137,7 @@ export function Header() {
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
               <span className="triangle"></span>
               <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-                Para ver seus pedidos e ter uma experiência personalizada,
-                acesse sua conta 😊
+                Para ter uma experiência personalizada, acesse sua conta 😊
               </span>
               <Link to={"/login"}>
                 <ButtonContainer
