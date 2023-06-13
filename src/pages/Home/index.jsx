@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 import ReactPlayer from "react-player";
+import { BsCart3 } from "react-icons/bs";
 import {
   Container,
   ButtonCategorie,
@@ -19,6 +20,7 @@ import {
   ShopContainer,
   TitleContainer,
   VideoContainer,
+  LogoIcon
 } from "./style";
 
 export function Home() {
@@ -113,10 +115,12 @@ export function Home() {
           </NavBar>
         </NavBarContainer>
         <TitleContainer>
-          <img
-            src="https://media.discordapp.net/attachments/1081311873481322597/1116375624991383572/title.png?width=1440&height=89"
-            alt="Logo"
-          />
+          <LogoIcon>
+            <span className="square1"></span>
+            <span className="square2"></span>
+            <span className="square3"></span>
+          </LogoIcon>
+          <h1>A sua loja de penhores favorita!</h1>
         </TitleContainer>
         <ProductsContainer>
           {location.pathname === "/" ? (
@@ -154,16 +158,9 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <button
-                              onClick={() => {
-                                handleAddToCart(productM);
-                              }}
-                            >
-                              <img
-                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                                alt="Carrinho"
-                              />
-                            </button>
+                            <BsCart3 onClick={() => {
+                              handleAddToCart(productM);
+                            }} className="icon" />
                           </>
                         )}
                       </ShopContainer>
@@ -194,16 +191,9 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <button
-                              onClick={() => {
-                                handleAddToCart(productM);
-                              }}
-                            >
-                              <img
-                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                                alt="Carrinho"
-                              />
-                            </button>
+                            <BsCart3 onClick={() => {
+                              handleAddToCart(productM);
+                            }} className="icon" />
                           </>
                         )}
                       </ShopContainer>
@@ -234,16 +224,9 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <button
-                              onClick={() => {
-                                handleAddToCart(productM);
-                              }}
-                            >
-                              <img
-                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                                alt="Carrinho"
-                              />
-                            </button>
+                            <BsCart3 onClick={() => {
+                              handleAddToCart(productM);
+                            }} className="icon" />
                           </>
                         )}
                       </ShopContainer>
@@ -274,16 +257,9 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <button
-                              onClick={() => {
-                                handleAddToCart(productM);
-                              }}
-                            >
-                              <img
-                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                                alt="Carrinho"
-                              />
-                            </button>
+                            <BsCart3 onClick={() => {
+                              handleAddToCart(productM);
+                            }} className="icon" />
                           </>
                         )}
                       </ShopContainer>
@@ -314,16 +290,9 @@ export function Home() {
                         ) : (
                           <>
                             <span>R$ {productM.valor_unitario}</span>
-                            <button
-                              onClick={() => {
-                                handleAddToCart(productM);
-                              }}
-                            >
-                              <img
-                                src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                                alt="Carrinho"
-                              />
-                            </button>
+                            <BsCart3 onClick={() => {
+                              handleAddToCart(productM);
+                            }} className="icon" />
                           </>
                         )}
                       </ShopContainer>

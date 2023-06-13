@@ -10,21 +10,28 @@ export const Container = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
-  background-color: #f8f8f8;
+  
+  background-color: var(--bg-color);
   min-height: calc(100vh - 30px);
+
 `;
 
 export const ButtonCategorie = styled.div`
   button {
+    margin: 10px 30px;
     display: none;
-    background: var(--bg-button);
-    color: var(--terciary-color);
+
+    background-color: var(--terciary-color);
+    color: var(--alert-color);
+    border: 1px solid var(--alert-color);
+    transition: 0.2s;
     cursor: pointer;
+    font-size: 16px;
     border-radius: 5px;
     :hover {
-      background-color: var(--terciary-color);
-      color: var(--alert-color);
-      border: 1px solid var(--alert-color);
+      background: var(--bg-button);
+      color: var(--terciary-color);
+      border: 1px solid var(--terciary-color);
     }
   }
   @media only all and (max-width: 700px) {
@@ -35,7 +42,6 @@ export const ButtonCategorie = styled.div`
       padding: 5px;
       margin-top: 10px;
     }
-    padding: 10px;
     width: 100%;
   }
   align-items: start;
@@ -43,26 +49,27 @@ export const ButtonCategorie = styled.div`
 `;
 
 export const TitleContainer = styled.header`
+  padding: 20px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
-  img {
-    width: 1000px;
-    padding: 10px;
+  
+  h1 {
+    color: rgba(203, 18, 28, 0.7);
   }
-  background-color: #ffffff;
-  width: 100%;
 
   @media only all and (max-width: 1010px) {
-    img {
-      width: 700px;
+    h1 {
+      font-size: 35px;
     }
   }
   @media only all and (max-width: 700px) {
-    img {
+    
+    h1 {
+      font-size: 30px;
       width: 500px;
+      text-align: left;
     }
   }
 
@@ -71,18 +78,41 @@ export const TitleContainer = styled.header`
   }
 `;
 
+export const LogoIcon = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  span {
+    width: 14px;
+    height:42px;
+  }
+  .square1 {
+    background-color: rgba(203, 18, 28, 1);
+  }
+  .square2 {
+    background-color: rgba(203, 18, 28, 0.7);
+  }
+  .square3 {
+    background-color: rgba(203, 18, 28, 0.4);
+  }
+  @media only all and (max-width: 554px) {
+    display: none;
+  }
+`
+
 export const NavBarContainer = styled.div`
   margin: 0;
   width: 100%;
   height: 80px;
   display: flex;
   flex-direction: column;
-
+  background-color: white;
   @media only all and (max-width: 700px) {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    /* width: 150px; */
   }
 `;
 
@@ -95,15 +125,19 @@ export const NavBar = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 0 0 70px;
-
+  
+  
   a {
     height: 100%;
   }
   @media only all and (max-width: 700px) {
     flex-direction: column;
+    gap: 0;
     padding: 0;
     align-items: start;
-    gap: 30px;
+    a {
+    margin: 0 10px;
+    }
   }
 `;
 
@@ -120,7 +154,9 @@ export const NavItem = styled.div`
   color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
 
   @media only all and (max-width: 700px) {
-    margin-left: 20px;
+    margin-left: 25px;
+    font-size: 16px;
+    padding: 10px 0;
   }
 `;
 
@@ -168,7 +204,7 @@ export const ProductBio = styled.div`
   align-items: center;
   justify-content: center;
   top: 0;
-  height: 330px;
+  height: 450px;
   width: 270px;
   position: absolute;
   opacity: 0%;
@@ -201,12 +237,22 @@ export const Product = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e9e9e9;
+  background-color: white;
   padding: 20px;
   height: 530px;
   width: 270px;
-  border-radius: 5%;
+  /* border-radius: 5%; */
   position: relative;
+  .icon {
+    font-size: 60px;
+    cursor: pointer;
+    transition:  0.3s;
+    padding: 15px;
+  }
+  .icon:hover {
+    background-color: var(--bg-button);
+    color: white;
+  }
 `;
 
 export const ProductDiv = styled.div`
@@ -225,7 +271,6 @@ export const ImageContainer = styled.div`
       display: flex;
     }
     width: 80%;
-    border-radius: 5%;
   }
 `;
 
@@ -234,6 +279,7 @@ export const ProductTitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  font-size: 15px;
 `;
 
 export const ShopContainer = styled.div`
@@ -244,7 +290,8 @@ export const ShopContainer = styled.div`
   justify-content: space-between;
 
   span {
-    font-size: large;
+    font-size: 20px;
+    padding: 15px;
   }
   img {
     width: 50%;
