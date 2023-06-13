@@ -1,21 +1,22 @@
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiUser } from "react-icons/fi";
-import useAuth from '../../hooks/useAuth';
+import { useLocation } from "react-router-dom";
+import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
-import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
+import useAuth from '../../hooks/useAuth';
+import { apiLocal } from '../../services/api';
 import {
     BoxContainer,
     ComplementContainer,
     Container,
     ContentContainer,
-    FooterContainer,
-    UserData,
+    AddressContainer,
     FormContainer,
     NameContainer,
     NumberContainer,
     TitleContainer,
+    UserData,
 } from "./style";
 
 export function Profile() {
@@ -33,41 +34,40 @@ export function Profile() {
 
     // LOGIN
     const { checkIsLoggedIn } = useAuth();
+    const username = localStorage.getItem("user_db");
+    const emailUser = localStorage.getItem("user_email");
 
     const handleClick = async () => {
         try {
-            const responseAddress = await api.post("/enderecos", {
+            const responseAddress = await apiLocal.post("/enderecos", {
                 cep: cep,
                 numero: number,
                 complemento: complement
             });
 
-            console.log(responseAddress); // Verifica objeto salvo
-
             setAddressId(responseAddress.data.id_endereco);
-
-            const responseClient = await api.post("/clientes", {
-                nome_completo: nameSurname,
-                email: email,
-                cpf: cpf,
-                telefone: phone,
-                data_nascimento: birthday,
-                endereco: {
-                    id_endereco: addressId // alterar
-                }
-            });
-
-            console.log(responseClient); // Verifica objeto salvo
-
-            alert("Dados do cliente cadastrados com sucesso!");
-            navigate("/cart");
-        } catch (error) {
+            console.log(addressId);
+        }
+        catch (error) {
             console.error("Erro ao obter dados dos clientes:", error);
         }
     };
 
-    const username = localStorage.getItem("user_db");
-    const emailUser = localStorage.getItem("user_email");
+    const handleClick2 = async () => {
+        const responseClient = await apiLocal.post("/clientes", {
+            nome_completo: nameSurname,
+            email: email,
+            cpf: cpf,
+            telefone: phone,
+            data_nascimento: birthday,
+            endereco: {
+                id_endereco: addressId // alterar
+            }
+        });
+
+        alert("Dados do cliente cadastrados com sucesso!");
+        navigate("/cart");
+    };
 
     useEffect(() => {
         checkIsLoggedIn();
@@ -76,111 +76,98 @@ export function Profile() {
     return (
         <>
             <Container>
-                <form>
-                    <ContentContainer>
+                <ContentContainer>
+                    <TitleContainer>
                         <TitleContainer>
-                            <TitleContainer>
-                                <FiUser size={"30px"} />
-                                <h2>Minha Conta</h2>
-                            </TitleContainer>
+                            <FiUser size={"30px"} />
+                            <h2>Minha Conta</h2>
                         </TitleContainer>
-                        <FormContainer>
-                            <h2>* nome</h2>
-                            {username}
-                            <h2>* e-mail</h2>
-                            {emailUser}
-                        </FormContainer>
-                        <UserData>
-                            <NameContainer>
-                                <h2> Preenha suas informações </h2>
+                    </TitleContainer>
+                    <FormContainer>
+                        <h2>* nome</h2>
+                        {username}
+                        <h2>* e-mail</h2>
+                        {emailUser}
+                    </FormContainer>
+                    <AddressContainer>
+                        <h2> Endereço</h2>
+                        <span> Preencha somente CEP, número e complemento, o restante será preenchido automaticamente </span>
+                        cep
+                        <InputComponent
+                            type="text"
+                            {...register("cep")}
+                            placeholder=" 00000-000"
+                            onChange={(e) => setCep(e.target.value)}
+                        />
+                        <BoxContainer>
+                            <NumberContainer>
+                                <span>número</span>
                                 <InputComponent
-                                    type="text"
-                                    value={nameSurname}
-                                    onChange={(e) => setNameSurname(e.target.value)}
-                                    placeholder="Seu nome completo"
+                                    type="número"
+                                    {...register("numero")}
+                                    placeholder=" 000"
+                                    onChange={(e) => setNumber(e.target.value)}
                                 />
-                            </NameContainer>
+                            </NumberContainer>
+                            <ComplementContainer>
+                                <span>complemento</span>
+                                <InputComponent
+                                    type="complemento"
+                                    placeholder=" centro"
+                                    onChange={(e) => setComplement(e.target.value)}
+                                />
+                            </ComplementContainer>
+                        </BoxContainer>
+                        <ButtonComponent Text="Confirmar endereço" onClick={() => {
+                            handleClick();
+                        }}>
+                        </ButtonComponent>
+                    </AddressContainer>
+                    <UserData>
+                        <NameContainer>
+                            <h2> Preenha suas informações </h2>
+                            <span>Nome (3 a 14 carateres)</span>
                             <InputComponent
-                                type="cpf"
-                                value={cpf}
-                                onChange={(e) => setCpf(e.target.value)}
-                                placeholder="Seu CPF"
-                            />
-                            <InputComponent
-                                type="phone"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                placeholder="Seu telefone"
-                            />
-                            <InputComponent
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Seu email REPITA O DE USUARIO"
-                            />
-                            <InputComponent
-                                type="birthday"
-                                value={birthday}
-                                onChange={(e) => setBirthday(e.target.value)}
-                                placeholder="Data de nascimento"
-                            />
-                        </UserData>
-                        <FooterContainer>
-                            <h2> Endereço</h2>
-                            <span> Preencha somente CEP, número e complemento,</span>
-                            <span>  o restante será preenchido automaticamente </span>
-                            cep
-                            <input
                                 type="text"
-                                {...register("cep")}
-                                placeholder=" 00000-000"
-                                onChange={(e) => setCep(e.target.value)}
+                                value={nameSurname}
+                                onChange={(e) => setNameSurname(e.target.value)}
+                                placeholder="Seu nome completo"
                             />
-
-                            {/* <span>bairro</span>
-                            <input
-                                type="bairro"
-                                {...register("neighborhood")}
-                                placeholder=" Alto da Serra"
-                            />
-
-                            <span>logradouro</span>
-                            <input
-                                type="logradouro"
-                                {...register("address")}
-                                placeholder=" Rua Teresa - até 0608 - lado par"
-                            />
-
-                            <span>localidade</span>
-                            <input
-                                type="localidade"
-                                {...register("locality")}
-                                placeholder=" Petrópolis"
-                            /> */}
-
-                            <BoxContainer>
-                                <NumberContainer>
-                                    <span>número</span>
-                                    <input
-                                        type="número"
-                                        {...register("numero")}
-                                        placeholder=" 000"
-                                        onChange={(e) => setNumber(e.target.value)}
-                                    />
-                                </NumberContainer>
-                                <ComplementContainer>
-                                    <span>complemento</span>
-                                    <input
-                                        type="complemento"
-                                        placeholder=" centro"
-                                        onChange={(e) => setComplement(e.target.value)}
-                                    />
-                                </ComplementContainer>
-                            </BoxContainer>
-                            <button onClick={handleClick}>Confirmar endereço</button>
-                        </FooterContainer>
-                    </ContentContainer>
-                </form>
+                        </NameContainer>
+                        <span>CPF (válido)</span>
+                        <InputComponent
+                            type="cpf"
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
+                            placeholder="Seu CPF"
+                        />
+                        <span>Telefone (9 dígitos)</span>
+                        <InputComponent
+                            type="phone"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder="Seu telefone"
+                        />
+                        <span>Email (mesmo email de usuário)</span>
+                        <InputComponent
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Seu email REPITA O DE USUARIO"
+                        />
+                        <span>Data de nascimento (formato AAAA-MM-DD)</span>
+                        <InputComponent
+                            type="birthday"
+                            value={birthday}
+                            onChange={(e) => setBirthday(e.target.value)}
+                            placeholder="Data de nascimento"
+                        />
+                    </UserData>
+                    <ButtonComponent Text="Confirmar dados pessoais" onClick={() => {
+                        handleClick2();
+                    }}>
+                    </ButtonComponent>
+                </ContentContainer>
             </Container>
         </>
     );

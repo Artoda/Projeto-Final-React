@@ -8,7 +8,7 @@ import useAuth from "../../hooks/useAuth";
 
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
-import { api } from "../../services/api";
+import { apiLocal } from "../../services/api";
 import {
   BoxContainer,
   Container,
@@ -58,18 +58,12 @@ export function Register() {
 
     // TESTANDO SALVAMENTO NO BANCO
     try {
-      await api.post("/auth/signup", {
+      await apiLocal.post("/auth/signup", {
         username: nome,
         email: email,
         password: password,
         role: ["user"],
       });
-
-      // const res = signup(email, password);
-      // if (res) {
-      //   setError(res);
-      //   return;
-      // }
 
       alert("usuário cadatrado com sucesso!");
       navigate("/login");
@@ -77,7 +71,6 @@ export function Register() {
       console.error(error);
       alert("Ocorreu um erro ao salvar os dados.");
     }
-    // ATE AQUI SALVA BANCO POSTGRES
   };
 
   return (

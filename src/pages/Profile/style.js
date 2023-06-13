@@ -12,18 +12,16 @@ export const Container = styled.div`
 
   color: #737070;
   background-color: #F8F8F8;
-  height: 90vh;  
+  /* height: 90vh;   */
 `;
 
 export const BoxContainer = styled.div`
  text-align: left;
- width: 100%;
+ /* width: 100%; */
  display: flex;
  flex-direction: row ;
 gap: 10px;
 `;
-
-
 
 export const ContentContainer = styled.div`
   background: white ;
@@ -46,15 +44,15 @@ export const FormContainer = styled.div`
 
 export const UserData = styled.div`
   text-align: left;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 export const NameContainer = styled.div`
 text-align: left;
-    width: 100%;
+    /* width: 100%; */
 `
 
-export const FooterContainer = styled.div`
+export const AddressContainer = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -85,17 +83,12 @@ export const NumberContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  input{
-    width: 10vh;
-  }
-  
 `;
 
 export const ComplementContainer = styled.div`
   text-align: left;
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: column;  
 `;
 
 
