@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 import useAuth from '../../hooks/useAuth';
-import { apiLocal } from '../../services/api';
+import { api } from '../../services/api';
 import {
     AddressContainer,
     BoxContainer,
@@ -43,7 +43,7 @@ export function Profile() {
         }
 
         try {
-            const responseAddress = await apiLocal.post("/enderecos", {
+            const responseAddress = await api.post("/enderecos", {
                 cep: cep,
                 numero: number,
                 complemento: complement
@@ -65,7 +65,7 @@ export function Profile() {
             alert("Preencha o endereço");
             return;
         }
-        const responseClient = await apiLocal.post("/clientes", {
+        const responseClient = await api.post("/clientes", {
             nome_completo: nameSurname,
             email: email,
             cpf: cpf,
@@ -89,9 +89,10 @@ export function Profile() {
         setEmail(newEmail);
 
         if (newEmail.trim() !== emailUser.trim()) {
-            console.log(emailUser)
-            console.log(newEmail)
+            // console.log(emailUser)
+            // console.log(newEmail)
             console.log("Email não coincide com o de usuário");
+            alert
         }
     };
 
