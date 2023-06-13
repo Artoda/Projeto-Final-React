@@ -12,9 +12,7 @@ export const Container = styled.div`
 
   color: #737070;
   background-color: #F8F8F8;
-  height: 90vh;
-;
-  
+  height: 90vh;  
 `;
 
 export const BoxContainer = styled.div`
@@ -29,7 +27,6 @@ gap: 10px;
 
 export const ContentContainer = styled.div`
   background: white ;
-
 `;
 
 export const TitleContainer = styled.div`
@@ -37,20 +34,25 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  gap: 10px;
-
-  
+  gap: 10px;  
 `;
 
 export const FormContainer = styled.div`
   text-align: left ;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 10px;
- 
-  
+  padding: 10px;  
 `;
+
+export const UserData = styled.div`
+  text-align: left;
+  width: 100%;
+`;
+
+export const NameContainer = styled.div`
+text-align: left;
+    width: 100%;
+`
 
 export const FooterContainer = styled.div`
   text-align: left;

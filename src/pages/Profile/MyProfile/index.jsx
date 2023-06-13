@@ -63,11 +63,11 @@ export function MyProfile() {
                         <BoxContainer key={data.email}>
                             <NomeContainer>
                                 <h2> nome</h2>
-                                <span>{data.username}</span>
+                                {data.username}
                             </NomeContainer>
                             <EmailContainer>
                                 <h2> email</h2>
-                                <span>  {data.email}</span>
+                                {data.email}
                             </EmailContainer>
                             <UserData>
                                 <h2> Dados e endereço completos</h2>
