@@ -10,21 +10,28 @@ export const Container = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
+  
   background-color: var(--bg-color);
   min-height: calc(100vh - 30px);
+
 `;
 
 export const ButtonCategorie = styled.div`
   button {
+    margin: 10px 30px;
     display: none;
-    background: var(--bg-button);
-    color: var(--terciary-color);
+
+    background-color: var(--terciary-color);
+    color: var(--alert-color);
+    border: 1px solid var(--alert-color);
+    transition: 0.2s;
     cursor: pointer;
+    font-size: 16px;
     border-radius: 5px;
     :hover {
-      background-color: var(--terciary-color);
-      color: var(--alert-color);
-      border: 1px solid var(--alert-color);
+      background: var(--bg-button);
+      color: var(--terciary-color);
+      border: 1px solid var(--terciary-color);
     }
   }
   @media only all and (max-width: 700px) {
@@ -35,7 +42,6 @@ export const ButtonCategorie = styled.div`
       padding: 5px;
       margin-top: 10px;
     }
-    padding: 10px;
     width: 100%;
   }
   align-items: start;
@@ -106,6 +112,7 @@ export const NavBarContainer = styled.div`
     align-items: center;
     justify-content: center;
     height: 100%;
+    /* width: 150px; */
   }
 `;
 
@@ -118,14 +125,19 @@ export const NavBar = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 0 0 70px;
-
+  
+  
   a {
     height: 100%;
   }
   @media only all and (max-width: 700px) {
     flex-direction: column;
+    gap: 0;
     padding: 0;
     align-items: start;
+    a {
+    margin: 0 10px;
+    }
   }
 `;
 
@@ -142,7 +154,9 @@ export const NavItem = styled.div`
   color: ${(props) => (props.isActive ? " rgba(203, 18, 28, 0.8)" : "#737070")};
 
   @media only all and (max-width: 700px) {
-    margin-left: 20px;
+    margin-left: 25px;
+    font-size: 16px;
+    padding: 10px 0;
   }
 `;
 
