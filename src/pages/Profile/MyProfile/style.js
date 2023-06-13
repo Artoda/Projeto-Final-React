@@ -51,8 +51,14 @@ export const BoxContainer = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  text-align: center;
-  padding: 10px;
-  width: 50vh;
-  height: 10vh;
+    text-align: center;
+    padding: 10px;
+    width: 50vh;
+    height: 10vh;
+
+    span{
+        color: red;
+    }
+    
 `;
+

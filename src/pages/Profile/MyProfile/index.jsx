@@ -13,38 +13,39 @@ import {
 } from "./style";
 
 export function MyProfile() {
-  const location = useLocation();
 
-  console.log("olá");
+    const location = useLocation();
 
-  return (
-    <>
-      <Container>
-        <ContentContainer>
-          <InformationContainer>
-            <span>
-              <FiUser />
-            </span>
-            <h2>Minha Conta</h2>
-          </InformationContainer>
-          <BoxContainer>
-            <NomeContainer>
-              <span> nome</span>
-            </NomeContainer>
-            <EmailContainer>
-              <span> e-mail</span>
-            </EmailContainer>
-            <EnderecoContainer>
-              <span>endereço</span>
-            </EnderecoContainer>
-          </BoxContainer>
-          <FooterContainer>
-            <Link to={"/register"}>
-              <span>"clique aqui" para alterar endereço</span>
-            </Link>
-          </FooterContainer>
-        </ContentContainer>
-      </Container>
-    </>
-  );
+   
+    return (
+        <>
+            <Container>
+                <ContentContainer>
+                    <InformationContainer>
+                        <span>
+                            <FiUser size={"30px"}/>
+                        </span>
+                        <h2>Minha Conta</h2>
+                    </InformationContainer>
+                    <BoxContainer>
+                        <NomeContainer>
+                            <span> nome</span>
+                        </NomeContainer>
+                        <EmailContainer>
+                            <span> e-mail</span>
+                        </EmailContainer>
+                        <EnderecoContainer>
+                            <span>endereço</span>
+                        </EnderecoContainer>
+                    </BoxContainer>
+                    <FooterContainer>
+                        <Link to={"/profile"}>
+                            <span>"clique aqui" para alterar endereço</span>
+                        </Link>
+                    </FooterContainer>
+                </ContentContainer>
+            </Container>
+            
+        </>
+    );
 }
