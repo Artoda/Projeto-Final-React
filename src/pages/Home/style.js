@@ -109,6 +109,7 @@ export const NavBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
+
   @media only all and (max-width: 700px) {
     position: absolute;
     z-index: 1;
@@ -117,9 +118,10 @@ export const NavBarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 300px;
+    height: 260px;
     width: 120px;
     border-radius: 5%;
+
 
   }
 `;
@@ -143,8 +145,7 @@ export const NavBar = styled.div`
     gap: 0;
     padding: 0;
     align-items: start;
-  background-color: white;
-
+    
   }
 `;
 
