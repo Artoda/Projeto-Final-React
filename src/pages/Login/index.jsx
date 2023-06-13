@@ -7,7 +7,7 @@ import ButtonComponent from "../../common/components/Button";
 
 import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import { api } from "../../services/api";
+import { apiLocal } from "../../services/api";
 import {
   Container,
   BoxContainer,
@@ -45,7 +45,7 @@ export function Login() {
 
     // TESTANDO LOGIN pelo BANCO
     try {
-      const response = await api.post("/auth/signin", {
+      const response = await apiLocal.post("/auth/signin", {
         username: username,
         password: password
       });

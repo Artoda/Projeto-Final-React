@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 import useAuth from '../../hooks/useAuth';
-import { api } from '../../services/api';
+import { apiLocal } from '../../services/api';
 import {
     AddressContainer,
     BoxContainer,
@@ -29,6 +29,7 @@ export function Profile() {
     const [number, setNumber] = useState("");
     const [complement, setComplement] = useState("");
     const [isAddressSubmitted, setIsAddressSubmitted] = useState(false);
+    const [showEmailWarning, setShowEmailWarning] = useState(false);
 
     // LOGIN
     const { checkIsLoggedIn } = useAuth();
@@ -43,7 +44,7 @@ export function Profile() {
         }
 
         try {
-            const responseAddress = await api.post("/enderecos", {
+            const responseAddress = await apiLocal.post("/enderecos", {
                 cep: cep,
                 numero: number,
                 complemento: complement
@@ -65,7 +66,16 @@ export function Profile() {
             alert("Preencha o endereço");
             return;
         }
-        const responseClient = await api.post("/clientes", {
+
+        if (email.trim() !== emailUser.trim()) {
+            setShowEmailWarning(true);
+            console.log(newEmail)
+            console.log(email)
+
+            return;
+        }
+
+        const responseClient = await apiLocal.post("/clientes", {
             nome_completo: nameSurname,
             email: email,
             cpf: cpf,
@@ -88,11 +98,8 @@ export function Profile() {
         const newEmail = e.target.value;
         setEmail(newEmail);
 
-        if (newEmail.trim() !== emailUser.trim()) {
-            // console.log(emailUser)
-            // console.log(newEmail)
-            console.log("Email não coincide com o de usuário");
-            alert
+        if (showEmailWarning) {
+            setShowEmailWarning(true);
         }
     };
 
