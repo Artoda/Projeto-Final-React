@@ -8,7 +8,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100%;
+  min-height: calc(100vh - 30px);
+  padding: 50px;
 `;
 
 export const PeopleContainer = styled.div`

@@ -24,7 +24,8 @@ export function Header() {
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
 
-  const { signout, checkIsLoggedIn, isLoggedIn, cartItems, nome, getName } = useAuth();
+  const { signout, checkIsLoggedIn, isLoggedIn, cartItems, nome, getName } =
+    useAuth();
 
   const handleSignout = () => {
     const res = signout();
@@ -79,11 +80,11 @@ export function Header() {
           style={{
             display:
               location.pathname === "/" ||
-                location.pathname === "/artes" ||
-                location.pathname === "/antiguidades" ||
-                location.pathname === "/armas" ||
-                location.pathname === "/jogos" ||
-                location.pathname === "/livros"
+              location.pathname === "/artes" ||
+              location.pathname === "/antiguidades" ||
+              location.pathname === "/armas" ||
+              location.pathname === "/jogos" ||
+              location.pathname === "/livros"
                 ? "flex"
                 : "none",
           }}
@@ -122,16 +123,16 @@ export function Header() {
             }}
           >
             <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-              Olá, clique aqui para fazer login ou cadastre-se ↓
+              Olá, clique aqui ↓
             </span>
             <span style={{ display: isLoggedIn ? "flex" : "none" }}>
-              <span className="nome" > {nome} </span>
-              , seja bem vindo!
-              <Link to={"/myProfile"}>
-              </Link>
+              <span className="nome"> {nome} </span>, seja bem vindo!
+              <Link to={"/myProfile"}></Link>
             </span>
-            <BsPersonCircle className="icon" style={{ display: isLoggedIn ? "flex" : "none" }} />
-
+            <BsPersonCircle
+              className="icon"
+              style={{ display: isLoggedIn ? "flex" : "none" }}
+            />
 
             <LoginContainer style={{ display: isHidden ? "flex" : "none" }}>
               <span className="triangle"></span>

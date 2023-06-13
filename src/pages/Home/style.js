@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #f8f8f8;
-  height: 100%;
+  min-height: calc(100vh - 30px);
 `;
 
 export const ButtonCategorie = styled.div`
@@ -123,11 +123,14 @@ export const ProductsContainer = styled.div`
   flex-wrap: wrap;
   height: 100%;
   gap: 50px;
+  padding: 50px;
 `;
 
 export const ProductBio = styled.div`
   display: flex;
   background-color: black;
+  align-items: center;
+  justify-content: center;
   top: 0;
   height: 330px;
   width: 270px;
@@ -147,8 +150,11 @@ export const ProductBioText = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 10px;
   span {
     background-color: black;
+    align-items: center;
+    justify-content: center;
     color: white;
     font-size: large;
   }

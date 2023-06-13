@@ -7,6 +7,9 @@ export const Container = styled.footer`
   padding: 15px 70px 15px 70px;
   background-color: #e9d5d5;
   height: fit-content;
+  position: relative;
+  bottom: 0;
+  left: 0;
 `;
 
 export const AboutUsContainer = styled.footer`

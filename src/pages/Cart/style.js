@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: #f8f8f8;
-  height: 100%;
+  min-height: calc(100vh - 30px);
 `;
 
 export const TitleContainer = styled.div`
@@ -30,6 +30,12 @@ export const ContentContainer = styled.div`
   padding-bottom: 20px;
   gap: 70px;
   height: 70%;
+
+  @media only all and (max-width: 700px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const SelectedItems = styled.div`
@@ -69,7 +75,7 @@ export const Product = styled.div`
   justify-content: center;
   background-color: #e9e9e9;
   padding: 10px;
-  height: 400px;
+  height: 520px;
   width: 270px;
   border-radius: 5%;
 `;
@@ -179,7 +185,7 @@ export const AddCupon = styled.div`
   h3 {
     font-size: large;
   }
-  
+
   input {
     padding: 5px;
     border-radius: 3px;

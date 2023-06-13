@@ -28,7 +28,6 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         margin: 0 auto;
         text-align: center;
-        height: 100%;
     }
 
     .icon {

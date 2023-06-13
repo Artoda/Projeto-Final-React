@@ -82,6 +82,8 @@ export const SearchResults = styled.div`
   img {
     width: 70px;
   }
+  overflow: auto;
+  max-height: 300px;
 `;
 
 export const RightContainer = styled.div`
@@ -128,6 +130,7 @@ export const LoginContainer = styled.div`
   background-color: var(--terciary-color);
   padding: 15px 15px 0;
   border-radius: 10px;
+  z-index: 999;
 
   span {
     text-align: left;
@@ -138,8 +141,8 @@ export const LoginContainer = styled.div`
     position: absolute;
     top: -15px;
     right: 22%;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 25px solid var(--terciary-color);
