@@ -7,25 +7,17 @@ export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartItems, setCartItems] = useState();
   const [nome, setNome] = useState("");
-  
+
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
     const usersStorage = localStorage.getItem("user_db");
-    
-    checkCartItems();
 
-    // if (userToken && usersStorage) {
-    //   const hasUser = JSON.parse(usersStorage)?.filter(
-    //     (user) => user.email === JSON.parse(userToken).email
-    //     );
-    //     if (hasUser) setUser(hasUser[0]);
-    //   }
-    }, []);
-    
+    checkCartItems();
+  }, []);
+
   const getName = () => {
     const user = localStorage.getItem('user_db'); //retorno users_db
-    // let firstName = user.split(' ')[0];
-    console.log(user);    
+    // console.log(user);    
     setNome(user);
   }
 
@@ -55,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     return;
   };
 
+  // somente no localStorage
   // const signup = (email, password) => {
   //   const usersStorage = JSON.parse(localStorage.getItem("users_db"));
   //   const hasUser = usersStorage?.filter((user) => user.email === email);

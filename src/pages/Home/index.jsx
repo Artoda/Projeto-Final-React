@@ -147,17 +147,23 @@ export function Home() {
                       </ProductBioText>
                     </ProductBio>
                     <ShopContainer>
-                      <span>R$ {productM.valor_unitario}</span>
-                      <button
-                        onClick={() => {
-                          handleAddToCart(productM);
-                        }}
-                      >
-                        <img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        />
-                      </button>
+                      {productM.qtd_estoque === 0 ? (
+                        <span>ESGOTADO</span>
+                      ) : (
+                        <>
+                          <span>R$ {productM.valor_unitario}</span>
+                          <button
+                            onClick={() => {
+                              handleAddToCart(productM);
+                            }}
+                          >
+                            <img
+                              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                              alt="Carrinho"
+                            />
+                          </button>
+                        </>
+                      )}
                     </ShopContainer>
                   </Product>
                 );
@@ -181,18 +187,23 @@ export function Home() {
                       </ProductBioText>
                     </ProductBio>
                     <ShopContainer>
-                      <span>R$ {productM.valor_unitario}</span>
-                      {/* tem que deixar button senão não pega o localStorage */}
-                      <button
-                        onClick={() => {
-                          handleAddToCart(productM);
-                        }}
-                      >
-                        <img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        />
-                      </button>
+                      {productM.qtd_estoque === 0 ? (
+                        <span>ESGOTADO</span>
+                      ) : (
+                        <>
+                          <span>R$ {productM.valor_unitario}</span>
+                          <button
+                            onClick={() => {
+                              handleAddToCart(productM);
+                            }}
+                          >
+                            <img
+                              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                              alt="Carrinho"
+                            />
+                          </button>
+                        </>
+                      )}
                     </ShopContainer>
                   </Product>
                 );
@@ -216,14 +227,23 @@ export function Home() {
                       </ProductBioText>
                     </ProductBio>
                     <ShopContainer>
-                      <span>R$ {productM.valor_unitario}</span>
-                      {/* tem que deixar button senão não pega o localStorage */}
-                      <button onClick={() => handleAddToCart(productM)}>
-                        <img
-                          src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
-                          alt="Carrinho"
-                        />
-                      </button>
+                      {productM.qtd_estoque === 0 ? (
+                        <span>ESGOTADO</span>
+                      ) : (
+                        <>
+                          <span>R$ {productM.valor_unitario}</span>
+                          <button
+                            onClick={() => {
+                              handleAddToCart(productM);
+                            }}
+                          >
+                            <img
+                              src="https://media.discordapp.net/attachments/1081311873481322597/1116379466873188443/cart-icon.png"
+                              alt="Carrinho"
+                            />
+                          </button>
+                        </>
+                      )}
                     </ShopContainer>
                   </Product>
                 );

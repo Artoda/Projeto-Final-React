@@ -3,7 +3,7 @@ import { BsCartCheck, BsTrash } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import useAuth from "../../hooks/useAuth";
-// import { api } from "../../services/api"; // para exclusão dos produtos após venda
+import { api } from "../../services/api";
 import {
   AddCupon,
   BoxListTotal,
@@ -69,13 +69,13 @@ export function Cart() {
       alert("Não há produtos no carrinho.");
       return;
     }
-    
+
     if (coupons.includes(coupon)) {
       setDisabled(true);
       setIsCouponApplied(true);
       document.querySelector(".input").disabled = true;
-      
-      
+
+
       anotherTotal = total - Math.floor(Math.random() * (400 - 100 + 1)) - 100;
     } else {
       alert("Cupon Inexistente");
@@ -96,16 +96,22 @@ export function Cart() {
       return;
     }
 
-    // // remover produto após venda deixar comentado
-    // cart.forEach((product) => {
-    //   api.delete(`/produtos/${product.id_produto}`)
-    //     .then((response) => {
-    //       console.log("Produto removido do estoque com sucesso.");
-    //     })
-    //     .catch((error) => {
-    //       console.error("Erro ao remover o produto do estoque:", error);
-    //     });
-    // });
+    // altera a quantidade do estoque para zero ao finalizar compra
+    cart.forEach((product) => {
+      const data = 0; // valor que atualiza o estoque
+
+      api.put(`/produtos/${product.id_produto}/quantidade`, data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((response) => {
+          console.log("Quantidade de estoque atualizada com sucesso.");
+        })
+        .catch((error) => {
+          console.error("Erro ao atualizar a quantidade de estoque:", error);
+        });
+    });
 
     localStorage.removeItem("cart");
     setCart([]);
