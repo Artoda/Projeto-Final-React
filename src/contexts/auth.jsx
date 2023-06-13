@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     const usersStorage = localStorage.getItem("user_db");
 
     checkCartItems();
+    checkIsLoggedIn()  // para ficar verificando se pessoa está logada, importante
   }, []);
 
   const getName = () => {

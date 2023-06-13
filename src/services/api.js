@@ -2,9 +2,6 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL: "https://trabalho-api-desenv-web-g2.up.railway.app/postgres"
-  // headers: {
-  //   Authorization:''
-  // }  
 });
 
 // importante para pegar o token da header nas autorizações de segurança
@@ -16,14 +13,10 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-
 export const apiGit = axios.create({
   baseURL: "https://api.github.com/users",
 });
 
-// export const apiLocal = axios.create({ teste
-//   baseURL: "http://localhost:8080/postgres"
-//   // headers: {
-//   //   Authorization:''
-//   // }
-// });
+export const apiLocal = axios.create({
+  baseURL: "http://localhost:8080/postgres"
+});
