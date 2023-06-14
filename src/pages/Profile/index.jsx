@@ -77,20 +77,28 @@ export function Profile() {
             alert("Preencha o endereço");
             return;
         }
+        try {
+            const responseClient = await api.post("/clientes", {
+                nome_completo: nameSurname,
+                email: email,
+                cpf: cpf,
+                telefone: phone,
+                data_nascimento: birthday,
+                endereco: {
+                    id_endereco: addressId // alterar
+                }
+            });
 
-        const responseClient = await api.post("/clientes", {
-            nome_completo: nameSurname,
-            email: email,
-            cpf: cpf,
-            telefone: phone,
-            data_nascimento: birthday,
-            endereco: {
-                id_endereco: addressId // alterar
+            alert("Dados do cliente cadastrados com sucesso!");
+            navigate("/cart");
+        } catch (error) {
+            if (error.response && error.response.status === 400) {
+                alert("Provavelmente CPF inválido! Verifique o CPF digitado. Senão verifique caracteres do nome.");
+            } else {
+                console.error("Erro ao cadastrar cliente:", error);
             }
-        });
+        }
 
-        alert("Dados do cliente cadastrados com sucesso!");
-        navigate("/cart");
     };
 
 
@@ -163,7 +171,7 @@ export function Profile() {
                                 placeholder="Seu nome completo"
                             />
                         </NameContainer>
-                        <span>CPF</span>
+                        <span>CPF (11 dígitos)</span>
                         <InputComponent
                             type="cpf"
                             value={cpf}

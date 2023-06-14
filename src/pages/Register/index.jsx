@@ -68,7 +68,7 @@ export function Register() {
       navigate("/login");
     } catch (error) {
       console.error(error);
-      alert("Ocorreu um erro ao salvar os dados.");
+      alert("Ocorreu um erro ao salvar os dados. Email já cadastrado.");
     }
   };
 
