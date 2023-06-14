@@ -7,7 +7,7 @@ import ButtonComponent from "../../common/components/Button";
 
 import { FiUser } from "react-icons/fi";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
-import { api } from "../../services/api";
+import { api, apiLocal } from "../../services/api";
 import {
   Container,
   BoxContainer,

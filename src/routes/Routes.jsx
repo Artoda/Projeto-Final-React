@@ -11,6 +11,7 @@ import { Footer } from "../common/components/Footer";
 import { Profile } from "../pages/Profile";
 import { MyProfile } from "../pages/Profile/MyProfile";
 import { NotFound } from "../pages/NotFound";
+import { UpdateProfile } from "../pages/Profile/UpdateProfile";
 
 // verifica se está logado
 const Private = ({ Item }) => {
@@ -39,6 +40,7 @@ export function AllRoutes() {
             <Route Component={AboutUs} path="/aboutus" />
             <Route Component={Profile} path="/profile" />
             <Route Component={MyProfile} path="/myprofile" />
+            <Route Component={UpdateProfile} path="/updateprofile" />
             <Route Component={NotFound} path="/*" />
           </Route>
         </Route>

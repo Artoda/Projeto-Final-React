@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 import useAuth from '../../hooks/useAuth';
-import { api } from '../../services/api';
+import { api, apiLocal } from '../../services/api';
 import {
     AddressContainer,
     BoxContainer,
@@ -16,6 +16,7 @@ import {
     NumberContainer,
     TitleContainer,
     UserData,
+    ImageContainer,
 } from "./style";
 
 export function Profile() {
@@ -28,7 +29,7 @@ export function Profile() {
     const [number, setNumber] = useState("");
     const [complement, setComplement] = useState("");
     const [isAddressSubmitted, setIsAddressSubmitted] = useState(false);
-    const [showEmailWarning, setShowEmailWarning] = useState(false);
+    const [image, setImage] = useState(null);
 
     const emailUser = localStorage.getItem("user_email");
     const [email, setEmail] = useState(emailUser);
@@ -37,6 +38,15 @@ export function Profile() {
     // LOGIN
     const { checkIsLoggedIn } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (checkIsLoggedIn() === false) {
+            navigate("/login");
+        }
+        else {
+            return
+        }
+    }, []);
 
     const handleClick = async () => {
         if (isAddressSubmitted) {
@@ -83,9 +93,11 @@ export function Profile() {
         navigate("/cart");
     };
 
-    useEffect(() => {
-        checkIsLoggedIn();
-    }, []);
+
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        setImage(URL.createObjectURL(selectedImage));
+    };
 
     return (
         <>
@@ -94,7 +106,7 @@ export function Profile() {
                     <TitleContainer>
                         <TitleContainer>
                             <FiUser size={"30px"} />
-                            <h2>Minha Conta</h2>
+                            <h2>Bem vindo/a, {username}</h2>
                         </TitleContainer>
                     </TitleContainer>
                     <FormContainer>
@@ -102,6 +114,11 @@ export function Profile() {
                         {username}
                         <h2>* e-mail</h2>
                         {emailUser}
+                        <ImageContainer>
+                            <h2>Adicione sua imagem aqui</h2>
+                            <input type="file" onChange={handleImageChange} />
+                            {image && <img src={image} alt="Selected" />}
+                        </ImageContainer>
                     </FormContainer>
                     <AddressContainer>
                         <h2> Endereço</h2>

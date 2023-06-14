@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiUser } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import ButtonComponent from "../../../common/components/Button";
 import { Link, useLocation } from "react-router-dom";
@@ -20,11 +21,21 @@ import {
 export function MyProfile() {
     // LOGIN
     const { checkIsLoggedIn } = useAuth();
+    const navigate = useNavigate();
 
     const location = useLocation();
     const [userData, setUserData] = useState([]);
     const [clientData, setClientData] = useState([]);
     const username = localStorage.getItem("user_db");
+
+    useEffect(() => {
+        if (checkIsLoggedIn() === false) {
+            navigate("/login");
+        }
+        else {
+            return
+        }
+    }, []);
 
     useEffect(() => {
         async function fetchData() {
@@ -43,7 +54,6 @@ export function MyProfile() {
             }
         }
 
-        checkIsLoggedIn();
         fetchData();
     }, []);
 
@@ -117,7 +127,7 @@ export function MyProfile() {
                                                 <h3>CEP</h3>
                                                 {client.endereco.cep}
                                             </AddressContainer>
-                                            <Link to={"/profile"}>
+                                            <Link to={"/updateprofile"}>
                                                 <h2>Seus dados estão atualizados</h2>
                                                 <ButtonComponent Text="Deseja alterar endereço? Clique aqui"></ButtonComponent>
                                             </Link>
