@@ -13,11 +13,12 @@ export const Container = styled.div`
   color: #737070;
   background-color: #f8f8f8;
   padding: 20px;
+  width: 100%;
 `;
 
 export const BoxContainer = styled.div`
   text-align: left;
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 10px;
