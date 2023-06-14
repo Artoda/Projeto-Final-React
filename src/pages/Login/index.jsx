@@ -18,7 +18,7 @@ import {
   PasswordInput,
   FooterContainer,
   FormContainer,
-  LabelError
+  LabelError,
 } from "./style";
 
 export function Login() {
@@ -47,10 +47,10 @@ export function Login() {
     try {
       const response = await api.post("/auth/signin", {
         username: username,
-        password: password
+        password: password,
       });
 
-      console.log(response) // verifica objeto salvo
+      console.log(response); // verifica objeto salvo
 
       const accessToken = response.data.accessToken;
       const newUsername = response.data.username;
@@ -64,10 +64,11 @@ export function Login() {
 
       alert("seja bem vindo!");
       navigate("/");
-    }
-    catch (error) {
+    } catch (error) {
       console.error(error);
-      alert("Ocorreu um erro no login. Usuário ou senha inválidos. Tente novamente");
+      alert(
+        "Ocorreu um erro no login. Usuário ou senha inválidos. Tente novamente"
+      );
     }
   };
 
@@ -78,37 +79,45 @@ export function Login() {
           <ContentContainer>
             <TitleContainer>
               <FiUser className="icon" />
-              <h2>login do cliente</h2>
+              <h2>Login do Cliente</h2>
             </TitleContainer>
             <FormContainer>
               <EmailContainer>
-                <h3>* nome de usuário</h3>
+                <h3>* Nome de usuário</h3>
 
                 <InputComponent
                   type="text"
-                  placeholder="digite seu e-mail"
+                  placeholder="Digite seu e-mail"
                   value={username}
                   onChange={(e) => [setUsername(e.target.value), setError("")]}
                 />
-
               </EmailContainer>
               <PasswordContainer>
-                <h3>* senha</h3>
+                <h3>* Senha</h3>
                 <PasswordInput>
-                  <AiOutlineEyeInvisible className="icon" onClick={handleTogglePassword} />
+                  <AiOutlineEyeInvisible
+                    className="icon"
+                    onClick={handleTogglePassword}
+                  />
                   <InputComponent
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="digite sua senha"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Digite sua senha"
                     value={password}
-                    onChange={(e) => [setPassword(e.target.value), setError("")]}
+                    onChange={(e) => [
+                      setPassword(e.target.value),
+                      setError(""),
+                    ]}
                   />
                 </PasswordInput>
                 <LabelError>{error}</LabelError>
               </PasswordContainer>
-              <ButtonComponent Text="login" onClick={() => {
-                handleLogin();
-                checkIsLoggedIn();
-              }} />
+              <ButtonComponent
+                Text="login"
+                onClick={() => {
+                  handleLogin();
+                  checkIsLoggedIn();
+                }}
+              />
             </FormContainer>
             <FooterContainer>
               <span>
