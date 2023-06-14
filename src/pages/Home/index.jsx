@@ -145,7 +145,7 @@ export function Home() {
         <ProductsContainer>
           {location.pathname === "/" ? (
             <HomeContainer>
-              <span>Bem vindo ao melhor site de penhoras da sua região!</span>
+              <span>Bem vindo ao <span>G2PAWNSHOP!</span><br /> A melhor loja de penhores da sua região!</span>
               <VideoContainer>
                 <ReactPlayer
                   width={"100%"}

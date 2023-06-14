@@ -6,7 +6,6 @@ import {
   LogoContainer,
   HelpContainer,
 } from "./style";
-import ButtonComponent from "../Button";
 
 export function Footer() {
   return (
@@ -28,7 +27,7 @@ export function Footer() {
         </LogoContainer>
         <HelpContainer>
           <Link to={"/contact"}>
-            <button>Fala Conosco</button>
+            <button>Fale Conosco</button>
           </Link>
         </HelpContainer>
       </Container>

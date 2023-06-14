@@ -171,6 +171,9 @@ export const HomeContainer = styled.div`
   align-items: center;
   span {
     font-size: xx-large;
+    span {
+      color: rgba(203, 18, 28, 0.8);
+    }
   }
   img {
     width: 100%;

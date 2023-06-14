@@ -89,7 +89,7 @@ export function MyProfile() {
             <span>
               <FiUser size={"30px"} />
             </span>
-            <h2>Bem vinde, {username}</h2>
+            <h2>Bem vindo, {username}</h2>
           </InformationContainer>
           {filteredUserData.map((data) => (
             <BoxContainer key={data.email}>
