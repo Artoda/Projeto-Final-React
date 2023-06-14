@@ -20,7 +20,6 @@ import {
 
 export function Profile() {
     const [nameSurname, setNameSurname] = useState("");
-    const [email, setEmail] = useState("");
     const [cpf, setCpf] = useState("");
     const [phone, setPhone] = useState("");
     const [birthday, setBirthday] = useState("");
@@ -31,11 +30,13 @@ export function Profile() {
     const [isAddressSubmitted, setIsAddressSubmitted] = useState(false);
     const [showEmailWarning, setShowEmailWarning] = useState(false);
 
+    const emailUser = localStorage.getItem("user_email");
+    const [email, setEmail] = useState(emailUser);
+    const username = localStorage.getItem("user_db");
+
     // LOGIN
     const { checkIsLoggedIn } = useAuth();
     const navigate = useNavigate();
-    const username = localStorage.getItem("user_db");
-    const emailUser = localStorage.getItem("user_email");
 
     const handleClick = async () => {
         if (isAddressSubmitted) {
@@ -51,7 +52,7 @@ export function Profile() {
             });
 
             setAddressId(responseAddress.data.id_endereco);
-            console.log(responseAddress.data.id_endereco);
+            // console.log(responseAddress.data.id_endereco);
 
             alert("Dados de endereço cadastrados, preencha seus dados pessoais!");
             setIsAddressSubmitted(true);
@@ -64,14 +65,6 @@ export function Profile() {
     const handleClick2 = async () => {
         if (!isAddressSubmitted) {
             alert("Preencha o endereço");
-            return;
-        }
-
-        if (email.trim() !== emailUser.trim()) {
-            setShowEmailWarning(true);
-            console.log(newEmail)
-            console.log(email)
-
             return;
         }
 
@@ -94,15 +87,6 @@ export function Profile() {
         checkIsLoggedIn();
     }, []);
 
-    const handleEmailChange = (e) => {
-        const newEmail = e.target.value;
-        setEmail(newEmail);
-
-        if (showEmailWarning) {
-            setShowEmailWarning(true);
-        }
-    };
-
     return (
         <>
             <Container>
@@ -114,7 +98,7 @@ export function Profile() {
                         </TitleContainer>
                     </TitleContainer>
                     <FormContainer>
-                        <h2>* nome</h2>
+                        <h2>* nome </h2>
                         {username}
                         <h2>* e-mail</h2>
                         {emailUser}
@@ -180,10 +164,10 @@ export function Profile() {
                         <InputComponent
                             type="email"
                             value={email}
-                            onChange={handleEmailChange}
-                            placeholder="Seu email REPITA O DE USUARIO"
+                            onChange={() => { }} // tem que deixar senão dá erro com readOnly
+                            readOnly
                         />
-                        <span>Data de nascimento (formato AAAA-MM-DD)</span>
+                        <span>Data de nascimento (formato DD-MM-AAAA)</span>
                         <InputComponent
                             type="birthday"
                             value={birthday}

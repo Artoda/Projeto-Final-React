@@ -3,7 +3,7 @@ import { FiUser } from "react-icons/fi";
 import useAuth from "../../../hooks/useAuth";
 import ButtonComponent from "../../../common/components/Button";
 import { Link, useLocation } from "react-router-dom";
-import { api } from "../../../services/api";
+import { api, apiLocal } from "../../../services/api";
 import {
     BoxContainer,
     Container,
@@ -24,6 +24,7 @@ export function MyProfile() {
     const location = useLocation();
     const [userData, setUserData] = useState([]);
     const [clientData, setClientData] = useState([]);
+    const username = localStorage.getItem("user_db");
 
     useEffect(() => {
         async function fetchData() {
@@ -31,15 +32,11 @@ export function MyProfile() {
                 const respUsers = await api.get("/users");
                 const users = respUsers.data;
                 setUserData(users);
-                // console.log(users)
 
-                // const userData = 
-                users.map((user) => {
+                const userData = users.map((user) => {
                     const { username, email } = user;
                     return { username, email };
                 });
-                // console.log(userData)
-                // setUserData(userData);
 
             } catch (error) {
                 console.error("Erro ao obter dados do usuários:", error);
@@ -56,15 +53,11 @@ export function MyProfile() {
                 const respClients = await api.get("/clientes");
                 const clients = respClients.data;
                 setClientData(clients);
-                // console.log(clients)
 
-                // const clientData = 
-                clients.map((client) => {
-                    const { cpf, data_nascimento, email } = client;
-                    return { cpf, data_nascimento, email };
+                const clientData = clients.map((client) => {
+                    const { cpf, data_nascimento, email, nome_completo } = client;
+                    return { cpf, data_nascimento, email, nome_completo };
                 });
-                // console.log(clientData)
-                // setClientData(clientData);
 
             } catch (error) {
                 console.error("Erro ao obter dados de cliente:", error);
@@ -73,7 +66,6 @@ export function MyProfile() {
 
         fetchData();
     }, []);
-
 
     const filteredUserData = userData.filter(data => data.email === localStorage.getItem("user_email"));
     const filteredClientData = clientData.filter((client) => client.email === localStorage.getItem("user_email"));
@@ -86,12 +78,12 @@ export function MyProfile() {
                         <span>
                             <FiUser size={"30px"} />
                         </span>
-                        <h2>Minha Conta</h2>
+                        <h2>Bem vindo/a, {username}</h2>
                     </InformationContainer>
                     {filteredUserData.map((data) => (
                         <BoxContainer key={data.email}>
                             <NomeContainer>
-                                <h2> nome</h2>
+                                <h2> nome de usuário</h2>
                                 {data.username}
                             </NomeContainer>
                             <EmailContainer>
@@ -104,7 +96,7 @@ export function MyProfile() {
                                     {filteredClientData.map((client) => (
                                         <div key={client.id_cliente}>
                                             <PersonalContainer>
-                                                <h3>Nome</h3>
+                                                <h3>Nome completo</h3>
                                                 {client.nome_completo}
                                                 <h3>CPF</h3>
                                                 {client.cpf}
