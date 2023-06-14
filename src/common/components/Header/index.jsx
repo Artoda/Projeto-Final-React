@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { BsCart3, BsPersonCircle } from "react-icons/bs";
+import { AiOutlineDown } from "react-icons/ai";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import LogoComponent from "../Logo";
@@ -17,6 +18,8 @@ import {
   SearchItens,
   SearchResults,
   ShopContainer,
+  TextContainer,
+  TextContainer2
 } from "./style";
 
 export function Header() {
@@ -123,17 +126,16 @@ export function Header() {
               handleClick();
             }}
           >
-            <span style={{ display: isLoggedIn ? "none" : "flex" }}>
-              Olá, clique aqui ↓
-            </span>
-            <span style={{ display: isLoggedIn ? "flex" : "none" }}>
-              <span className="nome"> {nome} </span>
-            </span>
+            <TextContainer style={{ display: isLoggedIn ? "none" : "flex" }}>
+              <span className="helloText">Olá... Entre!</span>
+              <span className="loginText">Fazer login <AiOutlineDown/></span>
+            </TextContainer>
 
-            <BsPersonCircle
-              className="icon"
-              style={{ display: isLoggedIn ? "flex" : "none" }}
-            />
+            <TextContainer2 style={{ display: isLoggedIn ? "flex" : "none" }}>
+              <BsPersonCircle className="icon" />
+              <span className="nome"> Olá, {nome} </span>
+              <AiOutlineDown/>
+            </TextContainer2>
 
             <LoginContainer
               style={{ display: isHidden && isLoggedIn ? "flex" : "none" }}
@@ -152,6 +154,7 @@ export function Header() {
                 Deslogar
               </ButtonContainer>
             </LoginContainer>
+            
             <LogoutContainer
               style={{ display: isHidden && !isLoggedIn ? "flex" : "none" }}
             >
