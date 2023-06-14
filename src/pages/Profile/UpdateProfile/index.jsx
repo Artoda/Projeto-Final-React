@@ -144,7 +144,7 @@ export function UpdateProfile() {
             <BoxContainer>
               <InputComponent
                 type="text"
-                placeholder=" Rua tal"
+                placeholder=" Rua do fulado do lado da casa do ciclano"
                 onChange={(e) => setStreet(e.target.value)}
               />
               <InputComponent
@@ -178,7 +178,7 @@ export function UpdateProfile() {
                 <span>Complemento</span>
                 <InputComponent
                   type="complemento"
-                  placeholder=" centro"
+                  placeholder=" Centro"
                   onChange={(e) => setComplement(e.target.value)}
                 />
               </ComplementContainer>

@@ -6,6 +6,7 @@ import {
   LogoContainer,
   HelpContainer,
 } from "./style";
+import ButtonComponent from "../Button";
 
 export function Footer() {
   return (
@@ -14,7 +15,7 @@ export function Footer() {
       <Container>
         <AboutUsContainer>
           <Link to={"/aboutus"}>
-            <span>Sobre Nós</span>
+            <button>Sobre Nós</button>
           </Link>
         </AboutUsContainer>
         <LogoContainer>
@@ -27,7 +28,7 @@ export function Footer() {
         </LogoContainer>
         <HelpContainer>
           <Link to={"/contact"}>
-            <span>Fala Conosco</span>
+            <button>Fala Conosco</button>
           </Link>
         </HelpContainer>
       </Container>

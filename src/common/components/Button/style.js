@@ -12,6 +12,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition-duration: 0.2s;
   padding: 10px;
+  width: 238px;
 
   :hover {
     background-color: var(--terciary-color);
