@@ -34,7 +34,7 @@ export function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const { signup } = useAuth();
+  // const { signup } = useAuth();
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);

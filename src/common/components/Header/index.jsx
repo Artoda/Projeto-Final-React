@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { BsCart3, BsPersonCircle } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import LogoComponent from "../Logo";
 
@@ -27,13 +27,15 @@ export function Header() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const { signout, checkIsLoggedIn, isLoggedIn, cartItems, nome, getName } =
     useAuth();
 
   const handleSignout = () => {
-    const res = signout();
+    const res = localStorage.clear();
     alert("deslogado");
+    navigate("/login");
     if (res) {
       setError(res);
       return;
@@ -128,13 +130,13 @@ export function Header() {
           >
             <TextContainer style={{ display: isLoggedIn ? "none" : "flex" }}>
               <span className="helloText">Olá... Entre!</span>
-              <span className="loginText">Fazer login <AiOutlineDown/></span>
+              <span className="loginText">Fazer login <AiOutlineDown /></span>
             </TextContainer>
 
             <TextContainer2 style={{ display: isLoggedIn ? "flex" : "none" }}>
               <BsPersonCircle className="icon" />
               <span className="nome"> Olá, {nome} </span>
-              <AiOutlineDown/>
+              <AiOutlineDown />
             </TextContainer2>
 
             <LoginContainer
@@ -154,7 +156,7 @@ export function Header() {
                 Deslogar
               </ButtonContainer>
             </LoginContainer>
-            
+
             <LogoutContainer
               style={{ display: isHidden && !isLoggedIn ? "flex" : "none" }}
             >
