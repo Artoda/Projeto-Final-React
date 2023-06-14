@@ -33,7 +33,6 @@ export function UpdateProfile() {
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [bairro, setBairro] = useState("");
-  const [isAddressSubmitted, setIsAddressSubmitted] = useState(false);
 
   const emailUser = localStorage.getItem("user_email");
   const [email, setEmail] = useState(emailUser);
@@ -78,12 +77,11 @@ export function UpdateProfile() {
 
   const handleClick = async () => {
     try {
-      const responseAddress = await api.put("/enderecos", {
-        id_endereco: addressId,
+      const responseAddress = await api.put(`/enderecos/${addressId}`, {
         cep: cep,
-        rua: street,
+        logradouro: street,
         bairro: bairro,
-        cidade: city,
+        localidade: city,
         numero: number,
         complemento: complement,
         uf: state,
@@ -92,8 +90,12 @@ export function UpdateProfile() {
         }
       });
 
+      setState(responseAddress.data.uf);
+      setStreet(responseAddress.data.logradouro);
+      setBairro(responseAddress.data.bairro);
+      setCity(responseAddress.data.localidade);
+
       alert("Dados de endereço atualizados com sucesso!");
-      setIsAddressSubmitted(true);
     }
     catch (error) {
       console.error("Erro ao obter dados dos clientes:", error);
@@ -143,28 +145,12 @@ export function UpdateProfile() {
               onChange={(e) => setCep(e.target.value)}
             />
             <BoxContainer>
-              <InputComponent
-                type="text"
-                placeholder=" Rua tal"
-                onChange={(e) => setStreet(e.target.value)}
-              />
-              <InputComponent
-                type="text"
-                placeholder=" Bairro"
-                onChange={(e) => setBairro(e.target.value)}
-              />
+              <span>Rua: {street}</span>
+              <span>Bairro: {bairro}</span>
             </BoxContainer>
             <BoxContainer>
-              <InputComponent
-                type="text"
-                placeholder=" Cidade"
-                onChange={(e) => setCity(e.target.value)}
-              />
-              <InputComponent
-                type="text"
-                placeholder=" UF"
-                onChange={(e) => setState(e.target.value)}
-              />
+              <span>Cidade: {city}</span>
+              <span>UF: {state}</span>
             </BoxContainer>
             <BoxContainer>
               <NumberContainer>

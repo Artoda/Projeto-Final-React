@@ -28,6 +28,10 @@ export function Profile() {
     const [cep, setCep] = useState("");
     const [number, setNumber] = useState("");
     const [complement, setComplement] = useState("");
+    const [state, setState] = useState("");
+    const [street, setStreet] = useState("");
+    const [city, setCity] = useState("");
+    const [bairro, setBairro] = useState("");
     const [isAddressSubmitted, setIsAddressSubmitted] = useState(false);
     const [image, setImage] = useState(null);
 
@@ -62,6 +66,10 @@ export function Profile() {
             });
 
             setAddressId(responseAddress.data.id_endereco);
+            setState(responseAddress.data.uf);
+            setStreet(responseAddress.data.logradouro);
+            setBairro(responseAddress.data.bairro);
+            setCity(responseAddress.data.localidade);
             // console.log(responseAddress.data.id_endereco);
 
             alert("Dados de endereço cadastrados, preencha seus dados pessoais!");
@@ -137,6 +145,14 @@ export function Profile() {
                             placeholder=" 00000-000"
                             onChange={(e) => setCep(e.target.value)}
                         />
+                        <BoxContainer>
+                            <span>Rua: {street}</span>
+                            <span>Bairro: {bairro}</span>
+                        </BoxContainer>
+                        <BoxContainer>
+                            <span>Cidade: {city}</span>
+                            <span>UF: {state}</span>
+                        </BoxContainer>
                         <BoxContainer>
                             <NumberContainer>
                                 <span>número</span>
