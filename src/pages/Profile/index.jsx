@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../../common/components/Button";
 import InputComponent from "../../common/components/Input";
 import useAuth from '../../hooks/useAuth';
-import { apiLocal } from '../../services/api';
+import { api } from '../../services/api';
 import {
     AddressContainer,
     BoxContainer,
@@ -44,7 +44,7 @@ export function Profile() {
         }
 
         try {
-            const responseAddress = await apiLocal.post("/enderecos", {
+            const responseAddress = await api.post("/enderecos", {
                 cep: cep,
                 numero: number,
                 complemento: complement

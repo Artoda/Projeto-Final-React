@@ -3,7 +3,7 @@ import { FiUser } from "react-icons/fi";
 import useAuth from "../../../hooks/useAuth";
 import ButtonComponent from "../../../common/components/Button";
 import { Link, useLocation } from "react-router-dom";
-import { apiLocal } from "../../../services/api";
+import { api } from "../../../services/api";
 import {
     BoxContainer,
     Container,
@@ -28,7 +28,7 @@ export function MyProfile() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const respUsers = await apiLocal.get("/users");
+                const respUsers = await api.get("/users");
                 const users = respUsers.data;
                 setUserData(users);
                 // console.log(users)
@@ -53,7 +53,7 @@ export function MyProfile() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const respClients = await apiLocal.get("/clientes");
+                const respClients = await api.get("/clientes");
                 const clients = respClients.data;
                 setClientData(clients);
                 // console.log(clients)
