@@ -41,6 +41,12 @@ export const EmailContainer = styled.div`
 export const UserData = styled.div`
   text-align: left;
   width: 100%;
+  font-size: medium;
+
+  h3 {
+    font-weight: bold;
+    font-size: medium;
+  }
 `;
 
 export const EnderecoContainer = styled.div`
@@ -58,6 +64,7 @@ export const BoxContainer = styled.div`
   flex-direction: column;
   padding: 10px;
   gap: 20px;
+  font-size: large;
 
   @media only all and (max-width: 625px) {
     width: 40vh;
@@ -77,4 +84,9 @@ export const AddressContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  h3 {
+    font-size: medium;
+    font-weight: bold;
+  }
 `;

@@ -143,30 +143,41 @@ export function UpdateProfile() {
             {emailUser}
           </FormContainer>
           <ImageContainer>
-            <h2>Adicione sua imagem aqui</h2>
+            <h2>Adicione sua imagem aqui ⬇</h2>
             <input type="file" onChange={handleImageChange} />
             {image && <img src={image} alt="Selected" />}
           </ImageContainer>
           <AddressContainer>
-            <h2> Endereço</h2>
+            <h2> Endereço:</h2>
             <h3> Preencha seu endereço para atualização: </h3>
-            Cep
+            CEP:
             <InputComponent
               type="text"
               placeholder=" 00000-000"
               onChange={(e) => setCep(e.target.value)}
             />
             <BoxContainer>
-              <span>Rua: {street}</span>
-              <span>Bairro: {bairro}</span>
+              <span>
+                <span>Rua:</span> {street}
+              </span>
+              <span>
+                <span>Bairro:</span> {bairro}
+              </span>
             </BoxContainer>
             <BoxContainer>
-              <span>Cidade: {city}</span>
-              <span>UF: {state}</span>
+              <span>
+                {" "}
+                <span>Cidade:</span> {city}
+              </span>
+              <span>
+                <span>UF:</span> {state}
+              </span>
             </BoxContainer>
             <BoxContainer>
               <NumberContainer>
-                <span>Número</span>
+                <span>
+                  <span>Número:</span>
+                </span>
                 <InputComponent
                   type="número"
                   placeholder=" 000"
@@ -174,7 +185,9 @@ export function UpdateProfile() {
                 />
               </NumberContainer>
               <ComplementContainer>
-                <span>Complemento</span>
+                <span>
+                  <span>Complemento:</span>
+                </span>
                 <InputComponent
                   type="complemento"
                   placeholder=" Centro"
@@ -191,8 +204,8 @@ export function UpdateProfile() {
           </AddressContainer>
           <UserData>
             <NameContainer>
-              <h2> Preencha suas informações </h2>
-              <span>Nome (3 a 14 carateres)</span>
+              <h2> Preencha suas informações ⬇ </h2>
+              <span>Nome: (3 a 14 carateres)</span>
               <InputComponent
                 type="text"
                 value={nameSurname}
@@ -200,9 +213,9 @@ export function UpdateProfile() {
                 placeholder="Seu nome completo"
               />
             </NameContainer>
-            <span>CPF</span>
+            <span>CPF:</span>
             <input type="cpf" value={cpf} disabled />
-            <span>Telefone (9 dígitos)</span>
+            <span>Telefone: (9 dígitos)</span>
             <InputComponent
               type="phone"
               value={phone}
@@ -210,13 +223,13 @@ export function UpdateProfile() {
               placeholder="Seu telefone"
             />
             <span>
-              Email{" "}
+              Email:{" "}
               <span style={{ color: "red" }}>
                 (Para alterar entre em contato com suporte!)
               </span>
             </span>
             <input type="email" value={email} disabled />
-            <span>Data de nascimento (formato DD-MM-AAAA)</span>
+            <span>Data de nascimento: (Formato DD-MM-AAAA)</span>
             <input
               type="birthday"
               value={birthday}

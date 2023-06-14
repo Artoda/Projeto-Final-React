@@ -22,6 +22,15 @@ export const BoxContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10px;
+
+  span {
+    font-size: medium;
+    color: black;
+    span {
+      font-weight: bold;
+      color: black;
+    }
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -49,6 +58,11 @@ export const FormContainer = styled.div`
 export const UserData = styled.div`
   text-align: left;
   padding: 10px;
+  font-weight: bold;
+
+  span {
+    font-size: medium;
+  }
 
   input {
     border: 1px solid var(--primary-color);
@@ -95,6 +109,10 @@ export const AddressContainer = styled.div`
   input {
     border-radius: 5px;
     height: 30px;
+  }
+
+  h3 {
+    font-size: large;
   }
 `;
 

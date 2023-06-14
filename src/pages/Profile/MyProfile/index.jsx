@@ -31,9 +31,8 @@ export function MyProfile() {
   useEffect(() => {
     if (checkIsLoggedIn() === false) {
       navigate("/login");
-    }
-    else {
-      return
+    } else {
+      return;
     }
   }, []);
 
@@ -48,7 +47,6 @@ export function MyProfile() {
           const { username, email } = user;
           return { username, email };
         });
-
       } catch (error) {
         console.error("Erro ao obter dados do usuários:", error);
       }
@@ -68,7 +66,6 @@ export function MyProfile() {
           const { cpf, data_nascimento, email, nome_completo } = client;
           return { cpf, data_nascimento, email, nome_completo };
         });
-
       } catch (error) {
         console.error("Erro ao obter dados de cliente:", error);
       }
@@ -77,8 +74,12 @@ export function MyProfile() {
     fetchData();
   }, []);
 
-  const filteredUserData = userData.filter(data => data.email === localStorage.getItem("user_email"));
-  const filteredClientData = clientData.filter((client) => client.email === localStorage.getItem("user_email"));
+  const filteredUserData = userData.filter(
+    (data) => data.email === localStorage.getItem("user_email")
+  );
+  const filteredClientData = clientData.filter(
+    (client) => client.email === localStorage.getItem("user_email")
+  );
 
   return (
     <>
@@ -88,66 +89,64 @@ export function MyProfile() {
             <span>
               <FiUser size={"30px"} />
             </span>
-            <h2>Bem vindo/a, {username}</h2>
+            <h2>Bem vinde, {username}</h2>
           </InformationContainer>
           {filteredUserData.map((data) => (
             <BoxContainer key={data.email}>
               <NomeContainer>
-                <h2> nome de usuário</h2>
+                <h2> Nome de Usuário: </h2>
                 {data.username}
               </NomeContainer>
               <EmailContainer>
-                <h2> email</h2>
+                <h2> Email:</h2>
                 {data.email}
               </EmailContainer>
               {filteredClientData.length > 0 ? (
                 <UserData>
-                  <h2> Dados pessoais</h2>
+                  <h2> Dados pessoais:</h2>
                   {filteredClientData.map((client) => (
                     <div key={client.id_cliente}>
                       <PersonalContainer>
-                        <h3>Nome completo</h3>
+                        <h3>Nome completo:</h3>
                         {client.nome_completo}
-                        <h3>CPF</h3>
+                        <h3>CPF:</h3>
                         {client.cpf}
-                        <h3>Telefone</h3>
+                        <h3>Telefone:</h3>
                         {client.telefone}
-                        <h3>Data de nascimento</h3>
+                        <h3>Data de nascimento:</h3>
                         {client.data_nascimento}
                       </PersonalContainer>
-                      <h2> Endereço </h2>
+                      <h2> Endereço: </h2>
                       <AddressContainer>
-                        {client.endereco.logradouro},
-                        {client.endereco.numero}
+                        <h3>Rua:</h3>
+                        {client.endereco.logradouro},{client.endereco.numero}
                         {client.endereco.complemento}
-                        <h3>Bairro</h3>
+                        <h3>Bairro:</h3>
                         {client.endereco.bairro}
-                        <h3>Cidade</h3>
+                        <h3>Cidade:</h3>
                         {client.endereco.localidade}
-                        <h3>CEP</h3>
+                        <h3>CEP:</h3>
                         {client.endereco.cep}
                       </AddressContainer>
                       <Link to={"/updateprofile"}>
-                        <h2>Seus dados estão atualizados</h2>
-                        <ButtonComponent Text="Deseja alterar endereço? Clique aqui"></ButtonComponent>
+                        <h2>Seus dados estão atualizados!</h2>
+                        <ButtonComponent Text="Deseja alterar endereço? Clique aqui!"></ButtonComponent>
                       </Link>
                     </div>
                   ))}
-
                 </UserData>
               ) : (
                 <EnderecoContainer>
                   <Link to={"/profile"}>
-                    <h2>Seus dados não estão atualizados</h2>
-                    <ButtonComponent Text="Clique aqui para cadastrar endereço"></ButtonComponent>
+                    <h2>Seus dados não estão atualizados!</h2>
+                    <ButtonComponent Text="Clique aqui para cadastrar endereço!"></ButtonComponent>
                   </Link>
                 </EnderecoContainer>
               )}
             </BoxContainer>
           ))}
         </ContentContainer>
-      </Container >
-
+      </Container>
     </>
   );
 }
