@@ -105,9 +105,11 @@ export const TextContainer = styled.div`
     font-size: 18px; // adicionar mide para 16px
     color: var(--bg-card-hover);
     @media (max-width: 500px) {
-      font-size: 16px;}
+      font-size: 16px;
+    }
     @media (max-width: 365px) {
-      font-size: 14px;}
+      font-size: 14px;
+    }
   }
   span.loginText {
     display: flex;
@@ -115,9 +117,10 @@ export const TextContainer = styled.div`
     font-size: 14px;
     color: var(--bg-card-hover);
     @media (max-width: 365px) {
-      font-size: 13px;}
-
-  }`
+      font-size: 13px;
+    }
+  }
+`;
 
 export const TextContainer2 = styled.div`
   display: flex;
@@ -127,19 +130,22 @@ export const TextContainer2 = styled.div`
   text-transform: capitalize;
   color: var(--bg-card-hover);
   font-weight: bold;
-    .icon {
-      font-size: 30px;
-    }
+  .icon {
+    font-size: 30px;
+  }
 
-    .nome {
-      color: var(--bg-card-hover);
-      font-size: 18px;
-    }
-
-    @media only all and (max-width: 700px) {
+  .nome {
+    color: var(--bg-card-hover);
+    font-size: 18px;
+    @media only all and (max-width: 500px) {
       display: none;
     }
-`
+  }
+
+  @media only all and (max-width: 700px) {
+    display: none;
+  }
+`;
 
 export const ProfileContainer = styled.div`
   display: flex;
@@ -170,7 +176,6 @@ export const ProfileContainer = styled.div`
   @media only all and (max-width: 320px) {
     gap: 0;
   }
-
 `;
 
 export const LoginContainer = styled.div`
