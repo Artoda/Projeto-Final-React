@@ -81,11 +81,11 @@ export function Header() {
           style={{
             display:
               location.pathname === "/" ||
-              location.pathname === "/artes" ||
-              location.pathname === "/antiguidades" ||
-              location.pathname === "/armas" ||
-              location.pathname === "/jogos" ||
-              location.pathname === "/livros"
+                location.pathname === "/artes" ||
+                location.pathname === "/antiguidades" ||
+                location.pathname === "/armas" ||
+                location.pathname === "/jogos" ||
+                location.pathname === "/livros"
                 ? "flex"
                 : "none",
           }}

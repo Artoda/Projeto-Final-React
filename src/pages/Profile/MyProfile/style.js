@@ -58,3 +58,9 @@ export const BoxContainer = styled.div`
   gap: 20px;
 `;
 
+export const PersonalContainer = styled.div`
+
+`;
+
+export const AddressContainer = styled.div`
+`;

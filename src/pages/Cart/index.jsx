@@ -108,12 +108,11 @@ export function Cart() {
     cart.forEach((product) => {
       const data = 0; // valor que atualiza o estoque
 
-      api
-        .put(`/produtos/${product.id_produto}/quantidade`, data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+      api.put(`/produtos/${product.id_produto}/quantidade`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
         .then((response) => {
           console.log("Quantidade de estoque atualizada com sucesso.");
         })
