@@ -59,6 +59,7 @@ export const PasswordInput = styled.div`
     position: absolute;
     right: 0;
     margin-right: 5px;
+    cursor: pointer;
   }
 `;
 
