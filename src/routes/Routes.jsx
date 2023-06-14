@@ -10,6 +10,7 @@ import useAuth from "../hooks/useAuth";
 import { Footer } from "../common/components/Footer";
 import { Profile } from "../pages/Profile";
 import { MyProfile } from "../pages/Profile/MyProfile";
+import { NotFound } from "../pages/NotFound";
 
 // verifica se está logado
 const Private = ({ Item }) => {
@@ -22,7 +23,7 @@ export function AllRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route Component={Footer} >
+        <Route Component={Footer}>
           <Route Component={Header}>
             <Route Component={Home} path="/" />
             <Route Component={Home} path="/artes" />
@@ -38,7 +39,8 @@ export function AllRoutes() {
             <Route Component={AboutUs} path="/aboutus" />
             <Route Component={Profile} path="/profile" />
             <Route Component={MyProfile} path="/myprofile" />
-         </Route>
+            <Route Component={NotFound} path="/*" />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
