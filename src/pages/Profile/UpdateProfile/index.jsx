@@ -33,6 +33,7 @@ export function UpdateProfile() {
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [bairro, setBairro] = useState("");
+  const [image, setImage] = useState(null);
 
   const emailUser = localStorage.getItem("user_email");
   const [email, setEmail] = useState(emailUser);
@@ -72,8 +73,9 @@ export function UpdateProfile() {
     fetchAddressId();
   }, []);
 
-  console.log(addressId + " idendereco");
-  console.log(clientId + " idcliente");
+  // para verificar se o id cliente está correto
+  // console.log(addressId + " idendereco");
+  // console.log(clientId + " idcliente");
 
   const handleClick = async () => {
     try {
@@ -118,6 +120,12 @@ export function UpdateProfile() {
     navigate("/cart");
   };
 
+  // testando imagem
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(URL.createObjectURL(selectedImage));
+  };
+
   return (
     <>
       <Container>
@@ -134,6 +142,11 @@ export function UpdateProfile() {
             <h2>* E-mail</h2>
             {emailUser}
           </FormContainer>
+          <ImageContainer>
+            <h2>Adicione sua imagem aqui</h2>
+            <input type="file" onChange={handleImageChange} />
+            {image && <img src={image} alt="Selected" />}
+          </ImageContainer>
           <AddressContainer>
             <h2> Endereço</h2>
             <h3> Preencha seu endereço para atualização: </h3>
@@ -144,7 +157,7 @@ export function UpdateProfile() {
               onChange={(e) => setCep(e.target.value)}
             />
             <BoxContainer>
-               <span>Rua: {street}</span>
+              <span>Rua: {street}</span>
               <span>Bairro: {bairro}</span>
             </BoxContainer>
             <BoxContainer>
