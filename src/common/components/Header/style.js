@@ -97,6 +97,45 @@ export const RightContainer = styled.div`
   position: relative;
 `;
 
+export const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  span.helloText {
+    font-size: 18px;
+    color: var(--bg-card-hover);
+
+  } 
+  span.loginText {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--bg-card-hover);
+
+  }`
+
+export const TextContainer2 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-transform: capitalize;
+  color: var(--bg-card-hover);
+  font-weight: bold;
+    .icon {
+      font-size: 30px;
+    }
+
+    .nome {
+      color: var(--bg-card-hover);
+      font-size: 18px;
+    }
+
+    @media only all and (max-width: 700px) {
+      display: none;
+    }
+`
+
 export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
@@ -108,14 +147,7 @@ export const ProfileContainer = styled.div`
     border-radius: 50%;
     object-fit: cover;
   }
-  span.nome {
-    text-transform: capitalize;
-    color: var(--alert-color);
-    font-weight: bold;
-    @media only all and (max-width: 700px) {
-      display: none;
-    }
-  }
+
   span.nomes {
     display: none;
     text-transform: capitalize;
@@ -125,9 +157,7 @@ export const ProfileContainer = styled.div`
       display: flex;
     }
   }
-  .icon {
-    font-size: 40px;
-  }
+
   span {
     font-weight: 500;
     font-size: 20px;
