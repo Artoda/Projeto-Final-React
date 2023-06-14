@@ -84,7 +84,7 @@ export function Contact() {
                 ></textarea>
               </MessageContainer>
               <ButtonComponent
-                Text="enviar mensagem"
+                Text="Enviar Mensagem"
                 onClick={handleSendMessage}
               />
             </FormContainer>

@@ -10,12 +10,11 @@ export const Container = styled.div`
   justify-content: start;
   flex-direction: column;
   width: 100%;
-  
+
   background-color: var(--bg-color);
   min-height: calc(100vh - 30px);
 
   position: relative;
-
 `;
 
 export const ButtonCategorie = styled.div`
@@ -56,7 +55,7 @@ export const TitleContainer = styled.header`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  
+
   h1 {
     color: rgba(203, 18, 28, 0.7);
   }
@@ -67,7 +66,6 @@ export const TitleContainer = styled.header`
     }
   }
   @media only all and (max-width: 700px) {
-    
     h1 {
       font-size: 30px;
       width: 500px;
@@ -86,7 +84,7 @@ export const LogoIcon = styled.div`
   gap: 2px;
   span {
     width: 14px;
-    height:42px;
+    height: 42px;
   }
   .square1 {
     background-color: rgba(203, 18, 28, 1);
@@ -100,7 +98,7 @@ export const LogoIcon = styled.div`
   @media only all and (max-width: 554px) {
     display: none;
   }
-`
+`;
 
 export const NavBarContainer = styled.div`
   margin: 0;
@@ -121,8 +119,6 @@ export const NavBarContainer = styled.div`
     height: 260px;
     width: 120px;
     border-radius: 5%;
-
-
   }
 `;
 
@@ -135,8 +131,7 @@ export const NavBar = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 0 0 70px;
-  
-  
+
   a {
     height: 100%;
   }
@@ -145,7 +140,6 @@ export const NavBar = styled.div`
     gap: 0;
     padding: 0;
     align-items: start;
-    
   }
 `;
 
@@ -249,12 +243,12 @@ export const Product = styled.div`
   padding: 20px;
   height: 530px;
   width: 270px;
-  /* border-radius: 5%; */
+  border-radius: 5%;
   position: relative;
   .icon {
     font-size: 60px;
     cursor: pointer;
-    transition:  0.3s;
+    transition: 0.3s;
     padding: 15px;
   }
   .icon:hover {
@@ -278,6 +272,7 @@ export const ImageContainer = styled.div`
     :hover + .productBio {
       display: flex;
     }
+    border-radius: 5px;
     width: 80%;
   }
 `;
