@@ -52,6 +52,9 @@ export const BoxListTotal = styled.div`
   justify-content: center;
   margin: 0px 50px;
   height: 79%;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
   h2 {
     font-size: x-large;
   }
@@ -66,6 +69,7 @@ export const ProductsContainer = styled.div`
   overflow: auto;
   max-height: 600px;
   max-width: 900px;
+
 `;
 
 export const Product = styled.div`
@@ -73,23 +77,25 @@ export const Product = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e9e9e9;
+  background-color: white;
   padding: 10px;
   height: 520px;
   width: 270px;
-  border-radius: 5%;
+  border-radius: 10px;
+
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
   justify-content: center;
+  margin: 0;
 
   img {
     width: 200px;
-    padding: 10px;
-    border-radius: 10%;
+    margin-top:20px;
+    border-radius: 10px;
   }
 `;
 
@@ -98,6 +104,9 @@ export const ProductTitleContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  h2 {
+    font-size: 18px;
+  }
 `;
 
 export const ShopContainer = styled.div`
@@ -106,6 +115,7 @@ export const ShopContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 50px;
   padding: 8px;
   span {
     font-size: large;
