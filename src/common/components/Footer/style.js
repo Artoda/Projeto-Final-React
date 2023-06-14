@@ -10,9 +10,6 @@ export const Container = styled.footer`
   position: relative;
   bottom: 0;
   left: 0;
-  @media only all and (max-width: 700px) {
-    padding: 0;
-  }
 `;
 
 export const AboutUsContainer = styled.footer`
@@ -21,14 +18,39 @@ export const AboutUsContainer = styled.footer`
   span {
     font-size: larger;
   }
+
+  button {
+    background: var(--bg-button);
+    font-size: 16px;
+    list-style: none;
+    color: var(--terciary-color);
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    padding: 10px;
+    width: 110px;
+    :hover {
+      background-color: var(--terciary-color);
+      color: var(--alert-color);
+      border: 1px solid var(--alert-color);
+    }
+  }
 `;
 
 export const LogoContainer = styled.footer`
   display: flex;
   align-items: center;
+  padding: 10px;
 
   img {
     width: 100%;
+  }
+
+  @media only all and (max-width: 567px) {
+    display: none;
   }
 `;
 
@@ -37,5 +59,25 @@ export const HelpContainer = styled.footer`
   align-items: center;
   span {
     font-size: larger;
+  }
+
+  button {
+    background: var(--bg-button);
+    font-size: 16px;
+    list-style: none;
+    color: var(--terciary-color);
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    padding: 10px;
+    width: 121px;
+    :hover {
+      background-color: var(--terciary-color);
+      color: var(--alert-color);
+      border: 1px solid var(--alert-color);
+    }
   }
 `;

@@ -19,7 +19,7 @@ import {
   SearchResults,
   ShopContainer,
   TextContainer,
-  TextContainer2
+  TextContainer2,
 } from "./style";
 
 export function Header() {
@@ -86,11 +86,11 @@ export function Header() {
           style={{
             display:
               location.pathname === "/" ||
-                location.pathname === "/artes" ||
-                location.pathname === "/antiguidades" ||
-                location.pathname === "/armas" ||
-                location.pathname === "/jogos" ||
-                location.pathname === "/livros"
+              location.pathname === "/artes" ||
+              location.pathname === "/antiguidades" ||
+              location.pathname === "/armas" ||
+              location.pathname === "/jogos" ||
+              location.pathname === "/livros"
                 ? "flex"
                 : "none",
           }}
@@ -130,7 +130,9 @@ export function Header() {
           >
             <TextContainer style={{ display: isLoggedIn ? "none" : "flex" }}>
               <span className="helloText">Olá... Entre!</span>
-              <span className="loginText">Fazer login <AiOutlineDown /></span>
+              <span className="loginText">
+                Fazer login <AiOutlineDown />
+              </span>
             </TextContainer>
 
             <TextContainer2 style={{ display: isLoggedIn ? "flex" : "none" }}>

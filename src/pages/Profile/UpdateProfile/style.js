@@ -50,6 +50,19 @@ export const UserData = styled.div`
   text-align: left;
   padding: 10px;
 
+  input {
+    border: 1px solid var(--primary-color);
+    background: var(--bg-box);
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    ::placeholder {
+      color: var(--primary-color);
+    }
+  }
+
   button {
     width: 300px;
   }
@@ -101,8 +114,8 @@ export const ImageContainer = styled.div`
   text-align: left;
   display: flex;
   flex-direction: column;
-  img{
-  max-width: 400px;
-  max-height: 400px;
-}
+  img {
+    max-width: 400px;
+    max-height: 400px;
+  }
 `;
