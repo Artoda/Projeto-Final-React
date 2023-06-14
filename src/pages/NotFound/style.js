@@ -9,5 +9,11 @@ export const Container = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
+    @media only all and (max-width: 793px) {
+      width: 500px;
+    }
+    @media only all and (max-width: 535px) {
+      width: 300px;
+    }
   }
 `;
