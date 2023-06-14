@@ -154,6 +154,7 @@ export function Header() {
                 Deslogar
               </ButtonContainer>
             </LoginContainer>
+            
             <LogoutContainer
               style={{ display: isHidden && !isLoggedIn ? "flex" : "none" }}
             >

@@ -102,15 +102,20 @@ export const TextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   span.helloText {
-    font-size: 18px;
+    font-size: 18px; // adicionar mide para 16px
     color: var(--bg-card-hover);
-
-  } 
+    @media (max-width: 500px) {
+      font-size: 16px;}
+    @media (max-width: 365px) {
+      font-size: 14px;}
+  }
   span.loginText {
     display: flex;
     align-items: center;
     font-size: 14px;
     color: var(--bg-card-hover);
+    @media (max-width: 365px) {
+      font-size: 13px;}
 
   }`
 
@@ -165,6 +170,7 @@ export const ProfileContainer = styled.div`
   @media only all and (max-width: 320px) {
     gap: 0;
   }
+
 `;
 
 export const LoginContainer = styled.div`
@@ -173,8 +179,8 @@ export const LoginContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: -10px;
-  left: -167px;
+  /* right: -10px;
+  left: -167px; */
   top: 60px;
   background-color: var(--terciary-color);
   padding: 15px 15px 0;
@@ -202,16 +208,16 @@ export const LoginContainer = styled.div`
   }
   @media only all and (max-width: 466px) {
     top: 64px;
-    right: -4%;
+    right: 15%;
   }
   @media only all and (max-width: 400px) {
-    top: 82px;
-    right: 6%;
+    top: 70px;
+    right: 10%;
   }
 
   @media only all and (max-width: 376px) {
-    top: 61px;
-    right: 0%;
+    top: 65px;
+    right: 20%;
   }
 `;
 
@@ -221,8 +227,8 @@ export const LogoutContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
-  right: -13px;
-  left: -150px;
+  right: 5px;
+  width: 220px;
   top: 55px;
   background-color: var(--terciary-color);
   padding: 15px 15px 0;
@@ -253,17 +259,21 @@ export const LogoutContainer = styled.div`
     right: -7%;
   }
   @media only all and (max-width: 425px) {
-    top: 114px;
+    top: 60px;
     right: -7%;
   }
 
   @media only all and (max-width: 400px) {
-    top: 82px;
+    /* top: 82px; */
     right: 6%;
   }
 
   @media only all and (max-width: 376px) {
-    top: 116px;
+    top: 60px;
+    right: 6%;
+  }
+  @media only all and (max-width: 365px) {
+    top: 60px;
     right: 6%;
   }
 `;
