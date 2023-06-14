@@ -76,6 +76,9 @@ export const ImageContainer = styled.div`
   img {
     width: 180px;
     border-radius: 50%;
+    @media only all and (max-width: 700px) {
+      width: 123px;
+    }
   }
 `;
 

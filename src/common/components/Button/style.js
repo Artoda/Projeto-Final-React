@@ -13,6 +13,9 @@ export const Button = styled.button`
   transition-duration: 0.2s;
   padding: 10px;
   width: 238px;
+  @media only all and (max-width: 700px) {
+    width: 192px;
+  }
 
   :hover {
     background-color: var(--terciary-color);
