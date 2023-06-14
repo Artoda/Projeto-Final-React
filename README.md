@@ -1,6 +1,9 @@
 # Projeto-Final-React 💻
 📍 Projeto Final da disciplina de React no Serratec, no qual construímos um site que simula uma loja de penhores e artigos exóticos.-
 
+## Site
+
+https://projeto-final-react-sigma.vercel.app
 
 ## Integrantes
 
@@ -14,7 +17,6 @@
 ## Figma
 
 ![](https://cdn.discordapp.com/attachments/1081311873481322597/1118589345562107925/image.png)
-
 
 ## Tecnologias utilizadas
 
