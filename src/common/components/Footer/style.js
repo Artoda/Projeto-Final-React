@@ -73,7 +73,7 @@ export const HelpContainer = styled.footer`
     cursor: pointer;
     transition-duration: 0.2s;
     padding: 10px;
-    width: 120px;
+    width: 121px;
     :hover {
       background-color: var(--terciary-color);
       color: var(--alert-color);
